@@ -1,0 +1,24 @@
+{
+  "originHash" : "834aad4e5068798b5ce6a97d9709d58fae9edd503d254f56978227cf19da3551",
+  "pins" : [
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections.git",
+      "state" : {
+        "revision" : "8c0c0a8b49e080e54e5e328cc552821ff07cd341",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "swift-nonempty",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iDmitriyy/swift-nonempty.git",
+      "state" : {
+        "revision" : "1fd3f067ebc3900d200aa7e977fdb614cc5533bc",
+        "version" : "0.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}
