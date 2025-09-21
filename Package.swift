@@ -19,12 +19,24 @@ let package = Package(
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
     // Targets can depend on other targets in this package and products from dependencies.
-    .target(
-      name: "SwiftCollections+NonEmpty",
-    ),
+    .target(name: "SwiftCollections+NonEmpty", dependencies: [
+      .product(name: "Collections", package: "swift-collections"),
+      .product(name: "NonEmpty", package: "swift-nonempty")
+    ]),
     .testTarget(
       name: "SwiftCollections+NonEmptyTests",
       dependencies: ["SwiftCollections+NonEmpty"],
     ),
   ],
+  swiftLanguageModes: [.v6]
 )
+
+for target: PackageDescription.Target in package.targets {
+  {
+    var settings: [PackageDescription.SwiftSetting] = $0 ?? []
+    settings.append(.enableUpcomingFeature("ExistentialAny"))
+    settings.append(.enableUpcomingFeature("InternalImportsByDefault"))
+    settings.append(.enableUpcomingFeature("MemberImportVisibility"))
+    $0 = settings
+  }(&target.swiftSettings)
+}
