@@ -16,7 +16,7 @@ import Playgrounds
   // NonEmptyDeque.init(1, 2) as NonEmptyDeque<Int> // Ambiguous use of 'init(_:_:)'
   let _ = NonEmptyDeque.init(head: 1, tail: 2)
   
-  let _ = NonEmptyOrderedSet.init(1, 2)
+//  let _ = NonEmptyOrderedSet.init(1, 2)
   // let _ = NonEmptyOrderedSet.init(head: 1, tail: 2)
   
   let _ = NonEmptyBitArray(head: true, tail: false)

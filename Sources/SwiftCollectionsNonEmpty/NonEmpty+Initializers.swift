@@ -14,23 +14,18 @@ extension NonEmpty {
 
 extension NonEmpty where Collection: RangeReplaceableCollection {
   @inlinable @inline(__always)
-  internal init(head: Element, tail: [Element]) {
+  public init(element: Element) {
     var coll = Collection()
-    coll.append(head)
-    coll.append(contentsOf: tail)
+    coll.append(element)
     self.init(_ucheckedNonEmptyRawValue: coll)
   }
   
   @inlinable @inline(__always)
-  internal init(head: Element, tail: Element...) {
-    self.init(head: head, tail: tail)
+  public init(elements first: Element, _ other: Element...) {
+    var coll = Collection()
+    coll.append(first)
+    coll.append(contentsOf: other)
+    self.init(_ucheckedNonEmptyRawValue: coll)
   }
 }
 
-extension NonEmpty {
-  
-}
-
-//extension NonEmpty where Collection: MutableCollection {
-//
-//}

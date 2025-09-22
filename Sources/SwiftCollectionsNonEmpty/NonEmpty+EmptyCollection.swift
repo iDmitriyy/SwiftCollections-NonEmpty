@@ -1,0 +1,39 @@
+//
+//  NonEmpty+EmptyCollection.swift
+//  swiftCollections-nonEmpty
+//
+//  Created by Dmitriy Ignatyev on 22/09/2025.
+//
+
+@available(*, deprecated, message: "Can not be NonEmpty")
+public typealias NonEmptyEmptyCollection<T> = NonEmpty<EmptyCollection<T>>
+
+extension EmptyCollection: NonEmptyRawValueInitDisallowed {}
+
+// TODO: NonEmpty Disallowed
+
+// MARK: RawValue Init Disallowed
+
+/// Disallows `init?(rawValue: EmptyCollection<Int>)` initializer of `NonEmpty`
+public protocol NonEmptyRawValueInitDisallowed: Collection {}
+
+extension NonEmpty where Collection: NonEmptyRawValueInitDisallowed {
+  @available(*, deprecated, message: "Can not be NonEmpty. This init call will cause crash")
+  public init?(rawValue: EmptyCollection<Int>) {
+    nil
+  }
+}
+
+// MARK: Head-Tail Init Disallowed
+
+/// Disallows `init(_ head: Element, _ tail: Element...)` initializer of `NonEmpty`
+public protocol NonEmptyHeadTailInitDisallowed: Collection {}
+
+extension NonEmpty where Collection: NonEmptyHeadTailInitDisallowed {
+  @available(*, unavailable, message: "Can not be NonEmpty. This init call will cause crash")
+  public init(_ head: Element, _ tail: Element...) {
+    fatalError("Can not be NonEmpty")
+  }
+}
+
+

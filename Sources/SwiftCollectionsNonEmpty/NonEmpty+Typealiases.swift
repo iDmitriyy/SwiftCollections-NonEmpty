@@ -62,9 +62,15 @@ public typealias NonEmptyContiguousArray<T> = NonEmpty<ContiguousArray<T>>
 // MutableCollection | RandomAccessCollection BidirectionalCollection
 public typealias NonEmptyCollectionOfOne<T> = NonEmpty<CollectionOfOne<T>>
 
-// public typealias NonEmptyRangeSet<Bound: Comparable> = NonEmpty<RangeSet<Bound>>
 
+// none | RandomAccessCollection BidirectionalCollection RangeExpression
 // public typealias NonEmptyRange<T: Comparable & Strideable> = NonEmpty<Range<T>> where T.Stride: SignedInteger
+
+// none | RandomAccessCollection BidirectionalCollection RangeExpression
+// public typealias NonEmptyClosedRange<T: Comparable & Strideable> = NonEmpty<ClosedRange<T>> where T.Stride: SignedInteger
+
+// none | 'RangeSet' does not conform to protocol 'Collection'
+// public typealias NonEmptyRangeSet<Bound: Comparable> = NonEmpty<RangeSet<Bound>>
 
 // MARK: - Foundation
 
