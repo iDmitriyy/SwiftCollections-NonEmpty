@@ -7,3 +7,5 @@
 
 @_exported public import NonEmpty
 @_exported public import Collections
+@_exported public import struct _RopeModule.BigString
+@_exported public import struct _RopeModule.BigSubstring
