@@ -15,11 +15,13 @@ let package = Package(
   targets: [
     .target(name: "SwiftCollectionsNonEmpty", dependencies: [
       .product(name: "Collections", package: "swift-collections"),
+      .product(name: "_RopeModule", package: "swift-collections"),
       .product(name: "NonEmpty", package: "swift-nonempty"),
     ]),
     .testTarget(name: "SwiftCollectionsNonEmptyTests", dependencies: [
       .target(name: "SwiftCollectionsNonEmpty"),
       .product(name: "Collections", package: "swift-collections"),
+      .product(name: "_RopeModule", package: "swift-collections"),
       .product(name: "NonEmpty", package: "swift-nonempty"),
     ]),
   ],
