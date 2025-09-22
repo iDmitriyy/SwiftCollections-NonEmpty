@@ -115,12 +115,6 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
   mutating func remove(at index: Self.Index) -> InstanceForIndex
 }
 
-// extension Dictionary: SingleValueSetSubscriptDictionaryProtocol {}
-//
-// extension OrderedDictionary: SingleValueSetSubscriptDictionaryProtocol {}
-//
-// extension TreeDictionary: SingleValueSetSubscriptDictionaryProtocol {}
-
 // MARK: - Multiple values for key (get subscript)
 
 // MARK: - Multiple values for key (set subscript)
@@ -152,3 +146,29 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
 // protocol SingleValueNonEmptyMutableDictionary<Key, Value>: NonEmptyDictionaryProtocol {}
 
 // swiftformat:enable all
+
+// MARK: SingleV alue For Key Dictionary
+
+extension SingleValueForKeyDictionary {
+  @inlinable
+  public func hasValue(forKey _: Key) -> Bool {
+    // TODO: inspect which is faster – key.contain or index(forKey: key)
+    // @specialize – choose most perfomant execution path for each specialization, if found
+    // Self: Dictionary | OrderedDictionary
+    // Key: String | ?Int
+    // Value: -
+    
+    // keys.contains(key)
+    // index(forKey: key) != nil
+    false
+  }
+}
+
+public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionaryProtocol,
+  SingleValueSetSubscriptDictionaryProtocol {}
+
+extension Dictionary: SingleValueForKeyDictionary {}
+
+extension OrderedDictionary: SingleValueForKeyDictionary {}
+
+extension TreeDictionary: SingleValueForKeyDictionary {}

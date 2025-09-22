@@ -27,6 +27,10 @@ extension NonEmpty where Collection: RangeReplaceableCollection {
   }
 }
 
+extension NonEmpty {
+  
+}
+
 //extension NonEmpty where Collection: MutableCollection {
 //
 //}
