@@ -5,6 +5,8 @@
 //  Created by Dmitriy Ignatyev on 22/09/2025.
 //
 
+// swiftformat:disable unusedArguments
+
 public protocol DictionaryRootProtocol<Key, Value>: Swift.Sequence where Element == (key: Key, value: Value) {
   associatedtype Key: Hashable
   associatedtype Value
@@ -61,7 +63,6 @@ extension Dictionary: WithCapacityInitializableDictionaryProtocol {}
 extension OrderedDictionary: WithCapacityInitializableDictionaryProtocol {
   public init(minimumCapacity: Int) {
     self.init()
-    self.reserveCapacity(minimumCapacity)
   }
 }
 
@@ -113,11 +114,11 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
   mutating func remove(at index: Self.Index) -> InstanceForIndex
 }
 
-//extension Dictionary: SingleValueSetSubscriptDictionaryProtocol {}
+// extension Dictionary: SingleValueSetSubscriptDictionaryProtocol {}
 //
-//extension OrderedDictionary: SingleValueSetSubscriptDictionaryProtocol {}
+// extension OrderedDictionary: SingleValueSetSubscriptDictionaryProtocol {}
 //
-//extension TreeDictionary: SingleValueSetSubscriptDictionaryProtocol {}
+// extension TreeDictionary: SingleValueSetSubscriptDictionaryProtocol {}
 
 // MARK: - Multiple values for key (get subscript)
 
@@ -125,26 +126,28 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
 
 // MARK: - NonEmpty Dictionary Protocol
 
-public protocol NonEmptyDictionaryProtocol<Key, Value>: DictionaryProtocol0 {
-//  subscript(key: Key) -> Value? { get }
-//  
-//  @discardableResult
-//  mutating func updateValue(_ value: Value, forKey key: Key) -> Value?
-    
-  /// with NonEmptyDictionary filter function returns Dictionary
-  associatedtype FilterResultType: NonEmptyDictionaryProtocol<Key, Value>
-  func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterResultType
-  
-  // todo
-//  func remapValues<T, E>(_ transform: (Value) throws(E) -> T) throws(E) -> Self
-//  func remapValues<T>(_ transform: (Value) throws -> T) rethrows -> SelfType<Key, T>
-//  func compactMapValues<T>(_ transform: (Value) throws -> T?) rethrows -> SelfType<Key, T>
-  
-  mutating func merge(_ keysAndValues: some Sequence<(Key, Value)>,
-                      uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows
+// public protocol SingleValueNonEmptyDictionary<Key, Value>: DictionaryProtocol0 {
+////  subscript(key: Key) -> Value? { get }
+////
+////  @discardableResult
+////  mutating func updateValue(_ value: Value, forKey key: Key) -> Value?
+//
+//  /// with NonEmptyDictionary filter function returns Dictionary
+//  associatedtype FilterResultType: NonEmptyDictionaryProtocol<Key, Value>
+//  func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterResultType
+//
+//  // todo
+////  func remapValues<T, E>(_ transform: (Value) throws(E) -> T) throws(E) -> Self
+////  func remapValues<T>(_ transform: (Value) throws -> T) rethrows -> SelfType<Key, T>
+////  func compactMapValues<T>(_ transform: (Value) throws -> T?) rethrows -> SelfType<Key, T>
+//
+//  mutating func merge(_ keysAndValues: some Sequence<(Key, Value)>,
+//                      uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows
+//
+//  func merging(_ other: some Sequence<(Key, Value)>,
+//               uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
+// }
 
-  func merging(_ other: some Sequence<(Key, Value)>,
-               uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
-}
+// protocol SingleValueNonEmptyMutableDictionary<Key, Value>: NonEmptyDictionaryProtocol {}
 
-protocol NonEmptyMutableDictionaryProtocol<Key, Value>: NonEmptyDictionaryProtocol {}
+// swiftformat:enable all

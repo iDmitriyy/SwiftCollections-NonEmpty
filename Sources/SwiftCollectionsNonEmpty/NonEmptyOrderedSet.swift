@@ -23,7 +23,3 @@ extension NonEmptyOrderedSet where Collection.Element: Hashable {
     })
   }
 }
-
-//extension NonEmpty where Collection: MutableCollection {
-//
-//}

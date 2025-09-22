@@ -28,4 +28,13 @@ import Playgrounds
   // let _ = NonEmptyTreeDictionary.init(head: (1, 1), tail: (2, 3)) // Error 'RangeReplaceableCollection'
   
   // let _ = NonEmptyTreeSet.init(head: 1, tail: 2) // Error 'RangeReplaceableCollection'
+  
+  var one = CollectionOfOne(1)
+  one.first
+}
+
+extension CollectionOfOne {
+  var first: Element {
+    self.first!
+  }
 }
