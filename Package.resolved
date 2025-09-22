@@ -1,5 +1,5 @@
 {
-  "originHash" : "834aad4e5068798b5ce6a97d9709d58fae9edd503d254f56978227cf19da3551",
+  "originHash" : "ddbb05f717ab5f234c32ad6a4cde5452ada88be508f648f73b28645a924815ef",
   "pins" : [
     {
       "identity" : "swift-collections",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/iDmitriyy/swift-nonempty.git",
       "state" : {
-        "revision" : "1fd3f067ebc3900d200aa7e977fdb614cc5533bc",
-        "version" : "0.5.0"
+        "branch" : "SwiftCollectionsAdditions",
+        "revision" : "4e83af11f078b2672a8824da712b3d53e88bfd2a"
       }
     }
   ],

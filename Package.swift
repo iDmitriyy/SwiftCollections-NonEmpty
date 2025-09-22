@@ -14,7 +14,7 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.2.1")),
-    .package(url: "https://github.com/iDmitriyy/swift-nonempty.git", .upToNextMajor(from: "0.5.0")),
+    .package(url: "https://github.com/iDmitriyy/swift-nonempty.git", branch: "SwiftCollectionsAdditions"), // "0.5.0"
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
