@@ -12,6 +12,8 @@ extension NonEmpty {
   }
 }
 
+// MARK: - RangeReplaceable Collection Types NonEmpty initializer
+
 extension NonEmpty where Collection: RangeReplaceableCollection {
   @inlinable @inline(__always)
   public init(element: Element) {
@@ -29,6 +31,19 @@ extension NonEmpty where Collection: RangeReplaceableCollection {
   }
 }
 
-extension NonEmpty where Collection: MutableCollection {
+// MARK: - Compatible Set Types NonEmpty initializer
+
+extension NonEmpty where Collection: NonEmptyCompatibleSetCollection {
+  @inlinable @inline(__always)
+  public init(element: Element) {
+    let backingInstance = Collection(CollectionOfOne(element))
+    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+  }
   
+  @inlinable @inline(__always)
+  public init(elements first: Element, _ other: Element...) {
+    var backingInstance = Collection(CollectionOfOne(first))
+    backingInstance.formUnion(other)
+    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+  }
 }

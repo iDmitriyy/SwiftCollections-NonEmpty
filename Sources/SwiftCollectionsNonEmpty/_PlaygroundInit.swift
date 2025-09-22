@@ -27,8 +27,6 @@ import Playgrounds
 //  let _ = NonEmptyOrderedSet.init(1, 2)
   // let _ = NonEmptyOrderedSet.init(head: 1, tail: 2)
   
-  
-  
   // let _ = NonEmptyBitSet(head: 1, tail: 2) // requires that 'BitSet' conform to 'RangeReplaceableCollection'
   
   // let _ = NonEmptyOrderedDictionary.init(head: (1, 1), tail: (2, 3)) // requires that 'OrderedDictionary<Int, Int>' conform to 'RangeReplaceableCollection'

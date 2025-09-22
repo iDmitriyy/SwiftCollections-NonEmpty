@@ -67,7 +67,7 @@ extension OrderedDictionary: WithCapacityInitializableDictionaryProtocol {
   }
 }
 
-// extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {}
+// extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {} // no functions to reserveCapacity
 
 // MARK: - Single value (get subscript)
 
@@ -147,11 +147,24 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
 
 // swiftformat:enable all
 
-// MARK: SingleV alue For Key Dictionary
+// MARK: - Single Value For Key Dictionary Protocol
 
-extension SingleValueForKeyDictionary {
+public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionaryProtocol,
+  SingleValueSetSubscriptDictionaryProtocol {}
+
+// MARK: - Conformances
+
+extension Dictionary: SingleValueForKeyDictionary {}
+
+extension OrderedDictionary: SingleValueForKeyDictionary {}
+
+extension TreeDictionary: SingleValueForKeyDictionary {}
+
+// MARK: - Default Imps
+
+extension DictionaryProtocol0 {
   @inlinable
-  public func hasValue(forKey _: Key) -> Bool {
+  public func hasValue(forKey key: Key) -> Bool {
     // TODO: inspect which is faster – key.contain or index(forKey: key)
     // @specialize – choose most perfomant execution path for each specialization, if found
     // Self: Dictionary | OrderedDictionary
@@ -159,16 +172,6 @@ extension SingleValueForKeyDictionary {
     // Value: -
     
     // keys.contains(key)
-    // index(forKey: key) != nil
-    false
+    index(forKey: key) != nil
   }
 }
-
-public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionaryProtocol,
-  SingleValueSetSubscriptDictionaryProtocol {}
-
-extension Dictionary: SingleValueForKeyDictionary {}
-
-extension OrderedDictionary: SingleValueForKeyDictionary {}
-
-extension TreeDictionary: SingleValueForKeyDictionary {}
