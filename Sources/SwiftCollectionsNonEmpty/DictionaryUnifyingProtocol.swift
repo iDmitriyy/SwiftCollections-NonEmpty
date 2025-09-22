@@ -63,6 +63,7 @@ extension Dictionary: WithCapacityInitializableDictionaryProtocol {}
 extension OrderedDictionary: WithCapacityInitializableDictionaryProtocol {
   public init(minimumCapacity: Int) {
     self.init()
+    reserveCapacity(minimumCapacity)
   }
 }
 
