@@ -20,7 +20,7 @@ public import struct _RopeModule.BigString
 // RangeReplaceableCollection MutableCollection | RandomAccessCollection BidirectionalCollection ExpressibleByArrayLiteral
 public typealias NonEmptyDeque<T: Hashable> = NonEmpty<Deque<T>>
 
-// none | _UniqueCollection RandomAccessCollection BidirectionalCollection ExpressibleByArrayLiteral
+// none | RandomAccessCollection BidirectionalCollection _UniqueCollection ExpressibleByArrayLiteral
 public typealias NonEmptyOrderedSet<T: Hashable> = NonEmpty<OrderedSet<T>>
 
 // RangeReplaceableCollection MutableCollection | RandomAccessCollection BidirectionalCollection ExpressibleByArrayLiteral
