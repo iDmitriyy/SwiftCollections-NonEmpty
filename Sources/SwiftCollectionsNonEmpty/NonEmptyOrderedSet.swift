@@ -15,11 +15,9 @@ extension NonEmptyOrderedSet where Collection.Element: Hashable {
   }
   
   private init(head: Collection.Element, tail: [Collection.Element])  {
-    self.init(_nonEmptyRawValueBuilder: {
-      var rawValue = OrderedSet<Element>()
-      rawValue.append(head)
-      rawValue.append(contentsOf: tail)
-      return rawValue as! Collection
-    })
+    var rawValue = OrderedSet<Element>()
+    rawValue.append(head)
+    rawValue.append(contentsOf: tail)
+    self.init(_ucheckedNonEmptyRawValue: rawValue as! Collection)
   }
 }
