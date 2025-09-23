@@ -2,7 +2,7 @@
 //  NonEmpty+CompatibleSetCollection.swift
 //  swiftCollections-nonEmpty
 //
-//  Created by tmp on 22/09/2025.
+//  Created Dmitriy Ignatyev on 22/09/2025.
 //
 
 public protocol NonEmptyCompatibleSetCollection: Sequence {
