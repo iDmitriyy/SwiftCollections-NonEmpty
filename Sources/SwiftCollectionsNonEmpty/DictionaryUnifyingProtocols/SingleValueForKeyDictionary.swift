@@ -31,44 +31,41 @@ extension OrderedDictionary {
   mutating func dddd() {
     let ss: Self = filter { _ in true}
     
-    // forEach +
-    // allSatisfy +
-    // contains(where:) +
-    // enumerated +
-    // count(where:) +
-    // first(where:) +
-    // min / max +
-    // randomElement +
-    // randomElement(using:) +
-    // reduce | reduce(into:) +
+    // inherited from Sequence default imps :
+    // allSatisfy
+    // contains(where:)
+    // count(where:)
+    // elementsEqual(_ other:, by: )
+    // enumerated
+    // first(where:)
+    // flatMap
+    // forEach
+    // min / max
+    // randomElement
+    // randomElement(using:)
+    // reduce | reduce(into:)
+    // reversed
+    // shuffled() shuffled(using:)
+    // sorted(by: ) / sorted(using: )
     
+    // inherited from Collections default imps :
     // firstIndex(where:) +
     // indices(where:) +
     
-    
-    // elementsEqual(_ other:, by: )
-    
+    // Dictionary specific | overloaded:
     // self.removeAll() // r: Self n: Base
     // self.filter() // r: Self n: Base +
-    
-    // removeSubrange()
-    // shuffle() shuffled() shuffled(using:) : is it make sense for Dictionary & Set?
+        
     // mapValues
     // compactMapValues
     
-    // first(where:)
-    // sorted(by: )
-    // dropFirst / last (_ k:)
-    // mutating popFirst() ?? seems should not be available generically
-    // flatMap
-    
-    // prefix(_ maxLength) PrefixSequence<Self>
-    // prefix(while:) // -> self
-    // prefix(upTo:) -> Slice<Self>
-    // prefix(through:) -> Slice<Self>
-    // trimmingPrefix(while:) Slice<Self>
     // > suffix
   }
+}
+
+func foo(bar: inout some NonEmptyCompatibleOperationsDictionary) {
+  
+  
 }
 
 // MARK: - Operations common for both regular & nonEmpty Dictionary
