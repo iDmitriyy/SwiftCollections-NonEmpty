@@ -38,12 +38,6 @@ public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollect
   subscript(position: Index) -> Element { get }
 }
 
-extension Dictionary: SingleValueGetSubscriptDictionary {}
-
-extension OrderedDictionary: SingleValueGetSubscriptDictionary {}
-
-extension TreeDictionary: SingleValueGetSubscriptDictionary {}
-
 // MARK: - Single value (set subscript)
 
 public protocol SingleValueSetSubscriptDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
@@ -57,12 +51,6 @@ public protocol SingleValueSetSubscriptDictionary<Key, Value>: SingleValueGetSub
   
   mutating func remove(at index: Self.Index) -> Self.Element
 }
-
-extension Dictionary: SingleValueSetSubscriptDictionary {}
-
-extension OrderedDictionary: SingleValueSetSubscriptDictionary {}
-
-extension TreeDictionary: SingleValueSetSubscriptDictionary {}
 
 // MARK: - Multiple values for Index subscript
 

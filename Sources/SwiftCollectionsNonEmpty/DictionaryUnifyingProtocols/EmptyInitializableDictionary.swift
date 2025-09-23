@@ -13,17 +13,19 @@ public protocol EmptyInitializableDictionary<Key, Value>: DictionaryCollection {
 
 // MARK: - Capacity Reservable
 
-public protocol CapacityReservableDictionary<Key, Value>: EmptyInitializableDictionary {
+public protocol CapacityReservableDictionary<Key, Value>: DictionaryCollection {
   mutating func reserveCapacity(_ minimumCapacity: Int)
 }
 
 // MARK: - With minimum Capacity Initializable
 
-public protocol WithCapacityInitializableDictionary<Key, Value>: EmptyInitializableDictionary {
+public protocol WithCapacityInitializableDictionary<Key, Value>: EmptyInitializableDictionary, CapacityReservableDictionary {
   init(minimumCapacity: Int)
   
   mutating func removeAll(keepingCapacity keepCapacity: Bool)
 }
+
+// MARK: - Conformances
 
 extension Dictionary: WithCapacityInitializableDictionary {}
 
