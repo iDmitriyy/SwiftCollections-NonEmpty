@@ -36,6 +36,15 @@ extension OrderedDictionary {
     // contains(where:) +
     // enumerated +
     // count(where:) +
+    // first(where:) +
+    // min / max +
+    // randomElement +
+    // randomElement(using:) +
+    // reduce | reduce(into:) +
+    
+    // firstIndex(where:) +
+    // indices(where:) +
+    
     
     // elementsEqual(_ other:, by: )
     
@@ -43,14 +52,22 @@ extension OrderedDictionary {
     // self.filter() // r: Self n: Base +
     
     // removeSubrange()
-    // shuffle()
+    // shuffle() shuffled() shuffled(using:) : is it make sense for Dictionary & Set?
     // mapValues
     // compactMapValues
-    // randomElement(using: &)
+    
     // first(where:)
     // sorted(by: )
     // dropFirst / last (_ k:)
     // mutating popFirst() ?? seems should not be available generically
+    // flatMap
+    
+    // prefix(_ maxLength) PrefixSequence<Self>
+    // prefix(while:) // -> self
+    // prefix(upTo:) -> Slice<Self>
+    // prefix(through:) -> Slice<Self>
+    // trimmingPrefix(while:) Slice<Self>
+    // > suffix
   }
 }
 

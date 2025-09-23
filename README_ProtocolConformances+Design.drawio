@@ -622,7 +622,7 @@
         <mxCell id="OdSvTil8kjtkqA0TtH58-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="OdSvTil8kjtkqA0TtH58-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1320" y="750" as="sourcePoint" />
-            <mxPoint x="1450" y="680" as="targetPoint" />
+            <mxPoint x="1450" y="670" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
