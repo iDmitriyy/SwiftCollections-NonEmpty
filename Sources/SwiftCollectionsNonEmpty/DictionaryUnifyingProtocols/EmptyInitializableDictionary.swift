@@ -5,6 +5,8 @@
 //  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
+// swiftformat:disable unusedArguments
+
 // MARK: - Empty Initializable
 
 public protocol EmptyInitializableDictionary<Key, Value>: DictionaryCollection {
@@ -17,23 +19,10 @@ public protocol CapacityReservableDictionary<Key, Value>: DictionaryCollection {
   mutating func reserveCapacity(_ minimumCapacity: Int)
 }
 
-// MARK: - With minimum Capacity Initializable
+// MARK: - EmptyInitializable WithCapacity Dictionary
 
-public protocol WithCapacityInitializableDictionary<Key, Value>: EmptyInitializableDictionary, CapacityReservableDictionary {
+public protocol EmptyInitializableWithCapacityDictionary<Key, Value>: EmptyInitializableDictionary, CapacityReservableDictionary {
   init(minimumCapacity: Int)
   
   mutating func removeAll(keepingCapacity keepCapacity: Bool)
 }
-
-// MARK: - Conformances
-
-extension Dictionary: WithCapacityInitializableDictionary {}
-
-extension OrderedDictionary: WithCapacityInitializableDictionary {
-  public init(minimumCapacity: Int) {
-    self.init()
-    reserveCapacity(minimumCapacity)
-  }
-}
-
-// extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {} // no functions to reserveCapacity

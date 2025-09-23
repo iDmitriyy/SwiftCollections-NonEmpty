@@ -5,3 +5,4 @@
 //  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
+// swiftformat:disable unusedArguments
