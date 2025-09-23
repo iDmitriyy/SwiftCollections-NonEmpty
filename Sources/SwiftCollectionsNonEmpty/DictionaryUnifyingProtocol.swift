@@ -7,14 +7,14 @@
 
 // swiftformat:disable unusedArguments
 
-public protocol DictionaryRootProtocol<Key, Value>: Swift.Sequence where Element == (key: Key, value: Value) {
+public protocol DictionarySequence<Key, Value>: Swift.Sequence where Element == (key: Key, value: Value) {
   associatedtype Key: Hashable
   associatedtype Value
 }
 
 // MARK: DictionaryProtocol0
 
-public protocol DictionaryProtocol0<Key, Value>: DictionaryRootProtocol {
+public protocol DictionaryProtocol<Key, Value>: DictionarySequence {
   associatedtype Index: Comparable
   
   associatedtype Keys: Swift.Collection<Key>, Equatable
@@ -30,27 +30,27 @@ public protocol DictionaryProtocol0<Key, Value>: DictionaryRootProtocol {
   func index(forKey key: Key) -> Index?
 }
 
-extension Dictionary: DictionaryProtocol0 {}
+extension Dictionary: DictionaryProtocol {}
 
-extension OrderedDictionary: DictionaryProtocol0 {}
+extension OrderedDictionary: DictionaryProtocol {}
 
-extension TreeDictionary: DictionaryProtocol0 {}
+extension TreeDictionary: DictionaryProtocol {}
 
 // MARK: Empty Initializable
 
-public protocol EmptyInitializableDictionaryProtocol<Key, Value>: DictionaryProtocol0 {
+public protocol EmptyInitializableDictionary<Key, Value>: DictionaryProtocol {
   init()
 }
 
-extension Dictionary: EmptyInitializableDictionaryProtocol {}
+extension Dictionary: EmptyInitializableDictionary {}
 
-extension OrderedDictionary: EmptyInitializableDictionaryProtocol {}
+extension OrderedDictionary: EmptyInitializableDictionary {}
 
-extension TreeDictionary: EmptyInitializableDictionaryProtocol {}
+extension TreeDictionary: EmptyInitializableDictionary {}
 
 // MARK: - With minimum Capacity Initializable
 
-public protocol WithCapacityInitializableDictionaryProtocol<Key, Value>: EmptyInitializableDictionaryProtocol {
+public protocol WithCapacityInitializableDictionary<Key, Value>: EmptyInitializableDictionary {
   init(minimumCapacity: Int)
   
   mutating func reserveCapacity(_ minimumCapacity: Int)
@@ -58,9 +58,9 @@ public protocol WithCapacityInitializableDictionaryProtocol<Key, Value>: EmptyIn
   mutating func removeAll(keepingCapacity keepCapacity: Bool)
 }
 
-extension Dictionary: WithCapacityInitializableDictionaryProtocol {}
+extension Dictionary: WithCapacityInitializableDictionary {}
 
-extension OrderedDictionary: WithCapacityInitializableDictionaryProtocol {
+extension OrderedDictionary: WithCapacityInitializableDictionary {
   public init(minimumCapacity: Int) {
     self.init()
     reserveCapacity(minimumCapacity)
@@ -71,21 +71,21 @@ extension OrderedDictionary: WithCapacityInitializableDictionaryProtocol {
 
 // MARK: - Single value (get subscript)
 
-public protocol SingleValueGetSubscriptDictionaryProtocol<Key, Value>: DictionaryProtocol0 {
+public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryProtocol {
   subscript(key: Key) -> Value? { get }
   
   subscript(position: Index) -> Element { get }
 }
 
-extension Dictionary: SingleValueGetSubscriptDictionaryProtocol {}
+extension Dictionary: SingleValueGetSubscriptDictionary {}
 
-extension OrderedDictionary: SingleValueGetSubscriptDictionaryProtocol {}
+extension OrderedDictionary: SingleValueGetSubscriptDictionary {}
 
-extension TreeDictionary: SingleValueGetSubscriptDictionaryProtocol {}
+extension TreeDictionary: SingleValueGetSubscriptDictionary {}
 
 // MARK: - Single value (set subscript)
 
-public protocol SingleValueSetSubscriptDictionaryProtocol<Key, Value>: SingleValueGetSubscriptDictionaryProtocol {
+public protocol SingleValueSetSubscriptDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
   subscript(key: Key) -> Value? { get set }
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get set }
   
@@ -97,15 +97,15 @@ public protocol SingleValueSetSubscriptDictionaryProtocol<Key, Value>: SingleVal
   mutating func remove(at index: Self.Index) -> Self.Element
 }
 
-extension Dictionary: SingleValueSetSubscriptDictionaryProtocol {}
+extension Dictionary: SingleValueSetSubscriptDictionary {}
 
-extension OrderedDictionary: SingleValueSetSubscriptDictionaryProtocol {}
+extension OrderedDictionary: SingleValueSetSubscriptDictionary {}
 
-extension TreeDictionary: SingleValueSetSubscriptDictionaryProtocol {}
+extension TreeDictionary: SingleValueSetSubscriptDictionary {}
 
 // MARK: - Multiple values for Index subscript
 
-public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: DictionaryProtocol0 {
+public protocol MultiValueIndexSubscriptDictionary<Key, Value>: DictionaryProtocol {
   /// For ordinary Dict types it is ==
   /// For multi-value for key dictionaries it is some Sequence<Value>
   associatedtype InstanceForIndex: Sequence
@@ -149,8 +149,8 @@ public protocol MultuValueIndexSubscriptDictionaryProtocol<Key, Value>: Dictiona
 
 // MARK: - Single Value For Key Dictionary Protocol
 
-public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionaryProtocol,
-  SingleValueSetSubscriptDictionaryProtocol {}
+public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionary,
+  SingleValueSetSubscriptDictionary {}
 
 // MARK: - Conformances
 
@@ -162,10 +162,10 @@ extension TreeDictionary: SingleValueForKeyDictionary {}
 
 // MARK: - Default Imps
 
-extension DictionaryProtocol0 {
+extension SingleValueGetSubscriptDictionary {
   @inlinable
   public func hasValue(forKey key: Key) -> Bool {
-    // TODO: inspect which is faster – key.contain or index(forKey: key)
+    // TODO: inspect which is faster – key.contain or index(forKey: key) or valueForKey
     // @specialize – choose most perfomant execution path for each specialization, if found
     // Self: Dictionary | OrderedDictionary
     // Key: String | ?Int
