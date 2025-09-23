@@ -22,6 +22,8 @@ public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollect
 extension Dictionary {
   mutating func dddd() {
     let ss: Self = filter { _ in true}
+    
+    
   }
 }
 
@@ -29,7 +31,26 @@ extension OrderedDictionary {
   mutating func dddd() {
     let ss: Self = filter { _ in true}
     
-    self.removeAll()
+    // forEach +
+    // allSatisfy +
+    // contains(where:) +
+    // enumerated +
+    // count(where:) +
+    
+    // elementsEqual(_ other:, by: )
+    
+    // self.removeAll() // r: Self n: Base
+    // self.filter() // r: Self n: Base +
+    
+    // removeSubrange()
+    // shuffle()
+    // mapValues
+    // compactMapValues
+    // randomElement(using: &)
+    // first(where:)
+    // sorted(by: )
+    // dropFirst / last (_ k:)
+    // mutating popFirst() ?? seems should not be available generically
   }
 }
 
@@ -46,26 +67,31 @@ public protocol NonEmptyCompatibleOperationsDictionary<Key, Value>: SingleValueG
                uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
 }
 
+// MARK: CommonOperations Dictionary Protocol
+// Operations where:
+// - regular dictionary return Self as a Result (filter, removeAll)
+// - nonEmpty dictionary return Base as a Result
+public protocol CommonOperationsDictionaryProtocol<Key, Value>: NonEmptyCompatibleOperationsDictionary {
+  associatedtype CommonOperationsResultDictionary: NonEmptyCompatibleOperationsDictionary<Key, Value>
+  
+  func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> CommonOperationsResultDictionary
+}
+
 // MARK: - NonEmpty Dictionary Protocol
 
-public protocol NonEmptyDictionaryType<Key, Value>: NonEmptyCompatibleOperationsDictionary {
+public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol where CommonOperationsResultDictionary == Base {
   associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
 }
 
 // MARK: - Single value (set subscript)
 
-public protocol SingleValueSetSubscriptDictionary<Key, Value>: NonEmptyCompatibleOperationsDictionary {
+public protocol SingleValueSetSubscriptDictionary<Key, Value>: CommonOperationsDictionaryProtocol where CommonOperationsResultDictionary == Self {
   subscript(key: Key) -> Value? { get set } // overload with set
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get set } // overload with set
   
   mutating func removeValue(forKey key: Key) -> Value?
   
   mutating func remove(at index: Self.Index) -> Self.Element
-  
-  // FilterResultType is:
-  // Self for Dictionary
-  // Base for NonEmptyDictionary
-  // func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> Self
 }
 
 
