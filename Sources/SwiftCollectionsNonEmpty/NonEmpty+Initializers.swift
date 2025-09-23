@@ -47,3 +47,24 @@ extension NonEmpty where Collection: NonEmptyCompatibleSetCollection {
     self.init(_ucheckedNonEmptyRawValue: backingInstance)
   }
 }
+
+// MARK: - SingleValueForKey Dictionary Types NonEmpty initializer
+
+extension NonEmpty where Collection: SingleValueForKeyDictionary {
+  @inlinable @inline(__always)
+  public init(element: Element) {
+    var backingInstance = Collection()
+    backingInstance.updateValue(element.value, forKey: element.key)
+    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+  }
+  
+  @inlinable @inline(__always)
+  public init(elements first: Element, _ other: Element...) {
+    var backingInstance = Collection()
+    backingInstance.updateValue(first.value, forKey: first.key)
+    for (key, value) in other {
+      backingInstance.updateValue(value, forKey: key)
+    }
+    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+  }
+}
