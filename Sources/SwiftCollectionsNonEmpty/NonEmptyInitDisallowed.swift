@@ -8,9 +8,9 @@
 // MARK: - RawValue Init Disallowed
 
 /// Disallows `init?(rawValue: EmptyCollection<Int>)` initializer of `NonEmpty`
-public protocol NonEmptyRawValueInitDisallowed: Collection {}
+public protocol NonEmptyInitWithRawValueDisallowed: Collection {}
 
-extension NonEmpty where Collection: NonEmptyRawValueInitDisallowed {
+extension NonEmpty where Collection: NonEmptyInitWithRawValueDisallowed {
   @available(*, deprecated, message: "Can not be NonEmpty. This init call will cause crash")
   public init?(rawValue: EmptyCollection<Element>) {
     nil

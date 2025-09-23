@@ -6,7 +6,7 @@
 //
 
 /*
- - rename NonEmpty generic parameter `Collection` to `UnderlyingCollection`
+ - rename NonEmpty generic parameter `Collection` to `Base`
  - deprecate initializer in NonEmpty library sources
  - remove in NonEmpty library sources conditional conformances to ExpressibleByStringLiteral, ExpressibleByStringInterpolation,
    ExpressibleByArrayLiteral, ExpressibleByDictionaryLiteral

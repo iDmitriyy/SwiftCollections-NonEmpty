@@ -12,9 +12,9 @@ public protocol DictionarySequence<Key, Value>: Swift.Sequence where Element == 
   associatedtype Value
 }
 
-// MARK: DictionaryProtocol0
+// MARK: DictionaryCollection
 
-public protocol DictionaryProtocol<Key, Value>: DictionarySequence {
+public protocol DictionaryCollection<Key, Value>: DictionarySequence {
   associatedtype Index: Comparable
   
   associatedtype Keys: Swift.Collection<Key>, Equatable
@@ -30,48 +30,9 @@ public protocol DictionaryProtocol<Key, Value>: DictionarySequence {
   func index(forKey key: Key) -> Index?
 }
 
-extension Dictionary: DictionaryProtocol {}
-
-extension OrderedDictionary: DictionaryProtocol {}
-
-extension TreeDictionary: DictionaryProtocol {}
-
-// MARK: Empty Initializable
-
-public protocol EmptyInitializableDictionary<Key, Value>: DictionaryProtocol {
-  init()
-}
-
-extension Dictionary: EmptyInitializableDictionary {}
-
-extension OrderedDictionary: EmptyInitializableDictionary {}
-
-extension TreeDictionary: EmptyInitializableDictionary {}
-
-// MARK: - With minimum Capacity Initializable
-
-public protocol WithCapacityInitializableDictionary<Key, Value>: EmptyInitializableDictionary {
-  init(minimumCapacity: Int)
-  
-  mutating func reserveCapacity(_ minimumCapacity: Int)
-  
-  mutating func removeAll(keepingCapacity keepCapacity: Bool)
-}
-
-extension Dictionary: WithCapacityInitializableDictionary {}
-
-extension OrderedDictionary: WithCapacityInitializableDictionary {
-  public init(minimumCapacity: Int) {
-    self.init()
-    reserveCapacity(minimumCapacity)
-  }
-}
-
-// extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {} // no functions to reserveCapacity
-
 // MARK: - Single value (get subscript)
 
-public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryProtocol {
+public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollection {
   subscript(key: Key) -> Value? { get }
   
   subscript(position: Index) -> Element { get }
@@ -105,7 +66,7 @@ extension TreeDictionary: SingleValueSetSubscriptDictionary {}
 
 // MARK: - Multiple values for Index subscript
 
-public protocol MultiValueIndexSubscriptDictionary<Key, Value>: DictionaryProtocol {
+public protocol MultiValueIndexSubscriptDictionary<Key, Value>: DictionaryCollection {
   /// For ordinary Dict types it is ==
   /// For multi-value for key dictionaries it is some Sequence<Value>
   associatedtype InstanceForIndex: Sequence
@@ -152,13 +113,6 @@ public protocol MultiValueIndexSubscriptDictionary<Key, Value>: DictionaryProtoc
 public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionary,
   SingleValueSetSubscriptDictionary {}
 
-// MARK: - Conformances
-
-extension Dictionary: SingleValueForKeyDictionary {}
-
-extension OrderedDictionary: SingleValueForKeyDictionary {}
-
-extension TreeDictionary: SingleValueForKeyDictionary {}
 
 // MARK: - Default Imps
 
