@@ -47,6 +47,7 @@ extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
 // --- workoaround for merge
 
 extension DictionaryCollection {
+  /// Adapter removing key value labels from Dictionary.Element
   var unnamedKeyValues: some Sequence<(Key, Value)> { UnnamedKeyValuesSequence(dict: self) }
 }
 
@@ -60,12 +61,6 @@ fileprivate struct UnnamedKeyValuesSequence<Key, Value>: Sequence {
   }
   
   func makeIterator() -> some IteratorProtocol<Element> {
-    AnyIterator<Element> {
-      if let keyValue = dictIterator.next() {
-        keyValue
-      } else {
-        nil
-      }
-    }
+    AnyIterator<Element> { dictIterator.next() ?? nil }
   }
 }
