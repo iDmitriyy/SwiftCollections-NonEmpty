@@ -50,7 +50,7 @@ extension NonEmpty where Collection: NonEmptyCompatibleSetCollection {
 
 // MARK: - SingleValueForKey Dictionary Types NonEmpty initializer
 
-extension NonEmpty where Collection: SingleValueForKeyDictionary {
+extension NonEmpty where Collection: DictionaryProtocol {
   @inlinable @inline(__always)
   public init(element: Element) {
     var backingInstance = Collection()

@@ -18,7 +18,7 @@ public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollect
 
 // MARK: - Operations common for both regular & nonEmpty Dictionary
 
-public protocol NonEmptyUndestructiveOperationsDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
+public protocol UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
   @discardableResult
   mutating func updateValue(_ value: Value, forKey key: Key) -> Value?
   
@@ -28,10 +28,10 @@ public protocol NonEmptyUndestructiveOperationsDictionary<Key, Value>: SingleVal
   func merging(_ other: some Sequence<(Key, Value)>,
                uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
   
-  mutating func merge(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+  mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>,
                       uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows
   
-  func merging(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+  func merging(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>,
                uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
 }
 
@@ -40,10 +40,10 @@ public protocol NonEmptyUndestructiveOperationsDictionary<Key, Value>: SingleVal
 /// Operations where:
 /// - (filter) regular dictionary return Self as a Result
 /// - (filter) nonEmpty dictionary return Base as a Result
-public protocol NonEmptyDestructiveOperationsDictionary<Key, Value>: NonEmptyUndestructiveOperationsDictionary {
+public protocol DifferentResultTypesOperationsDictionary<Key, Value>: UndestructiveNonEmptinessMutableOperationsDictionary {
   /// Self for regular Dictionary types | Base for NonEmpty. Use when both regular & its NonEmpty variant uses
   /// Particilary, used by filter() method
-  associatedtype FilterValues: NonEmptyUndestructiveOperationsDictionary<Key, Value>
+  associatedtype FilterValues: UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>
 //  
   func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterValues
   
@@ -57,7 +57,7 @@ public protocol NonEmptyDestructiveOperationsDictionary<Key, Value>: NonEmptyUnd
 
 // MARK: - Single value (set subscript)
 
-public protocol SingleValueSetSubscriptDictionary<Key, Value>: NonEmptyDestructiveOperationsDictionary where FilterValues == Self { //
+public protocol SingleValueSetSubscriptDictionary<Key, Value>: DifferentResultTypesOperationsDictionary where FilterValues == Self { //
   subscript(key: Key) -> Value? { get set } // overload with set
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get set } // overload with set
   
@@ -68,7 +68,7 @@ public protocol SingleValueSetSubscriptDictionary<Key, Value>: NonEmptyDestructi
 
 // MARK: - Single ValueForKey Dictionary
 
-public protocol SingleValueForKeyDictionary<Key, Value>: EmptyInitializableDictionary,
+public protocol DictionaryProtocol<Key, Value>: EmptyInitializableDictionary,
   SingleValueSetSubscriptDictionary {}
 
 // MARK: - Default Imps
@@ -130,7 +130,7 @@ extension Dictionary {
   }
 }
 
-fileprivate func `check methods generically`<Dict: SingleValueForKeyDictionary>(dict: Dict) {
+fileprivate func `check methods generically`<Dict: DictionaryProtocol>(dict: Dict) {
 //  var filtered: Dict = dict.filter { _ in true }
 //  let first = dict[dict.startIndex]
 //  filtered[first.key] = first.value

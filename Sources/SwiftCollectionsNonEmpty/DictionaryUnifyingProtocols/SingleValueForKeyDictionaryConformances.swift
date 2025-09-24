@@ -7,14 +7,14 @@
 
 // MARK: - SingleValueForKey Dictionary
 
-extension Dictionary: SingleValueForKeyDictionary {
+extension Dictionary: DictionaryProtocol {
   // FIXME: why it is required by compiler for only Swift.Dictionary but not others
-  public mutating func merge(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+  public mutating func merge(_ other: some NonEmptyUndestructiveMutableOperationsDictionary<Key, Value>,
                              uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows {
     try merge(unnamedKeyValues, uniquingKeysWith: combine)
   }
   
-  public func merging(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+  public func merging(_ other: some NonEmptyUndestructiveMutableOperationsDictionary<Key, Value>,
                       uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self {
     try merging(unnamedKeyValues, uniquingKeysWith: combine)
   }
@@ -23,11 +23,11 @@ extension Dictionary: SingleValueForKeyDictionary {
   public mutating func removeAll() { removeAll(keepingCapacity: false) }
 }
 
-extension OrderedDictionary: SingleValueForKeyDictionary {
+extension OrderedDictionary: DictionaryProtocol {
   public mutating func removeAll() { removeAll(keepingCapacity: false) }
 }
 
-extension TreeDictionary: SingleValueForKeyDictionary {
+extension TreeDictionary: DictionaryProtocol {
   public mutating func removeAll() { self = [:] }
 }
 
@@ -48,7 +48,7 @@ extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
 
 extension DictionaryCollection {
   /// Adapter removing key value labels from Dictionary.Element
-  var unnamedKeyValues: some Sequence<(Key, Value)> { UnnamedKeyValuesSequence(dict: self) }
+  internal var unnamedKeyValues: some Sequence<(Key, Value)> { UnnamedKeyValuesSequence(dict: self) }
 }
 
 fileprivate struct UnnamedKeyValuesSequence<Key, Value>: Sequence {
