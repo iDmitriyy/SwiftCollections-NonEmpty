@@ -49,8 +49,8 @@ public protocol CommonOperationsDictionaryProtocol<Key, Value>: NonEmptyCompatib
 
 // MARK: - NonEmpty Dictionary Protocol
 
-public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol where FilterValues == Base { //
-  associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
+public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol { // where FilterValues == Base
+//  associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
 }
 
 // MARK: - Single value (set subscript)
