@@ -18,7 +18,7 @@ public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollect
 
 // MARK: - Operations common for both regular & nonEmpty Dictionary
 
-public protocol NonEmptyCompatibleOperationsDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
+public protocol NonEmptyUndestructiveOperationsDictionary<Key, Value>: SingleValueGetSubscriptDictionary {
   @discardableResult
   mutating func updateValue(_ value: Value, forKey key: Key) -> Value?
   
@@ -27,6 +27,12 @@ public protocol NonEmptyCompatibleOperationsDictionary<Key, Value>: SingleValueG
   
   func merging(_ other: some Sequence<(Key, Value)>,
                uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
+  
+  mutating func merge(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+                      uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows
+  
+  func merging(_ other: some NonEmptyUndestructiveOperationsDictionary<Key, Value>,
+               uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self
 }
 
 // MARK: CommonOperations Dictionary Protocol
@@ -34,10 +40,10 @@ public protocol NonEmptyCompatibleOperationsDictionary<Key, Value>: SingleValueG
 /// Operations where:
 /// - (filter) regular dictionary return Self as a Result
 /// - (filter) nonEmpty dictionary return Base as a Result
-public protocol CommonOperationsDictionaryProtocol<Key, Value>: NonEmptyCompatibleOperationsDictionary {
+public protocol NonEmptyDestructiveOperationsDictionary<Key, Value>: NonEmptyUndestructiveOperationsDictionary {
   /// Self for regular Dictionary types | Base for NonEmpty. Use when both regular & its NonEmpty variant uses
   /// Particilary, used by filter() method
-  associatedtype FilterValues: NonEmptyCompatibleOperationsDictionary<Key, Value>
+  associatedtype FilterValues: NonEmptyUndestructiveOperationsDictionary<Key, Value>
 //  
   func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterValues
   
@@ -47,17 +53,11 @@ public protocol CommonOperationsDictionaryProtocol<Key, Value>: NonEmptyCompatib
   // func compactMapValues<NewValue>(_ transform: (Value) throws -> NewValue?) rethrows -> Self<Key, NewValue>
 }
 
-// MARK: - NonEmpty Dictionary Protocol
-
-public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol { // where FilterValues == Base
-//  associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
-}
-
 // MARK: Below are protocol with operations that are not possible for NonEmpty
 
 // MARK: - Single value (set subscript)
 
-public protocol SingleValueSetSubscriptDictionary<Key, Value>: CommonOperationsDictionaryProtocol where FilterValues == Self { //
+public protocol SingleValueSetSubscriptDictionary<Key, Value>: NonEmptyDestructiveOperationsDictionary where FilterValues == Self { //
   subscript(key: Key) -> Value? { get set } // overload with set
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get set } // overload with set
   
