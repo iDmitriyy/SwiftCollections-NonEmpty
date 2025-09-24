@@ -53,6 +53,8 @@ public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryPr
 //  associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
 }
 
+// MARK: Below are protocol with operations that are not possible for NonEmpty
+
 // MARK: - Single value (set subscript)
 
 public protocol SingleValueSetSubscriptDictionary<Key, Value>: CommonOperationsDictionaryProtocol where FilterValues == Self { //
