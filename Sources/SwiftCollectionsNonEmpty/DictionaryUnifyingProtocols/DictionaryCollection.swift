@@ -9,7 +9,7 @@
 
 // MARK: - DictionaryCollection
 
-public protocol DictionaryCollection<Key, Value>: Collection where Element == (key: Key, value: Value) {
+public protocol DictionaryCollection<Key, Value>: Swift.Collection where Element == (key: Key, value: Value) {
   associatedtype Key: Hashable
   associatedtype Value
   

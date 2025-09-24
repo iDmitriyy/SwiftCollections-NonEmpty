@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2" pages="3">
-  <diagram name="Initializers" id="xWZ461zp9jYcXtCNbV3G">
-    <mxGraphModel dx="3213" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+  <diagram name="NonEmptyInitializers" id="xWZ461zp9jYcXtCNbV3G">
+    <mxGraphModel dx="3839" dy="1159" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -390,7 +390,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="fjSwt5ECtUeGXOnEmD8X" name="DictionaryProtocol">
-    <mxGraphModel dx="1913" dy="1475" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="3006" dy="2317" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -457,10 +457,15 @@
         <mxCell id="gml4_IPK1xJVaWTmKK9C-35" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;SingleValueSetSubscriptDictionary&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;subscript(key: Key) -&amp;gt; Value? { get set }&lt;/span&gt;&lt;span style=&quot;font-size: 8px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;| &lt;i&gt;overload&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;subscript(key: Key, default: () -&amp;gt; Value) -&amp;gt; Value { get set } | &lt;i&gt;overload&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating removeValue(forKey: Key) -&amp;gt; Value?&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;&amp;nbsp;mutating remove(at: Self.Index) -&amp;gt; Self.Element&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;{ get }&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" parent="1" vertex="1">
           <mxGeometry x="1080" y="740" width="280" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="gml4_IPK1xJVaWTmKK9C-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="gml4_IPK1xJVaWTmKK9C-35" target="uuu2kpEIgIzknucwFZhd-1" edge="1">
+        <mxCell id="gml4_IPK1xJVaWTmKK9C-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="x86m7Au5gt9-EhsvGg4t-1" target="uuu2kpEIgIzknucwFZhd-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1300" y="650" as="sourcePoint" />
             <mxPoint x="1300" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1395" y="708" />
+              <mxPoint x="1395" y="710" />
+              <mxPoint x="1290" y="710" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="gml4_IPK1xJVaWTmKK9C-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="gml4_IPK1xJVaWTmKK9C-37" target="gml4_IPK1xJVaWTmKK9C-16" edge="1">
@@ -478,16 +483,16 @@
             <mxPoint x="1480" y="770" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="gml4_IPK1xJVaWTmKK9C-47" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;EmptyInitializableDictionary&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;init()&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" parent="1" vertex="1">
-          <mxGeometry x="720" y="780" width="280" height="70" as="geometry" />
+        <mxCell id="gml4_IPK1xJVaWTmKK9C-47" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;EmptyInitializableDictionary&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;init()&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;mutating removeAll()&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" parent="1" vertex="1">
+          <mxGeometry x="720" y="780" width="280" height="80" as="geometry" />
         </mxCell>
         <mxCell id="gml4_IPK1xJVaWTmKK9C-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="gml4_IPK1xJVaWTmKK9C-39" target="gml4_IPK1xJVaWTmKK9C-47" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1210" y="1090" as="sourcePoint" />
             <mxPoint x="1210" y="1050" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1145" y="905" />
-              <mxPoint x="935" y="905" />
+              <mxPoint x="1150" y="900" />
+              <mxPoint x="930" y="900" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -498,6 +503,10 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1240" y="1050" as="sourcePoint" />
             <mxPoint x="1240" y="1010" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="900" />
+              <mxPoint x="790" y="900" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="wUqbcgu3ZkxFRCWes-cX-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="wUqbcgu3ZkxFRCWes-cX-1" target="gml4_IPK1xJVaWTmKK9C-16" edge="1">
@@ -525,6 +534,10 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="560" y="910" as="sourcePoint" />
             <mxPoint x="560" y="860" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="900" />
+              <mxPoint x="570" y="900" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="2irCISLkpt7ydGkOwvXZ-2" value="&lt;b&gt;Future multipleValues for key&lt;/b&gt;&lt;div&gt;&lt;b&gt;Dictionary types&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" parent="1" vertex="1">
@@ -589,12 +602,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="OdSvTil8kjtkqA0TtH58-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;NonEmptyDictionaryType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;s&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" parent="1" vertex="1">
-          <mxGeometry x="1440" y="740" width="280" height="130" as="geometry" />
+          <mxGeometry x="1540" y="860" width="280" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="OdSvTil8kjtkqA0TtH58-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="OdSvTil8kjtkqA0TtH58-1" edge="1">
+        <mxCell id="OdSvTil8kjtkqA0TtH58-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="OdSvTil8kjtkqA0TtH58-1" edge="1" target="x86m7Au5gt9-EhsvGg4t-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1320" y="750" as="sourcePoint" />
-            <mxPoint x="1450" y="670" as="targetPoint" />
+            <mxPoint x="1680" y="770" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="0uzJsB5pqcnU76LLJbRC-2" value="«interface»&lt;br&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;Collection&lt;/span&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
@@ -624,11 +637,20 @@
         <mxCell id="gml4_IPK1xJVaWTmKK9C-37" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;MultipleValues&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(51, 51, 51), rgb(193, 193, 193));&quot;&gt;DictionaryWith&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(51, 51, 51), rgb(193, 193, 193));&quot;&gt;IndexSubscript&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 6px;&quot;&gt;&amp;nbsp; &amp;nbsp; associatedtype InstanceForIndex&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;subscript(position: Index) -&amp;gt; InstanceForIndex { get }&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating func remove(at: Self.Index) -&amp;gt; InstanceForIndex&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="0uzJsB5pqcnU76LLJbRC-10" vertex="1">
           <mxGeometry width="280" height="100" as="geometry" />
         </mxCell>
+        <mxCell id="x86m7Au5gt9-EhsvGg4t-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;NonEmptyOverloadedResultOperationsDictionary&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 8px;&quot;&gt;&amp;nbsp;mutating&amp;nbsp;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="640" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x86m7Au5gt9-EhsvGg4t-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.003;entryY=0.872;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="gml4_IPK1xJVaWTmKK9C-35" target="x86m7Au5gt9-EhsvGg4t-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1420" y="820" as="sourcePoint" />
+            <mxPoint x="1420" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="Wa-wJc9qYbAs8bhPhIhj" name="AllowedOperations">
-    <mxGraphModel dx="2630" dy="2028" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <diagram id="Wa-wJc9qYbAs8bhPhIhj" name="NonEmptyAllowedOperations">
+    <mxGraphModel dx="2104" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

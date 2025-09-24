@@ -11,6 +11,8 @@
 
 public protocol EmptyInitializableDictionary<Key, Value>: DictionaryCollection {
   init()
+  
+  mutating func removeAll()
 }
 
 // MARK: - Capacity Reservable

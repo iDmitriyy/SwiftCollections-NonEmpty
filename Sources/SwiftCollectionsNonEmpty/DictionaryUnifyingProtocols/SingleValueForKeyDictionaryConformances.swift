@@ -7,11 +7,18 @@
 
 // MARK: - SingleValueForKey Dictionary
 
-extension Dictionary: SingleValueForKeyDictionary {}
+extension Dictionary: SingleValueForKeyDictionary {
+  // FIXME: call removeAll() [with default argument] from Standard library instead of hardcoding
+  public mutating func removeAll() { self.removeAll(keepingCapacity: false) }
+}
 
-extension OrderedDictionary: SingleValueForKeyDictionary {}
+extension OrderedDictionary: SingleValueForKeyDictionary {
+  public mutating func removeAll() { self.removeAll(keepingCapacity: false) }
+}
 
-extension TreeDictionary: SingleValueForKeyDictionary {}
+extension TreeDictionary: SingleValueForKeyDictionary {
+  public mutating func removeAll() { self = [:] }
+}
 
 // MARK: - EmptyInitializable WithCapacity Dictionary
 
