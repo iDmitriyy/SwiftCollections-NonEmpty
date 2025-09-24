@@ -7,6 +7,6 @@
 
 // swiftformat:disable unusedArguments
 
-//extension NonEmpty: NonEmptyDictionaryType where Self.Collection: SingleValueForKeyDictionary {
+//extension NonEmpty: NonEmptyDictionaryType where Self.Collection: CommonOperationsDictionaryProtocol {
 //  
 //}

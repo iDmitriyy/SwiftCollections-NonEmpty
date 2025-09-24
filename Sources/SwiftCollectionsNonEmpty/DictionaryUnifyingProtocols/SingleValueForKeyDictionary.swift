@@ -31,32 +31,31 @@ public protocol NonEmptyCompatibleOperationsDictionary<Key, Value>: SingleValueG
 
 // MARK: CommonOperations Dictionary Protocol
 
-// Operations where:
-// - regular dictionary return Self as a Result (filter, removeAll)
-// - nonEmpty dictionary return Base as a Result
+/// Operations where:
+/// - (filter) regular dictionary return Self as a Result
+/// - (filter) nonEmpty dictionary return Base as a Result
 public protocol CommonOperationsDictionaryProtocol<Key, Value>: NonEmptyCompatibleOperationsDictionary {
   /// Self for regular Dictionary types | Base for NonEmpty. Use when both regular & its NonEmpty variant uses
   /// Particilary, used by filter() method
-  associatedtype MayBeEmptyDictionaryReturnType: NonEmptyCompatibleOperationsDictionary<Key, Value>
+  associatedtype FilterValues: NonEmptyCompatibleOperationsDictionary<Key, Value>
+//  
+  func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterValues
   
-    
-  // Self<_, NewValueType> for regular Dictionary types | Base<_, NewValueType> for NonEmpty
-  // associatedtype MayBeEmptyDictionaryType:
+  // how?
+  // func mapValues<NewValue>(_ transform: (Value) throws -> NewValue) rethrows -> Self<Key, NewValue>
   
-  // associatedtype ______:
-  
-  func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> MayBeEmptyDictionaryReturnType
+  // func compactMapValues<NewValue>(_ transform: (Value) throws -> NewValue?) rethrows -> Self<Key, NewValue>
 }
 
 // MARK: - NonEmpty Dictionary Protocol
 
-public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol where MayBeEmptyDictionaryReturnType == Base {
+public protocol NonEmptyDictionaryType<Key, Value>: CommonOperationsDictionaryProtocol where FilterValues == Base { //
   associatedtype Base: NonEmptyCompatibleOperationsDictionary<Key, Value>
 }
 
 // MARK: - Single value (set subscript)
 
-public protocol SingleValueSetSubscriptDictionary<Key, Value>: CommonOperationsDictionaryProtocol where MayBeEmptyDictionaryReturnType == Self {
+public protocol SingleValueSetSubscriptDictionary<Key, Value>: CommonOperationsDictionaryProtocol where FilterValues == Self { //
   subscript(key: Key) -> Value? { get set } // overload with set
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get set } // overload with set
   
@@ -88,12 +87,9 @@ extension SingleValueGetSubscriptDictionary {
 
 // MARK: - checking api surface
 
-//fileprivate func `check methods genricallly`(dict: some SingleValueForKeyDictionary) {
-//
-//}
-
+//extension NonEmptyDictionary {
 extension Dictionary {
-  fileprivate mutating func dddd() {
+  fileprivate mutating func `check available api and overloads`() {
     // inherited from Sequence default imps:
     // allSatisfy
     // contains(where:)
@@ -121,6 +117,8 @@ extension Dictionary {
     // merge(_: some, uniquingKeysWith:)  // regular: Self.self    nonEmpty: Self.self
     // merged(_: some, uniquingKeysWith:) // regular: Self.self    nonEmpty: Self.self
     
+    // _________________
+    
     // self.filter()    // regular: Self.self                  nonEmpty: Base.self
 
     // mapValues        // regular: Self<_, NewValue>          nonEmpty: Self<_, NewValue>
@@ -128,4 +126,12 @@ extension Dictionary {
 
     // > suffix
   }
+}
+
+fileprivate func `check methods generically`<Dict: SingleValueForKeyDictionary>(dict: Dict) {
+//  var filtered: Dict = dict.filter { _ in true }
+//  let first = dict[dict.startIndex]
+//  filtered[first.key] = first.value
+  
+  
 }
