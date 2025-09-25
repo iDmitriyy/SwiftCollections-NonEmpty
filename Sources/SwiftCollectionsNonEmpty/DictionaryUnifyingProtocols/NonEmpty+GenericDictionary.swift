@@ -5,7 +5,10 @@
 //  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
-@_spi(NonEmptyExternallyExtendable) import NonEmpty
+@_spi(NonEmptyExternallyExtendable) private import NonEmpty
+
+public typealias NonEmptyGenericDict<Key: Hashable, Value, B: UndestructiveNonEmptinessMutableOperationsDictionary> = NonEmpty<B>
+  where B.Key == Key, B.Value == Value
 
 extension NonEmpty: DictionaryCollection where Collection: DictionaryCollection {
   public typealias Key = Collection.Key
@@ -16,7 +19,7 @@ extension NonEmpty: DictionaryCollection where Collection: DictionaryCollection 
   
   public typealias Values = Collection.Values
   
-  // :
+  // properties & methods:
   
   public var keys: Collection.Keys { rawValue.keys }
   
@@ -38,30 +41,30 @@ extension NonEmpty: SingleValueGetSubscriptDictionary where Collection: SingleVa
 extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where Collection: UndestructiveNonEmptinessMutableOperationsDictionary {
   @discardableResult
   public mutating func updateValue(_ value: Collection.Value, forKey key: Collection.Key) -> Collection.Value? {
-    _rawValueMutable.updateValue(value, forKey: key)
+    _rawValueReadModify.updateValue(value, forKey: key)
   }
   
   public mutating func merge(_ keysAndValues: some Sequence<(Collection.Key, Collection.Value)>,
                              uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value) rethrows {
-    try _rawValueMutable.merge(keysAndValues, uniquingKeysWith: combine)
+    try _rawValueReadModify.merge(keysAndValues, uniquingKeysWith: combine)
   }
   
   public func merging(_ other: some Sequence<(Collection.Key, Collection.Value)>,
                       uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value)
     rethrows -> Self {
-    let baseMerged = try _rawValueMutable.merging(other, uniquingKeysWith: combine)
+    let baseMerged = try _rawValueReadModify.merging(other, uniquingKeysWith: combine)
     return Self(_ucheckedNonEmptyRawValue: baseMerged)
   }
   
   public mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Collection.Key, Collection.Value>,
                              uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value) rethrows {
-    try merge(other.unnamedKeyValues, uniquingKeysWith: combine)
+    try merge(other.unnamedKeyValuesView, uniquingKeysWith: combine)
   }
   
   public func merging(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Collection.Key, Collection.Value>,
                       uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value)
     rethrows -> Self {
-    try merging(other.unnamedKeyValues, uniquingKeysWith: combine)
+    try merging(other.unnamedKeyValuesView, uniquingKeysWith: combine)
   }
 }
 
@@ -91,77 +94,48 @@ extension NonEmpty where Collection: DictionaryCollection {
 
 // MARK: - Testing api
 
-public typealias NonEmptyGenericDict<Key: Hashable, Value, B: UndestructiveNonEmptinessMutableOperationsDictionary> = NonEmpty<B>
-  where B.Key == Key, B.Value == Value
-
-extension NonEmptyGenericDict {
-  func nonEmptyFunc() {}
-}
-
-func foo<K, V>(_ nonEmptyDict: NonEmptyDictionary<K, V>, orderedNonEmptyDict: NonEmptyOrderedDictionary<K, V>) {
-  bar0(dd: nonEmptyDict)
-  bar1(dd: orderedNonEmptyDict)
-}
-
-func bar0<K, V, B>(dd: NonEmpty<B>) where B: DictionaryProtocol, B.Key == K, B.Value == V {
-  dd.nonEmptyFunc()
-  
-  let filtered0: B = dd.rawValue
-  let filtered1: B = dd.rawValue.filter { _ in true }
-  let filtered2: B = dd.filter { _ in true }
-}
-
-func bar1<K, V, B>(dd: NonEmptyGenericDict<K, V, B>) where B: DictionaryProtocol {
-  dd.nonEmptyFunc()
-  let filtered0: B = dd.rawValue
-  let filtered1: B = dd.rawValue.filter { _ in true }
-  let filtered2: B = dd.filter { _ in true }
-  
-  var mutable = filtered2
-  let (key, value) = filtered0[filtered0.startIndex]
-  mutable.updateValue(value, forKey: key)
-}
-
-func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
-  var mutableNonEmpty = nonEmpty
-  let maybeEmpty = nonEmpty.rawValue
-  var mutableMaybeEmpty = maybeEmpty
-  
-  // filter:
-  
-  let filteredNonEmpty = nonEmpty.filter { _ in true }
-  let filteredMaybeEmpty = nonEmpty.rawValue.filter { _ in true }
-  
-  // updateValue
-  let (key, value) = nonEmpty[nonEmpty.startIndex]
-  mutableNonEmpty.updateValue(value, forKey: key)
-  mutableMaybeEmpty.updateValue(value, forKey: key)
-  
-  // merging
-  let mergedNonEmpty0 = nonEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
-  let mergedNonEmpty1 = nonEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
-  let mergedNonEmpty2 = nonEmpty.merging(maybeEmpty.unnamedKeyValues, uniquingKeysWith: { _, r in r })
-  
-  let mergedMaybeEmpty0 = maybeEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
-  let mergedMaybeEmpty1 = maybeEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
-  let mergedMaybeEmpty2 = maybeEmpty.merging(maybeEmpty.unnamedKeyValues, uniquingKeysWith: { _, r in r })
-  
-  // merge
-  mutableNonEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
-  mutableNonEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
-  
-  mutableMaybeEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
-  mutableMaybeEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
-  
-  // map / compactMap
-  
-  let mappedNonEmpty = nonEmpty.mapValues { String(describing: $0) } as NonEmptyTreeDictionary
-  let compactMappedNonEmpty = nonEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
-  
-  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
-  let compactMappedMaybeEmpty = maybeEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
-  
-//  let merged = filtered0.merging(filtered1, uniquingKeysWith: { lhs, rhs in
-//    rhs
-//  })
-}
+//func foo<K, V>(_: NonEmptyDictionary<K, V>, orderedNonEmptyDict _: NonEmptyOrderedDictionary<K, V>) {}
+//
+//func bar0<K, V, B>(dd _: NonEmpty<B>) where B: DictionaryProtocol, B.Key == K, B.Value == V {}
+//
+//func bar1<K, V>(dd _: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {}
+//
+//func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
+//  var mutableNonEmpty = nonEmpty
+//  let maybeEmpty = nonEmpty.rawValue
+//  var mutableMaybeEmpty = maybeEmpty
+//  
+//  // filter:
+//  
+//  let filteredNonEmpty = nonEmpty.filter { _ in true }
+//  let filteredMaybeEmpty = nonEmpty.rawValue.filter { _ in true }
+//  
+//  // updateValue
+//  let (key, value) = nonEmpty[nonEmpty.startIndex]
+//  mutableNonEmpty.updateValue(value, forKey: key)
+//  mutableMaybeEmpty.updateValue(value, forKey: key)
+//  
+//  // merging
+//  let mergedNonEmpty0 = nonEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
+//  let mergedNonEmpty1 = nonEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
+//  let mergedNonEmpty2 = nonEmpty.merging(maybeEmpty.unnamedKeyValuesView, uniquingKeysWith: { _, r in r })
+//  
+//  let mergedMaybeEmpty0 = maybeEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
+//  let mergedMaybeEmpty1 = maybeEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
+//  let mergedMaybeEmpty2 = maybeEmpty.merging(maybeEmpty.unnamedKeyValuesView, uniquingKeysWith: { _, r in r })
+//  
+//  // merge
+//  mutableNonEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
+//  mutableNonEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
+//  
+//  mutableMaybeEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
+//  mutableMaybeEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
+//  
+//  // map / compactMap
+//  
+//  let mappedNonEmpty = nonEmpty.mapValues { String(describing: $0) } as NonEmptyTreeDictionary
+//  let compactMappedNonEmpty = nonEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
+//  
+//  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
+//  let compactMappedMaybeEmpty = maybeEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
+//}

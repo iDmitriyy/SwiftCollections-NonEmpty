@@ -11,12 +11,12 @@ extension Dictionary: DictionaryProtocol {
   // FIXME: why it is required by compiler for only Swift.Dictionary but not others
   public mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>,
                              uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows {
-    try merge(unnamedKeyValues, uniquingKeysWith: combine)
+    try merge(unnamedKeyValuesView, uniquingKeysWith: combine)
   }
   
   public func merging(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>,
                       uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> Self {
-    try merging(unnamedKeyValues, uniquingKeysWith: combine)
+    try merging(unnamedKeyValuesView, uniquingKeysWith: combine)
   }
   
   // FIXME: call removeAll()[with default argument from Standard library] instead of hardcoding `false`

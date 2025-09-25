@@ -5,7 +5,7 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
-// MARK: - Default Imps
+// MARK: - Map / CompactMap
 
 extension DictionaryCollection {
   public func mapValues<T, ResultBase>(_ transform: (Value) throws -> T) rethrows -> ResultBase
@@ -33,9 +33,11 @@ extension DictionaryCollection {
   }
 }
 
+// MARK: - Unnamed KeyValues View
+
 extension DictionaryCollection {
   /// Adapter removing key value labels from Dictionary.Element
-  public var unnamedKeyValues: some Sequence<(Key, Value)> {
+  public var unnamedKeyValuesView: some Sequence<(Key, Value)> {
     IterationDeferredMapSequence(sequence: self, transform: {  key, value in (key, value) })
   }
 }
