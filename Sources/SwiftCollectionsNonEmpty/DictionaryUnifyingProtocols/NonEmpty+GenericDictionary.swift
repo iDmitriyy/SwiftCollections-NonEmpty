@@ -10,6 +10,8 @@
 public typealias NonEmptyGenericDict<Key: Hashable, Value, B: UndestructiveNonEmptinessMutableOperationsDictionary> = NonEmpty<B>
   where B.Key == Key, B.Value == Value
 
+// MARK: - DictionaryCollection
+
 extension NonEmpty: DictionaryCollection where Collection: DictionaryCollection {
   public typealias Key = Collection.Key
   
@@ -30,6 +32,8 @@ extension NonEmpty: DictionaryCollection where Collection: DictionaryCollection 
   }
 }
 
+// MARK: - SingleValueGetSubscriptDictionary
+
 extension NonEmpty: SingleValueGetSubscriptDictionary where Collection: SingleValueGetSubscriptDictionary {
   public subscript(key: Collection.Key) -> Collection.Value? { rawValue[key] }
   
@@ -37,6 +41,8 @@ extension NonEmpty: SingleValueGetSubscriptDictionary where Collection: SingleVa
     rawValue[key, default: defaultValue()]
   }
 }
+
+// MARK: - UndestructiveNonEmptinessMutableOperationsDictionary
 
 extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where Collection: UndestructiveNonEmptinessMutableOperationsDictionary {
   @discardableResult
@@ -68,7 +74,7 @@ extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where C
   }
 }
 
-// MARK: - NonEmpty + Destructive Operations
+// MARK: - DifferentResultTypesOperationsDictionary
 
 extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: DifferentResultTypesOperationsDictionary,
   Collection.FilterValues == Collection {
@@ -76,6 +82,8 @@ extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: D
     try rawValue.filter(isIncluded)
   }
 }
+
+// MARK: - Map / CompactMap
 
 extension NonEmpty where Collection: DictionaryCollection {
   public func mapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
@@ -94,48 +102,48 @@ extension NonEmpty where Collection: DictionaryCollection {
 
 // MARK: - Testing api
 
-//func foo<K, V>(_: NonEmptyDictionary<K, V>, orderedNonEmptyDict _: NonEmptyOrderedDictionary<K, V>) {}
+// func foo<K, V>(_: NonEmptyDictionary<K, V>, orderedNonEmptyDict _: NonEmptyOrderedDictionary<K, V>) {}
 //
-//func bar0<K, V, B>(dd _: NonEmpty<B>) where B: DictionaryProtocol, B.Key == K, B.Value == V {}
+// func bar0<K, V, B>(dd _: NonEmpty<B>) where B: DictionaryProtocol, B.Key == K, B.Value == V {}
 //
-//func bar1<K, V>(dd _: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {}
+// func bar1<K, V>(dd _: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {}
 //
-//func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
+// func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
 //  var mutableNonEmpty = nonEmpty
 //  let maybeEmpty = nonEmpty.rawValue
 //  var mutableMaybeEmpty = maybeEmpty
-//  
+//
 //  // filter:
-//  
+//
 //  let filteredNonEmpty = nonEmpty.filter { _ in true }
 //  let filteredMaybeEmpty = nonEmpty.rawValue.filter { _ in true }
-//  
+//
 //  // updateValue
 //  let (key, value) = nonEmpty[nonEmpty.startIndex]
 //  mutableNonEmpty.updateValue(value, forKey: key)
 //  mutableMaybeEmpty.updateValue(value, forKey: key)
-//  
+//
 //  // merging
 //  let mergedNonEmpty0 = nonEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
 //  let mergedNonEmpty1 = nonEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
 //  let mergedNonEmpty2 = nonEmpty.merging(maybeEmpty.unnamedKeyValuesView, uniquingKeysWith: { _, r in r })
-//  
+//
 //  let mergedMaybeEmpty0 = maybeEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
 //  let mergedMaybeEmpty1 = maybeEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
 //  let mergedMaybeEmpty2 = maybeEmpty.merging(maybeEmpty.unnamedKeyValuesView, uniquingKeysWith: { _, r in r })
-//  
+//
 //  // merge
 //  mutableNonEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
 //  mutableNonEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
-//  
+//
 //  mutableMaybeEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
 //  mutableMaybeEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
-//  
+//
 //  // map / compactMap
-//  
+//
 //  let mappedNonEmpty = nonEmpty.mapValues { String(describing: $0) } as NonEmptyTreeDictionary
 //  let compactMappedNonEmpty = nonEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
-//  
+//
 //  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
 //  let compactMappedMaybeEmpty = maybeEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
-//}
+// }
