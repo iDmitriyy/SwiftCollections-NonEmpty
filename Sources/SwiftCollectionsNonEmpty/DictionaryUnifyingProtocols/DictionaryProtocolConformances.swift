@@ -43,3 +43,12 @@ extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
 }
 
 // extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {} // no functions to reserveCapacity
+
+
+// MARK: - - Unique KeysWithValues Initializable Dictionary
+
+extension Dictionary: UniqueKeysWithValuesInitializableDictionary {}
+
+extension OrderedDictionary: UniqueKeysWithValuesInitializableDictionary {}
+
+extension TreeDictionary: UniqueKeysWithValuesInitializableDictionary {}
