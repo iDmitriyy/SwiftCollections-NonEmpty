@@ -10,7 +10,7 @@ public protocol SetCollection<Element>: Collection {}
 // MARK: - Common SetAlgebra With Sequence
 
 /// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAnySequenceCollection: Collection {
+public protocol CommonSetAlgebraWithAnySequenceCollection: SetCollection {
   // MARK: Union
 
   func union<S>(_ other: S) -> Self where Element == S.Element, S: Sequence
@@ -56,7 +56,7 @@ public protocol CommonSetAlgebraWithAnySequenceCollection: Collection {
 
 /// Partial duplication of Swift.SetAlgebra
 /// Common Set operations with all Self type
-public protocol CommonSetAlgebraCollection: Collection {
+public protocol CommonSetAlgebraCollection: SetCollection {
   func contains(_ member: Self.Element) -> Bool
   
   // MARK: Union
@@ -103,8 +103,10 @@ public protocol CommonSetAlgebraCollection: Collection {
   func isStrictSuperset(of other: Self) -> Bool
 }
 
+// MARK: - Unordered SetAlgebra
+
 public protocol UnorderedSetAlgebraCollection: Collection {
-  // Operations unavailable for OrderedSet:
+  // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
   mutating func insert(_ newMember: Self.Element) -> (inserted: Bool, memberAfterInsert: Self.Element)

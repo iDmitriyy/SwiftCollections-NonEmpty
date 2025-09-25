@@ -24,5 +24,6 @@ public protocol EmptyInitializableWithCapacitySet<Element>: EmptyInitializableSe
 // MARK: - Initializable With Sequence Set
 
 public protocol InitializableWithSequenceSet<Element>: SetCollection {
+  /// From Swift.SetAlgebra protocol
   init<Source>(_ sequence: Source) where Element == Source.Element, Source: Sequence
 }

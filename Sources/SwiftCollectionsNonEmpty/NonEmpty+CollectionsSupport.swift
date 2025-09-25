@@ -16,7 +16,8 @@ extension TreeSet: @retroactive NonEmptyCompatibleCollection {}
 /// Marker protocol for Set-Types allowing to make default initializers for NonEmpty like:
 /// `init(element: Element)`
 /// `init(elements first: Element, _ other: Element...) `
-public protocol NonEmptyAvailableOutOfBoxConvenienceInitSet: NonEmptyCompatibleCollection, SetCollection, InitializableWithSequenceSet {}
+public protocol NonEmptyAvailableOutOfBoxConvenienceInitSet: NonEmptyCompatibleCollection, SetCollection, InitializableWithSequenceSet,
+  CommonSetAlgebraWithAnySequenceCollection {}
 
 extension Set: NonEmptyAvailableOutOfBoxConvenienceInitSet {}
 

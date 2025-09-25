@@ -11,6 +11,8 @@ extension OrderedSet: SetProtocol {}
 
 extension TreeSet: SetProtocol {}
 
+extension BitSet: SetProtocol {}
+
 //#if canImport(Foundation)
 //  public import struct Foundation.IndexSet
 //
@@ -21,6 +23,21 @@ extension TreeSet: SetProtocol {}
 //  // How can NonEmptyness be done
 //#endif
 
+// MARK: UnorderedSetAlgebraCollection
+
+extension Set: UnorderedSetAlgebraCollection {}
+
+extension TreeSet: UnorderedSetAlgebraCollection {}
+
+//@available(*, unavailable, message: "OrderedSet is incompatible with UnorderedSetAlgebraCollection")
+//extension OrderedSet: UnorderedSetAlgebraCollection {}
+
+extension BitSet: UnorderedSetAlgebraCollection {}
+
+// MARK: EmptyInitializable Set
+
+extension TreeSet: EmptyInitializableSet {}
+
 // MARK: EmptyInitializable WithCapacity Set
 
 extension Set: EmptyInitializableWithCapacitySet {}
@@ -29,5 +46,5 @@ extension OrderedSet: EmptyInitializableWithCapacitySet {}
 
 // extension TreeSet: EmptyInitializableWithCapacitySet {} // no functions to reserveCapacity
 
-// From Swift.SetAlgebra protocol
-// init<S>(_ sequence: S) where S : Sequence, Self.Element == S.Element
+extension BitSet: EmptyInitializableWithCapacitySet {}
+
