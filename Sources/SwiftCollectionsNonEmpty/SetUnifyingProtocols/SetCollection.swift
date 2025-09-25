@@ -71,15 +71,35 @@ public protocol SetCollection<Element>: Collection {
 //  func joined(separator: String = "") -> String
 // }
 
-func setCollection(_ set: inout Set<Int>, orderedSet: inout OrderedSet<Int>, treeSet _: inout TreeSet<Int>) {
-  _ = set.union(set)
-  _ = set.intersection(set)
-  _ = set.intersection(Array(set))
-  _ = set.symmetricDifference(set)
-  _ = set.subtracting(set)
-  _ = set.subtracting(Array(set))
-  
-  set.reserveCapacity(1)
-  orderedSet.reserveCapacity(2)
-  // treeSet.reserveCapacity(2) not available
-}
+private import struct Foundation.IndexSet
+
+func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
+  var set = Set<Int>()
+  var orderedSet = OrderedSet<Int>()
+  var indexSet = IndexSet()
+  var treeSet = TreeSet<Int>()
+  var bitSet = BitSet()
+
+  // set.formUnion()
+  // set.update(with: )
+  // set.insert()
+
+  // treeSet.formUnion()
+  // treeSet.update(with:)
+  // treeSet.insert()
+
+  // bitSet.formUnion()
+  // bitSet.update(with:)
+  // bitSet.insert()
+
+  // indexSet.formUnion()
+  // indexSet.update(with:)
+  // indexSet.insert()
+
+  // orderedSet.formUnion()
+  // orderedSet.update(, at:)
+  // orderedSet.insert(, at:)
+  // orderedSet.append()
+  // orderedSet.updateOrAppend()
+  // orderedSet.append(contentsOf)
+ }

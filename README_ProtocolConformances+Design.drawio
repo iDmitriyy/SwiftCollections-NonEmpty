@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2" pages="4">
   <diagram name="NonEmptyInitializers" id="xWZ461zp9jYcXtCNbV3G">
-    <mxGraphModel dx="1618" dy="1248" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="915" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -171,9 +171,6 @@
         <mxCell id="sW1JyRlPo4o779v0U5yo-9" value="&lt;b style=&quot;font-size: 10px; text-wrap-mode: wrap;&quot;&gt;Dictionary&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;align=center;labelPosition=center;whiteSpace=wrap;strokeWidth=0.75;" parent="1" vertex="1">
           <mxGeometry x="1200" y="460" width="120" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="sW1JyRlPo4o779v0U5yo-10" value="&lt;span style=&quot;font-size: 10px; text-wrap-mode: wrap;&quot;&gt;&lt;b&gt;IndexSet&lt;/b&gt;&lt;/span&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;align=center;labelPosition=center;whiteSpace=wrap;strokeWidth=0.75;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="620" width="120" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="X6VAbB2DJtp1OujrMZTn-76" value="&lt;font style=&quot;&quot;&gt;NonEmpty&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;CompatibleSet&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Collection&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontColor=#004C99;" parent="1" vertex="1">
           <mxGeometry x="1000" y="360" width="120" height="40" as="geometry" />
         </mxCell>
@@ -295,6 +292,9 @@
             <mxPoint x="170" y="39" as="sourcePoint" />
             <mxPoint x="10" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="g2P92Dx9DQKxxQn7082w-1" value="&lt;b style=&quot;font-size: 10px;&quot;&gt;IndexSet&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;align=center;labelPosition=center;fillColor=#dae8fc;strokeColor=#6c8ebf;whiteSpace=wrap;strokeWidth=0.75;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="620" width="120" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

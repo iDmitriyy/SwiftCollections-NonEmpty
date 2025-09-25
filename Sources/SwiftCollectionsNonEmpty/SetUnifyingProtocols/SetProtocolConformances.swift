@@ -11,16 +11,15 @@ extension OrderedSet: SetProtocol {}
 
 extension TreeSet: SetProtocol {}
 
-#if canImport(Foundation)
-  public import struct Foundation.IndexSet
-
-extension IndexSet { // SetProtocol
-    public mutating func formUnion(_ other: some Sequence<Element>) {
-      let selfTypeAdapter = Self(other)
-      formUnion(selfTypeAdapter) // IndexSet has no generic formUnion()
-    }
-  }
-#endif
+//#if canImport(Foundation)
+//  public import struct Foundation.IndexSet
+//
+//  extension IndexSet {}
+//  // The range of valid integer values is 0..<INT_MAX-1.
+//  // Questions:
+//  // Is it generalizable with other Set types
+//  // How can NonEmptyness be done
+//#endif
 
 // MARK: EmptyInitializable WithCapacity Set
 
@@ -29,11 +28,3 @@ extension Set: EmptyInitializableWithCapacitySet {}
 extension OrderedSet: EmptyInitializableWithCapacitySet {}
 
 // extension TreeSet: EmptyInitializableWithCapacitySet {} // no functions to reserveCapacity
-
-// MARK: - NonEmpty Compatible SetCollection
-
-extension Set: NonEmptyCompatibleSetCollection {}
-
-extension OrderedSet: NonEmptyCompatibleSetCollection {}
-
-extension TreeSet: NonEmptyCompatibleSetCollection {}
