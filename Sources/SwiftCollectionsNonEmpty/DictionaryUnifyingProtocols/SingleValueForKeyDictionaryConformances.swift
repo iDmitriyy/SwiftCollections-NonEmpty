@@ -51,19 +51,19 @@ extension DictionaryCollection {
   internal var unnamedKeyValues: some Sequence<(Key, Value)> { IterationMapSequence(sequence: self, transform: {  k, v in (k, v) }) }
 }
 // TODO: use IterationMapSequence instead?
-fileprivate struct UnnamedKeyValuesSequence<Key, Value>: Sequence {
-  typealias Element = (Key, Value)
-  
-  private var dictIterator: AnyIterator<(key: Key, value: Value)>
-  
-  init(dict: some DictionaryCollection<Key, Value>) {
-    dictIterator = AnyIterator(dict.makeIterator())
-  }
-  
-  func makeIterator() -> some IteratorProtocol<Element> {
-    AnyIterator<Element> { dictIterator.next() ?? nil }
-  }
-}
+//fileprivate struct UnnamedKeyValuesSequence<Key, Value>: Sequence {
+//  typealias Element = (Key, Value)
+//  
+//  private var dictIterator: AnyIterator<(key: Key, value: Value)>
+//  
+//  init(dict: some DictionaryCollection<Key, Value>) {
+//    dictIterator = AnyIterator(dict.makeIterator())
+//  }
+//  
+//  func makeIterator() -> some IteratorProtocol<Element> {
+//    AnyIterator<Element> { dictIterator.next() ?? nil }
+//  }
+//}
 
 fileprivate struct IterationMapSequence<T, U>: Sequence {
   typealias Element = U

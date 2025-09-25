@@ -97,8 +97,6 @@ extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: D
      }
     return resultBase
   }
-  
-//  func compactMapValues<T>(_ transform: (Value) throws -> T?) rethrows -> Dictionary<Key, T>
 }
 
 // MARK: - Testing api

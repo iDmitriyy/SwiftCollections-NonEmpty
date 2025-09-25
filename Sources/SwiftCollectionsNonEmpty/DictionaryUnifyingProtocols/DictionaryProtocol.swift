@@ -71,7 +71,33 @@ public protocol SingleValueSetSubscriptDictionary<Key, Value>: DifferentResultTy
 public protocol DictionaryProtocol<Key, Value>: EmptyInitializableDictionary,
   SingleValueSetSubscriptDictionary {}
 
-// MARK: - Default Imps
+// MARK: - Additional Default Imps
+
+extension SingleValueSetSubscriptDictionary {
+  public func mapValues<T, ResultBase>(_ transform: (Value) throws -> T) rethrows -> ResultBase
+    where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
+    ResultBase.Key == Key, ResultBase.Value == T {
+    var mapped = ResultBase()
+    for (key, value) in self {
+      mapped[key] = try transform(value)
+    }
+    return mapped
+  }
+  
+  public func compactMapValues<T, ResultBase>(_ transform: (Value) throws -> T?) rethrows -> ResultBase
+    where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
+    ResultBase.Key == Key, ResultBase.Value == T {
+    var resultBase = ResultBase()
+    for (key, value) in self {
+      if let transformedValue = try transform(value) {
+        resultBase[key] = transformedValue
+      }
+     }
+    return resultBase
+  }
+}
+
+// MARK: - Additional Default Imps
 
 extension SingleValueGetSubscriptDictionary {
   @inlinable
