@@ -10,6 +10,7 @@
 // MARK: - MultipleValuesDictionary IndexSubscript
 
 public protocol MultipleValuesDictionaryWithIndexSubscript<Key, Value>: DictionaryCollection {
+  /// can either be a single value or a sequence of values
   associatedtype InstanceForIndex
   
   subscript(position: Index) -> InstanceForIndex { get }

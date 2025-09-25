@@ -159,12 +159,10 @@ func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
   // map / compactMap
   
   let mappedNonEmpty = nonEmpty.mapValues { String(describing: $0) } as NonEmptyTreeDictionary
-  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
-  
   let compactMappedNonEmpty = nonEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
+  
+  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
   let compactMappedMaybeEmpty = maybeEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
-  
-  
   
 //  let merged = filtered0.merging(filtered1, uniquingKeysWith: { lhs, rhs in
 //    rhs
