@@ -19,7 +19,7 @@ extension Dictionary: DictionaryProtocol {
     try merging(unnamedKeyValues, uniquingKeysWith: combine)
   }
   
-  // FIXME: call removeAll() [with default argument] from Standard library instead of hardcoding
+  // FIXME: call removeAll()[with default argument from Standard library] instead of hardcoding `false`
   public mutating func removeAll() { removeAll(keepingCapacity: false) }
 }
 

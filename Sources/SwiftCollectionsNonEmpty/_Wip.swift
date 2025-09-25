@@ -5,7 +5,7 @@
 //  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
-// Improvement: -
+// Improvement:
 // used instead of TODO for not making lint warnings & qick search in codebase
 
 /*
