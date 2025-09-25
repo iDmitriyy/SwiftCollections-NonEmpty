@@ -126,25 +126,45 @@ func bar1<K, V, B>(dd: NonEmptyGenericDict<K, V, B>) where B: DictionaryProtocol
 }
 
 func bar2<K, V>(nonEmpty: NonEmptyGenericDict<K, V, some DictionaryProtocol>) {
-  nonEmpty.nonEmptyFunc()
-  let base = nonEmpty.rawValue
-  let baseFiltered = nonEmpty.rawValue.filter { _ in true }
-  let nonEmptyFiltered = nonEmpty.filter { _ in true }
+  var mutableNonEmpty = nonEmpty
+  let maybeEmpty = nonEmpty.rawValue
+  var mutableMaybeEmpty = maybeEmpty
   
-  // NonEmptyUndestructiveMutableOperationsDictionary
+  // filter:
   
-  var mutable = nonEmptyFiltered
-  let (key, value) = base[base.startIndex]
-  mutable.updateValue(value, forKey: key)
+  let filteredNonEmpty = nonEmpty.filter { _ in true }
+  let filteredMaybeEmpty = nonEmpty.rawValue.filter { _ in true }
   
-  var nonEmptyMutable = nonEmpty
-  nonEmptyMutable.updateValue(value, forKey: key)
+  // updateValue
+  let (key, value) = nonEmpty[nonEmpty.startIndex]
+  mutableNonEmpty.updateValue(value, forKey: key)
+  mutableMaybeEmpty.updateValue(value, forKey: key)
   
-  let merged = mutable.merging(mutable, uniquingKeysWith: { _, r in r })
-  mutable.merge(mutable, uniquingKeysWith: { _, r in r })
+  // merging
+  let mergedNonEmpty0 = nonEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
+  let mergedNonEmpty1 = nonEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
+  let mergedNonEmpty2 = nonEmpty.merging(maybeEmpty.unnamedKeyValues, uniquingKeysWith: { _, r in r })
   
-  nonEmptyMutable.merge(nonEmptyMutable, uniquingKeysWith: { _, r in r })
-  nonEmptyMutable.merge(mutable, uniquingKeysWith: { _, r in r })
+  let mergedMaybeEmpty0 = maybeEmpty.merging(nonEmpty, uniquingKeysWith: { _, r in r })
+  let mergedMaybeEmpty1 = maybeEmpty.merging(maybeEmpty, uniquingKeysWith: { _, r in r })
+  let mergedMaybeEmpty2 = maybeEmpty.merging(maybeEmpty.unnamedKeyValues, uniquingKeysWith: { _, r in r })
+  
+  // merge
+  mutableNonEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
+  mutableNonEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
+  
+  mutableMaybeEmpty.merge(nonEmpty, uniquingKeysWith: { _, r in r })
+  mutableMaybeEmpty.merge(maybeEmpty, uniquingKeysWith: { _, r in r })
+  
+  // map / compactMap
+  
+  let mappedNonEmpty = nonEmpty.mapValues { String(describing: $0) } as NonEmptyTreeDictionary
+  let mappedMaybeEmpty = maybeEmpty.mapValues { String(describing: $0) } as TreeDictionary
+  
+  let compactMappedNonEmpty = nonEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
+  let compactMappedMaybeEmpty = maybeEmpty.compactMapValues { String(describing: $0) } as TreeDictionary
+  
+  
   
 //  let merged = filtered0.merging(filtered1, uniquingKeysWith: { lhs, rhs in
 //    rhs

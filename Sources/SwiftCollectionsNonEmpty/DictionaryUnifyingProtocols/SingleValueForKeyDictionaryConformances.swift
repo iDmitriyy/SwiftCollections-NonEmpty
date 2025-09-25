@@ -48,41 +48,7 @@ extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
 
 extension DictionaryCollection {
   /// Adapter removing key value labels from Dictionary.Element
-  internal var unnamedKeyValues: some Sequence<(Key, Value)> { IterationMapSequence(sequence: self, transform: {  k, v in (k, v) }) }
-}
-// TODO: use IterationMapSequence instead?
-//fileprivate struct UnnamedKeyValuesSequence<Key, Value>: Sequence {
-//  typealias Element = (Key, Value)
-//  
-//  private var dictIterator: AnyIterator<(key: Key, value: Value)>
-//  
-//  init(dict: some DictionaryCollection<Key, Value>) {
-//    dictIterator = AnyIterator(dict.makeIterator())
-//  }
-//  
-//  func makeIterator() -> some IteratorProtocol<Element> {
-//    AnyIterator<Element> { dictIterator.next() ?? nil }
-//  }
-//}
-
-fileprivate struct IterationMapSequence<T, U>: Sequence {
-  typealias Element = U
-  
-  private var itarator: AnyIterator<T>
-  private let transform: (T) -> U
-  
-  init(sequence: some Sequence<T>, transform: @escaping (T) -> U) {
-    itarator = AnyIterator(sequence.makeIterator())
-    self.transform = transform
-  }
-  
-  func makeIterator() -> some IteratorProtocol<U> {
-    AnyIterator<U> {
-      if let value = itarator.next() {
-        transform(value)
-      } else {
-        nil
-      }
-    }
+  public var unnamedKeyValues: some Sequence<(Key, Value)> {
+    IterationDeferredMapSequence(sequence: self, transform: {  key, value in (key, value) })
   }
 }
