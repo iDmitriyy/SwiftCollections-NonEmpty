@@ -2,7 +2,7 @@
 //  SingleValueForKeyDictionary.swift
 //  swiftCollections-nonEmpty
 //
-//  Created by tmp on 23/09/2025.
+//  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
 // swiftformat:disable unusedArguments
@@ -65,50 +65,6 @@ public protocol SingleValueSetSubscriptDictionary<Key, Value>: DifferentResultTy
 
 public protocol DictionaryProtocol<Key, Value>: EmptyInitializableDictionary,
   SingleValueSetSubscriptDictionary {}
-
-// MARK: - Default Imps
-
-extension DictionaryCollection {
-  public func mapValues<T, ResultBase>(_ transform: (Value) throws -> T) rethrows -> ResultBase
-    where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
-    ResultBase.Key == Key, ResultBase.Value == T {
-    var mapped = ResultBase()
-    for (key, value) in self {
-      mapped[key] = try transform(value)
-    }
-    return mapped
-  }
-  
-  // Improvement: - use CapacityReservable overloads
-  
-  public func compactMapValues<T, ResultBase>(_ transform: (Value) throws -> T?) rethrows -> ResultBase
-    where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
-    ResultBase.Key == Key, ResultBase.Value == T {
-    var resultBase = ResultBase()
-    for (key, value) in self {
-      if let transformedValue = try transform(value) {
-        resultBase[key] = transformedValue
-      }
-     }
-    return resultBase
-  }
-}
-
-// MARK: - Additional Default Imps
-
-extension SingleValueGetSubscriptDictionary {
-  @inlinable
-  public func hasValue(forKey key: Key) -> Bool {
-    // Improvement: - inspect which is faster – keys.contain or index(forKey: key) or valueForKey
-    // @specialize – choose most perfomant execution path for each specialization, if found
-    // Self: Dictionary | OrderedDictionary
-    // Key: String | ?Int | CustomHashable LargeKeyStruct
-    // Value: - LargeValueStruct
-    
-    // keys.contains(key)
-    index(forKey: key) != nil
-  }
-}
 
 // MARK: - checking api surface
 
