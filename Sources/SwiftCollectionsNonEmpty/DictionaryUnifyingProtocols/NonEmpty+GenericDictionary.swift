@@ -81,7 +81,7 @@ extension NonEmpty where Collection: DictionaryCollection {
   public func mapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Collection.Key, ResultBase.Value == T {
-    let resultBase: ResultBase = try rawValue.compactMapValues(transform)
+    let resultBase: ResultBase = try rawValue.mapValues(transform)
     return NonEmpty<ResultBase>(_ucheckedNonEmptyRawValue: resultBase)
   }
   
