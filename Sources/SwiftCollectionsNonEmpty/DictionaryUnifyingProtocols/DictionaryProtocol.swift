@@ -44,13 +44,8 @@ public protocol DifferentResultTypesOperationsDictionary<Key, Value>: Undestruct
   /// Self for regular Dictionary types | Base for NonEmpty. Use when both regular & its NonEmpty variant uses
   /// Particilary, used by filter() method
   associatedtype FilterValues: UndestructiveNonEmptinessMutableOperationsDictionary<Key, Value>
-//  
+  
   func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> FilterValues
-  
-  // how?
-  // func mapValues<NewValue>(_ transform: (Value) throws -> NewValue) rethrows -> Self<Key, NewValue>
-  
-  // func compactMapValues<NewValue>(_ transform: (Value) throws -> NewValue?) rethrows -> Self<Key, NewValue>
 }
 
 // MARK: Below are protocol with operations that are not possible for NonEmpty
@@ -84,6 +79,8 @@ extension DictionaryCollection {
     return mapped
   }
   
+  // Improvement: - use CapacityReservable overloads
+  
   public func compactMapValues<T, ResultBase>(_ transform: (Value) throws -> T?) rethrows -> ResultBase
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Key, ResultBase.Value == T {
@@ -102,11 +99,11 @@ extension DictionaryCollection {
 extension SingleValueGetSubscriptDictionary {
   @inlinable
   public func hasValue(forKey key: Key) -> Bool {
-    // TODO: inspect which is faster – key.contain or index(forKey: key) or valueForKey
+    // Improvement: - inspect which is faster – keys.contain or index(forKey: key) or valueForKey
     // @specialize – choose most perfomant execution path for each specialization, if found
     // Self: Dictionary | OrderedDictionary
-    // Key: String | ?Int
-    // Value: -
+    // Key: String | ?Int | CustomHashable LargeKeyStruct
+    // Value: - LargeValueStruct
     
     // keys.contains(key)
     index(forKey: key) != nil
@@ -153,8 +150,6 @@ extension Dictionary {
     // compactMapValues // regular: Self<_, NewValue>          nonEmpty: Base<_, NewValue>
 
     // > suffix
-    
-    
   }
 }
 
@@ -162,6 +157,4 @@ fileprivate func `check methods generically`<Dict: DictionaryProtocol>(dict: Dic
 //  var filtered: Dict = dict.filter { _ in true }
 //  let first = dict[dict.startIndex]
 //  filtered[first.key] = first.value
-  
-  
 }

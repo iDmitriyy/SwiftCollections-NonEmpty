@@ -5,6 +5,9 @@
 //  Created Dmitriy Ignatyev on 23/09/2025.
 //
 
+// Improvement: -
+// used instead of TODO for not making lint warnings & qick search in codebase
+
 /*
  - remove RawRepresentable conformance, rename NonEmpty generic parameter `Collection` to `Base`
  - deprecate initializer in NonEmpty library sources

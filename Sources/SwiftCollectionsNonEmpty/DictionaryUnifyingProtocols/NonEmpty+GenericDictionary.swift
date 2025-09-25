@@ -72,9 +72,6 @@ extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: D
   public func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> Collection {
     try rawValue.filter(isIncluded)
   }
-  
-  // FIXME: remove FilterValues
-  // ? inntroduce SequenceInitializerDictionary protocol for map operations?
 }
 
 extension NonEmpty where Collection: DictionaryCollection {
