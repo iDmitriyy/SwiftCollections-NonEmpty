@@ -73,7 +73,7 @@ public protocol DictionaryProtocol<Key, Value>: EmptyInitializableDictionary,
 
 // MARK: - Default Imps
 
-extension DifferentResultTypesOperationsDictionary {
+extension DictionaryCollection {
   public func mapValues<T, ResultBase>(_ transform: (Value) throws -> T) rethrows -> ResultBase
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Key, ResultBase.Value == T {

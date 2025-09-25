@@ -75,11 +75,13 @@ extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: D
   
   // FIXME: remove FilterValues
   // ? inntroduce SequenceInitializerDictionary protocol for map operations?
-  
+}
+
+extension NonEmpty where Collection: DictionaryCollection {
   public func mapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Collection.Key, ResultBase.Value == T {
-    var resultBase: ResultBase = try rawValue.compactMapValues(transform)
+    let resultBase: ResultBase = try rawValue.compactMapValues(transform)
     return NonEmpty<ResultBase>(_ucheckedNonEmptyRawValue: resultBase)
   }
   
