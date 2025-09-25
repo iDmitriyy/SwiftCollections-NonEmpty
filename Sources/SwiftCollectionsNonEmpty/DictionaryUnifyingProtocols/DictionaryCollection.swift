@@ -18,10 +18,6 @@ public protocol DictionaryCollection<Key, Value>: Swift.Collection where Element
   
   var keys: Keys { get }
   var values: Values { get }
-  
-  var isEmpty: Bool { get }
-  
-  var count: Int { get }
-  
+    
   func index(forKey key: Key) -> Index?
 }
