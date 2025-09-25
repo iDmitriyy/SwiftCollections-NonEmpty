@@ -6,4 +6,3 @@
 //
 
 public protocol SetProtocol<Element>: SetCollection, NonEmptyCompatibleSetCollection, EmptyInitializableSet {}
-

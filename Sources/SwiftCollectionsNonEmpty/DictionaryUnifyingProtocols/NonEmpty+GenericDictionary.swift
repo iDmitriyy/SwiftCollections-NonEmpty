@@ -12,63 +12,63 @@ public typealias NonEmptyGenericDict<Key: Hashable, Value, B: UndestructiveNonEm
 
 // MARK: - DictionaryCollection
 
-extension NonEmpty: DictionaryCollection where Collection: DictionaryCollection {
-  public typealias Key = Collection.Key
+extension NonEmpty: DictionaryCollection where Base: DictionaryCollection {
+  public typealias Key = Base.Key
   
-  public typealias Value = Collection.Value
+  public typealias Value = Base.Value
   
-  public typealias Keys = Collection.Keys
+  public typealias Keys = Base.Keys
   
-  public typealias Values = Collection.Values
+  public typealias Values = Base.Values
   
   // properties & methods:
   
-  public var keys: Collection.Keys { rawValue.keys }
+  public var keys: Base.Keys { rawValue.keys }
   
-  public var values: Collection.Values { rawValue.values }
+  public var values: Base.Values { rawValue.values }
   
-  public func index(forKey key: Collection.Key) -> Collection.Index? {
+  public func index(forKey key: Base.Key) -> Base.Index? {
     rawValue.index(forKey: key)
   }
 }
 
 // MARK: - SingleValueGetSubscriptDictionary
 
-extension NonEmpty: SingleValueGetSubscriptDictionary where Collection: SingleValueGetSubscriptDictionary {
-  public subscript(key: Collection.Key) -> Collection.Value? { rawValue[key] }
+extension NonEmpty: SingleValueGetSubscriptDictionary where Base: SingleValueGetSubscriptDictionary {
+  public subscript(key: Base.Key) -> Base.Value? { rawValue[key] }
   
-  public subscript(key: Collection.Key, default defaultValue: @autoclosure () -> Collection.Value) -> Collection.Value {
+  public subscript(key: Base.Key, default defaultValue: @autoclosure () -> Base.Value) -> Base.Value {
     rawValue[key, default: defaultValue()]
   }
 }
 
 // MARK: - UndestructiveNonEmptinessMutableOperationsDictionary
 
-extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where Collection: UndestructiveNonEmptinessMutableOperationsDictionary {
+extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where Base: UndestructiveNonEmptinessMutableOperationsDictionary {
   @discardableResult
-  public mutating func updateValue(_ value: Collection.Value, forKey key: Collection.Key) -> Collection.Value? {
-    _rawValueReadModify.updateValue(value, forKey: key)
+  public mutating func updateValue(_ value: Base.Value, forKey key: Base.Key) -> Base.Value? {
+    _baseReadModify.updateValue(value, forKey: key)
   }
   
-  public mutating func merge(_ keysAndValues: some Sequence<(Collection.Key, Collection.Value)>,
-                             uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value) rethrows {
-    try _rawValueReadModify.merge(keysAndValues, uniquingKeysWith: combine)
+  public mutating func merge(_ keysAndValues: some Sequence<(Base.Key, Base.Value)>,
+                             uniquingKeysWith combine: (Base.Value, Base.Value) throws -> Base.Value) rethrows {
+    try _baseReadModify.merge(keysAndValues, uniquingKeysWith: combine)
   }
   
-  public func merging(_ other: some Sequence<(Collection.Key, Collection.Value)>,
-                      uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value)
+  public func merging(_ other: some Sequence<(Base.Key, Base.Value)>,
+                      uniquingKeysWith combine: (Base.Value, Base.Value) throws -> Base.Value)
     rethrows -> Self {
-    let baseMerged = try _rawValueReadModify.merging(other, uniquingKeysWith: combine)
+    let baseMerged = try _baseReadModify.merging(other, uniquingKeysWith: combine)
     return Self(_ucheckedNonEmptyRawValue: baseMerged)
   }
   
-  public mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Collection.Key, Collection.Value>,
-                             uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value) rethrows {
+  public mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Base.Key, Base.Value>,
+                             uniquingKeysWith combine: (Base.Value, Base.Value) throws -> Base.Value) rethrows {
     try merge(other.unnamedKeyValuesView, uniquingKeysWith: combine)
   }
   
-  public func merging(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Collection.Key, Collection.Value>,
-                      uniquingKeysWith combine: (Collection.Value, Collection.Value) throws -> Collection.Value)
+  public func merging(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Base.Key, Base.Value>,
+                      uniquingKeysWith combine: (Base.Value, Base.Value) throws -> Base.Value)
     rethrows -> Self {
     try merging(other.unnamedKeyValuesView, uniquingKeysWith: combine)
   }
@@ -76,26 +76,26 @@ extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where C
 
 // MARK: - DifferentResultTypesOperationsDictionary
 
-extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: DifferentResultTypesOperationsDictionary,
-  Collection.FilterValues == Collection {
-  public func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> Collection {
+extension NonEmpty: DifferentResultTypesOperationsDictionary where Base: DifferentResultTypesOperationsDictionary,
+  Base.FilterValues == Base {
+  public func filter(_ isIncluded: (Self.Element) throws -> Bool) rethrows -> Base {
     try rawValue.filter(isIncluded)
   }
 }
 
 // MARK: - Map / CompactMap
 
-extension NonEmpty where Collection: DictionaryCollection {
-  public func mapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
+extension NonEmpty where Base: DictionaryCollection {
+  public func mapValues<T, ResultBase>(_ transform: (Base.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
-    ResultBase.Key == Collection.Key, ResultBase.Value == T {
+    ResultBase.Key == Base.Key, ResultBase.Value == T {
     let resultBase: ResultBase = try rawValue.mapValues(transform)
     return NonEmpty<ResultBase>(_ucheckedNonEmptyRawValue: resultBase)
   }
   
-  public func compactMapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T?) rethrows -> ResultBase
+  public func compactMapValues<T, ResultBase>(_ transform: (Base.Value) throws -> T?) rethrows -> ResultBase
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
-    ResultBase.Key == Collection.Key, ResultBase.Value == T {
+    ResultBase.Key == Base.Key, ResultBase.Value == T {
     try rawValue.compactMapValues(transform)
   }
 }

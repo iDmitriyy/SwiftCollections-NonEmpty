@@ -10,7 +10,7 @@
 /// Disallows `init?(rawValue: EmptyCollection<Int>)` initializer of `NonEmpty`
 public protocol NonEmptyInitWithRawValueDisallowed: Collection {}
 
-extension NonEmpty where Collection: NonEmptyInitWithRawValueDisallowed {
+extension NonEmpty where Base: NonEmptyInitWithRawValueDisallowed {
   @available(*, deprecated, message: "Can not be NonEmpty. This init call will cause crash")
   public init?(rawValue: EmptyCollection<Element>) {
     nil
@@ -22,7 +22,7 @@ extension NonEmpty where Collection: NonEmptyInitWithRawValueDisallowed {
 /// Disallows `init(_ head: Element, _ tail: Element...)` initializer of `NonEmpty`
 public protocol NonEmptyHeadTailInitDisallowed: Collection {}
 
-extension NonEmpty where Collection: NonEmptyHeadTailInitDisallowed {
+extension NonEmpty where Base: NonEmptyHeadTailInitDisallowed {
   @available(*, unavailable, message: "Can not be NonEmpty. This init call will cause crash")
   public init(_ head: Element, _ tail: Element...) {
     fatalError("Can not be NonEmpty")
