@@ -20,3 +20,9 @@ public protocol CapacityReservableSet<Element>: SetCollection {
 // MARK: - Empty Initializable With Capacity Set
 
 public protocol EmptyInitializableWithCapacitySet<Element>: EmptyInitializableSet, CapacityReservableSet {}
+
+// MARK: - Initializable With Sequence Set
+
+public protocol InitializableWithSequenceSet<Element>: SetCollection {
+  init<Source>(_ sequence: Source) where Element == Source.Element, Source: Sequence
+}
