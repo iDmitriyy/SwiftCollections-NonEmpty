@@ -14,8 +14,3 @@ extension CollectionOfOne {
     self.last!
   }
 }
-
-func ddd() {
-  var dd = [Int: Int]()
-  dd[0, default: 2] = 2
-}

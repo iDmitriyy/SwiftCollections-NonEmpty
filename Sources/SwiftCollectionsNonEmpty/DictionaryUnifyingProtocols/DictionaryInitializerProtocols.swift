@@ -19,6 +19,8 @@ public protocol EmptyInitializableDictionary<Key, Value>: DictionaryCollection {
 
 public protocol CapacityReservableDictionary<Key, Value>: DictionaryCollection {
   mutating func reserveCapacity(_ minimumCapacity: Int)
+  
+  // var capacity: Int { get } // OrderedDictionary has no such property
 }
 
 // MARK: - EmptyInitializable WithCapacity Dictionary
