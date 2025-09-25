@@ -33,6 +33,13 @@ extension DictionaryCollection {
   }
 }
 
+extension DictionaryCollection {
+  /// Adapter removing key value labels from Dictionary.Element
+  public var unnamedKeyValues: some Sequence<(Key, Value)> {
+    IterationDeferredMapSequence(sequence: self, transform: {  key, value in (key, value) })
+  }
+}
+
 // MARK: - Additional Default Imps
 
 extension SingleValueGetSubscriptDictionary { // DictionaryCollection if `index(forKey: key)`

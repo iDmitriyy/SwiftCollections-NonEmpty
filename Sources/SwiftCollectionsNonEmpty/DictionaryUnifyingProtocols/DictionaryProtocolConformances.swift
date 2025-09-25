@@ -1,5 +1,5 @@
 //
-//  SingleValueForKeyDictionaryConformances.swift
+//  DictionaryProtocolConformances.swift
 //  swiftCollections-nonEmpty
 //
 //  Created Dmitriy Ignatyev on 23/09/2025.
@@ -43,12 +43,3 @@ extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
 }
 
 // extension TreeDictionary: WithCapacityInitializableDictionaryProtocol {} // no functions to reserveCapacity
-
-// --- workoaround for merge
-
-extension DictionaryCollection {
-  /// Adapter removing key value labels from Dictionary.Element
-  public var unnamedKeyValues: some Sequence<(Key, Value)> {
-    IterationDeferredMapSequence(sequence: self, transform: {  key, value in (key, value) })
-  }
-}
