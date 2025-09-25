@@ -28,3 +28,6 @@ extension Set: EmptyInitializableWithCapacitySet {}
 extension OrderedSet: EmptyInitializableWithCapacitySet {}
 
 // extension TreeSet: EmptyInitializableWithCapacitySet {} // no functions to reserveCapacity
+
+// From Swift.SetAlgebra protocol
+// init<S>(_ sequence: S) where S : Sequence, Self.Element == S.Element
