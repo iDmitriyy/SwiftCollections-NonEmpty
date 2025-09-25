@@ -71,9 +71,9 @@ public protocol SingleValueSetSubscriptDictionary<Key, Value>: DifferentResultTy
 public protocol DictionaryProtocol<Key, Value>: EmptyInitializableDictionary,
   SingleValueSetSubscriptDictionary {}
 
-// MARK: - Additional Default Imps
+// MARK: - Default Imps
 
-extension SingleValueSetSubscriptDictionary {
+extension DifferentResultTypesOperationsDictionary {
   public func mapValues<T, ResultBase>(_ transform: (Value) throws -> T) rethrows -> ResultBase
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Key, ResultBase.Value == T {
@@ -153,6 +153,8 @@ extension Dictionary {
     // compactMapValues // regular: Self<_, NewValue>          nonEmpty: Base<_, NewValue>
 
     // > suffix
+    
+    
   }
 }
 

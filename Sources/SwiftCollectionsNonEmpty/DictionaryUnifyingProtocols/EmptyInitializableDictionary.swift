@@ -28,3 +28,9 @@ public protocol EmptyInitializableWithCapacityDictionary<Key, Value>: EmptyIniti
   
   mutating func removeAll(keepingCapacity keepCapacity: Bool)
 }
+
+//
+
+public protocol UniqueKeysWithValuesInitializableDictionary<Key, Value>: DictionaryCollection {
+  init<S>(uniqueKeysWithValues keysAndValues: S) where S: Sequence, S.Element == (Key, Value)
+}

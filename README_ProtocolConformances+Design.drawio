@@ -300,7 +300,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="fjSwt5ECtUeGXOnEmD8X" name="DictionaryProtocol">
-    <mxGraphModel dx="1503" dy="1159" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="1315" dy="1014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -470,8 +470,8 @@
             <mxPoint x="1050" y="570" as="targetPoint" />
             <Array as="points">
               <mxPoint x="790" y="760" />
-              <mxPoint x="690" y="760" />
-              <mxPoint x="690" y="147" />
+              <mxPoint x="680" y="760" />
+              <mxPoint x="680" y="148" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -481,8 +481,8 @@
             <mxPoint x="1030" y="680" as="targetPoint" />
             <Array as="points">
               <mxPoint x="570" y="760" />
-              <mxPoint x="690" y="760" />
-              <mxPoint x="690" y="147" />
+              <mxPoint x="680" y="760" />
+              <mxPoint x="680" y="148" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -557,6 +557,9 @@
         </mxCell>
         <mxCell id="XCJBrEVME8g4L9l4CIoC-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;NonEmptyMapOperations&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 8px;&quot;&gt;&amp;nbsp;mutating&amp;nbsp;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="1640" y="760" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="XCJBrEVME8g4L9l4CIoC-4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;UniqueKeysWithValuesInitializableDictionary&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;mutating reserveCapacity(_: Int)&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="310" y="550" width="280" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

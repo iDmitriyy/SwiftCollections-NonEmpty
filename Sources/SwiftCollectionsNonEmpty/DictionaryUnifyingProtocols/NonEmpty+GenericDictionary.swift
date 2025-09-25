@@ -79,23 +79,14 @@ extension NonEmpty: DifferentResultTypesOperationsDictionary where Collection: D
   public func mapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T) rethrows -> NonEmpty<ResultBase>
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Collection.Key, ResultBase.Value == T {
-    var resultBase = ResultBase()
-    for (key, value) in rawValue {
-      resultBase[key] = try transform(value)
-    }
+    var resultBase: ResultBase = try rawValue.compactMapValues(transform)
     return NonEmpty<ResultBase>(_ucheckedNonEmptyRawValue: resultBase)
   }
   
   public func compactMapValues<T, ResultBase>(_ transform: (Collection.Value) throws -> T?) rethrows -> ResultBase
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Collection.Key, ResultBase.Value == T {
-    var resultBase = ResultBase()
-    for (key, value) in rawValue {
-      if let transformedValue = try transform(value) {
-        resultBase[key] = transformedValue
-      }
-     }
-    return resultBase
+    try rawValue.compactMapValues(transform)
   }
 }
 
