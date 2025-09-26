@@ -13,8 +13,8 @@ extension NonEmpty: SetCollection where Base: SetCollection {
   }
 }
 
-extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection
-  where Base: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection {
+extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences
+  where Base: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences {
   public func union(_ other: some Sequence<Element>) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other))
   }
@@ -44,8 +44,8 @@ extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCol
   }
 }
 
-//extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection
-//where Base: CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection {
+//extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithSelf
+//where Base: CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
 //  public func contains(_ member: Base.Element) -> Bool {
 //    
 //  }

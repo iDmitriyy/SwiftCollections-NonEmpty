@@ -18,13 +18,13 @@ extension BitSet: @retroactive NonEmptyCompatibleCollection {}
 /// Marker protocol for Set-Types allowing to make default initializers for NonEmpty like:
 /// `init(element: Element)`
 /// `init(elements first: Element, _ other: Element...) `
-public protocol NonEmptyConvenienceInitAvailableOutOfBoxSet: NonEmptyCompatibleCollection, InitializableWithSequenceSet,
-  CommonSetAlgebraWithAllSequencesCollection {}
+public protocol NonEmptyConvenienceInitOutOfBoxSet: NonEmptyCompatibleCollection, InitializableWithSequenceSet,
+  CommonSetAlgebraWithAllSequences {}
 
-extension Set: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
+extension Set: NonEmptyConvenienceInitOutOfBoxSet {}
 
-extension OrderedSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
+extension OrderedSet: NonEmptyConvenienceInitOutOfBoxSet {}
 
-extension TreeSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
+extension TreeSet: NonEmptyConvenienceInitOutOfBoxSet {}
 
-extension BitSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
+extension BitSet: NonEmptyConvenienceInitOutOfBoxSet {}

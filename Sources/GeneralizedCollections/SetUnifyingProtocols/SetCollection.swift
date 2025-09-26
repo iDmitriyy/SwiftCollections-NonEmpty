@@ -11,7 +11,7 @@ public protocol SetCollection<Element>: Collection where Element: Hashable {
 
 // MARK: - Common SetAlgebra With Sequence
 
-public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection: SetCollection {
+public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences: SetCollection {
   // Union
 
   func union(_ other: some Sequence<Element>) -> Self
@@ -35,7 +35,7 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollect
   func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
-public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection: SetCollection {
+public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelf: SetCollection {
   // Union
   
   func union(_ other: Self) -> Self
@@ -62,7 +62,7 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection: Set
 // MARK: - Common SetAlgebra With Self
 
 /// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection {
+public protocol CommonSetAlgebraWithAllSequences: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences {
   // Intersection
   
   func intersection(_ other: some Sequence<Element>) -> Self
@@ -84,7 +84,7 @@ public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraUnde
 
 /// Partial duplication of Swift.SetAlgebra
 /// Common Set operations with all Self type
-public protocol CommonSetAlgebraCollection: CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection {
+public protocol CommonSetAlgebraWithSelf: CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
   // Intersection
   
   func intersection(_ other: Self) -> Self
@@ -118,6 +118,8 @@ public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
   @discardableResult
   mutating func update(with newMember: Element) -> Element?
 }
+
+// -----------------------------------------------------------------------------------------------------------------------
 
 // extension SetAlgebra { // default imps
 //  @inlinable public init<S>(_ sequence: S) where S : Sequence, Self.Element == S.Element
@@ -171,7 +173,7 @@ public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
 //  var indexSet = IndexSet()
   var treeSet = TreeSet<Int>()
   var bitSet = BitSet()
-
+  
   // set.formUnion()
   // set.update(with: )
   // set.insert()
