@@ -5,6 +5,8 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
+// MARK: Set Protocol
+
 extension Set: SetProtocol {}
 
 extension OrderedSet: SetProtocol {}
@@ -23,16 +25,16 @@ extension BitSet: SetProtocol {}
 //  // How can NonEmptyness be done
 //#endif
 
-// MARK: UnorderedSetAlgebraCollection
+// MARK: UnorderedInsert UndestructiveNonEmptyness Set
 
-extension Set: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
+extension Set: UnorderedInsertUndestructiveNonEmptynessSet {}
 
-extension TreeSet: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
+extension TreeSet: UnorderedInsertUndestructiveNonEmptynessSet {}
 
-//@available(*, unavailable, message: "OrderedSet is incompatible with `UnorderedSetAlgebraUndestructiveNonEmptynessCollection`")
+//@available(*, unavailable, message: "OrderedSet is incompatible with `UnorderedInsertUndestructiveNonEmptynessSet`")
 //extension OrderedSet: UnorderedSetAlgebraCollection {}
 
-extension BitSet: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
+extension BitSet: UnorderedInsertUndestructiveNonEmptynessSet {}
 
 // MARK: EmptyInitializable Set
 

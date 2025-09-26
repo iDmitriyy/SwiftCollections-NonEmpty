@@ -13,14 +13,18 @@ extension OrderedSet: @retroactive NonEmptyCompatibleCollection {}
 
 extension TreeSet: @retroactive NonEmptyCompatibleCollection {}
 
+extension BitSet: @retroactive NonEmptyCompatibleCollection {}
+
 /// Marker protocol for Set-Types allowing to make default initializers for NonEmpty like:
 /// `init(element: Element)`
 /// `init(elements first: Element, _ other: Element...) `
-public protocol NonEmptyAvailableOutOfBoxConvenienceInitSet: NonEmptyCompatibleCollection, SetCollection, InitializableWithSequenceSet,
+public protocol NonEmptyConvenienceInitAvailableOutOfBoxSet: NonEmptyCompatibleCollection, InitializableWithSequenceSet,
   CommonSetAlgebraWithAllSequencesCollection {}
 
-extension Set: NonEmptyAvailableOutOfBoxConvenienceInitSet {}
+extension Set: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
 
-extension OrderedSet: NonEmptyAvailableOutOfBoxConvenienceInitSet {}
+extension OrderedSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
 
-extension TreeSet: NonEmptyAvailableOutOfBoxConvenienceInitSet {}
+extension TreeSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
+
+extension BitSet: NonEmptyConvenienceInitAvailableOutOfBoxSet {}
