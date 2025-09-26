@@ -5,12 +5,7 @@
 //  Created by Dmitriy Ignatyev on 22/09/2025.
 //
 
-extension NonEmpty {
-  @inlinable @inline(__always)
-  internal init(_ucheckedNonEmptyRawValue: Base) {
-    self.init(rawValue: _ucheckedNonEmptyRawValue)!
-  }
-}
+@_spi(NonEmptyExternallyExtendable) private import NonEmpty
 
 // MARK: - RangeReplaceable Collection Types NonEmpty initializer
 
@@ -19,7 +14,7 @@ extension NonEmpty where Base: RangeReplaceableCollection {
   public init(element: Element) {
     var coll = Base()
     coll.append(element)
-    self.init(_ucheckedNonEmptyRawValue: coll)
+    self.init(_unsafeAssumedNonEmpty: coll)
   }
   
   @inlinable @inline(__always)
@@ -27,7 +22,7 @@ extension NonEmpty where Base: RangeReplaceableCollection {
     var coll = Base()
     coll.append(first)
     coll.append(contentsOf: other)
-    self.init(_ucheckedNonEmptyRawValue: coll)
+    self.init(_unsafeAssumedNonEmpty: coll)
   }
 }
 
@@ -37,14 +32,14 @@ extension NonEmpty where Base: NonEmptyAvailableOutOfBoxConvenienceInitSet {
   @inlinable @inline(__always)
   public init(element: Element) {
     let backingInstance = Base(CollectionOfOne(element))
-    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+    self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
   
   @inlinable @inline(__always)
   public init(elements first: Element, _ other: Element...) {
     var backingInstance = Base(CollectionOfOne(first))
     backingInstance.formUnion(other)
-    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+    self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
 }
 
@@ -55,7 +50,7 @@ extension NonEmpty where Base: DictionaryProtocol {
   public init(element: Element) {
     var backingInstance = Base()
     backingInstance.updateValue(element.value, forKey: element.key)
-    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+    self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
   
   @inlinable @inline(__always)
@@ -65,6 +60,6 @@ extension NonEmpty where Base: DictionaryProtocol {
     for (key, value) in other {
       backingInstance.updateValue(value, forKey: key)
     }
-    self.init(_ucheckedNonEmptyRawValue: backingInstance)
+    self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
 }

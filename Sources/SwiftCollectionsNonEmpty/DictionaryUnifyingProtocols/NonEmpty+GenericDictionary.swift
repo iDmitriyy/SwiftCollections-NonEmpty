@@ -59,7 +59,7 @@ extension NonEmpty: UndestructiveNonEmptinessMutableOperationsDictionary where B
                       uniquingKeysWith combine: (Base.Value, Base.Value) throws -> Base.Value)
     rethrows -> Self {
     let baseMerged = try _baseReadModify.merging(other, uniquingKeysWith: combine)
-    return Self(_ucheckedNonEmptyRawValue: baseMerged)
+    return Self(_unsafeAssumedNonEmpty: baseMerged)
   }
   
   public mutating func merge(_ other: some UndestructiveNonEmptinessMutableOperationsDictionary<Base.Key, Base.Value>,
@@ -90,7 +90,7 @@ extension NonEmpty where Base: DictionaryCollection {
     where ResultBase: SingleValueSetSubscriptDictionary, ResultBase: EmptyInitializableDictionary,
     ResultBase.Key == Base.Key, ResultBase.Value == T {
     let resultBase: ResultBase = try rawValue.mapValues(transform)
-    return NonEmpty<ResultBase>(_ucheckedNonEmptyRawValue: resultBase)
+    return NonEmpty<ResultBase>(_unsafeAssumedNonEmpty: resultBase)
   }
   
   public func compactMapValues<T, ResultBase>(_ transform: (Base.Value) throws -> T?) rethrows -> ResultBase
