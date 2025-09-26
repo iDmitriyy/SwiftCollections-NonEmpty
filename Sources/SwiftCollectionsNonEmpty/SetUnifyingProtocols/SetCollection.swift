@@ -13,43 +13,43 @@ public protocol SetCollection<Element>: Collection {}
 public protocol CommonSetAlgebraWithAnySequenceCollection: SetCollection {
   // MARK: Union
 
-  func union<S>(_ other: S) -> Self where Element == S.Element, S: Sequence
+  func union(_ other: some Sequence<Element>) -> Self
   
-  mutating func formUnion<S>(_ other: S) where Element == S.Element, S: Sequence
+  mutating func formUnion(_ other: some Sequence<Element>)
   
   // MARK: Intersection
   
-  func intersection<S>(_ other: S) -> Self where Element == S.Element, S: Sequence
+  func intersection(_ other: some Sequence<Element>) -> Self
   
-  mutating func formIntersection<S>(_ other: S) where Element == S.Element, S: Sequence
+  mutating func formIntersection(_ other: some Sequence<Element>)
   
   // MARK: Symmetric Difference
   
-  func symmetricDifference<S>(_ other: S) -> Self where Element == S.Element, S: Sequence
+  func symmetricDifference(_ other: some Sequence<Element>) -> Self
   
-  mutating func formSymmetricDifference<S>(_ other: S) where Element == S.Element, S: Sequence
+  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
   
   // MARK: Subtracting
   
-  func subtracting<S>(_ other: S) -> Self where Element == S.Element, S: Sequence
+  func subtracting(_ other: some Sequence<Element>) -> Self
   
-  mutating func subtract<S>(_ other: S) where Element == S.Element, S: Sequence
+  mutating func subtract(_ other: some Sequence<Element>)
   
   // MARK: Is Subset & Strict
   
-  func isSubset<S>(of possibleSuperset: S) -> Bool where Element == S.Element, S: Sequence
+  func isSubset(of possibleSuperset: some Sequence<Element>) -> Bool
   
-  func isStrictSubset<S>(of possibleStrictSuperset: S) -> Bool where Element == S.Element, S: Sequence
+  func isStrictSubset(of possibleStrictSuperset: some Sequence<Element>) -> Bool
   
   // MARK: Is Disjoint
   
-  func isDisjoint<S>(with other: S) -> Bool where Element == S.Element, S: Sequence
+  func isDisjoint(with other: some Sequence<Element>) -> Bool
   
   // MARK: Is Superset & Strict
   
-  func isSuperset<S>(of possibleSubset: S) -> Bool where Element == S.Element, S: Sequence
+  func isSuperset(of possibleSubset: some Sequence<Element>) -> Bool
   
-  func isStrictSuperset<S>(of possibleStrictSubset: S) -> Bool where Element == S.Element, S: Sequence
+  func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
 // MARK: - Common SetAlgebra With Self
@@ -57,7 +57,7 @@ public protocol CommonSetAlgebraWithAnySequenceCollection: SetCollection {
 /// Partial duplication of Swift.SetAlgebra
 /// Common Set operations with all Self type
 public protocol CommonSetAlgebraCollection: SetCollection {
-  func contains(_ member: Self.Element) -> Bool
+  func contains(_ member: Element) -> Bool
   
   // MARK: Union
   
@@ -84,7 +84,7 @@ public protocol CommonSetAlgebraCollection: SetCollection {
   mutating func subtract(_ other: Self)
   
   @discardableResult
-  mutating func remove(_ member: Self.Element) -> Self.Element?
+  mutating func remove(_ member: Element) -> Element?
   
   // MARK: Is Subset & Strict
   
@@ -109,10 +109,10 @@ public protocol UnorderedSetAlgebraCollection: Collection {
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
-  mutating func insert(_ newMember: Self.Element) -> (inserted: Bool, memberAfterInsert: Self.Element)
+  mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element)
   
   @discardableResult
-  mutating func update(with newMember: Self.Element) -> Self.Element?
+  mutating func update(with newMember: Element) -> Element?
 }
 
 //extension SetAlgebra { // default imps
