@@ -28,7 +28,7 @@ extension NonEmpty where Base: RangeReplaceableCollection {
 
 // MARK: - Compatible Set Types NonEmpty initializer
 
-extension NonEmpty where Base: NonEmptyAvailableOutOfBoxConvenienceInitSet {
+extension NonEmpty where Base: NonEmptyConvenienceInitOutOfBoxSet {
   @inlinable @inline(__always)
   public init(element: Element) {
     let backingInstance = Base(CollectionOfOne(element))

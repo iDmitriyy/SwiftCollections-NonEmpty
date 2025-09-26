@@ -59,61 +59,55 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelf: SetCollection
   func isStrictSuperset(of other: Self) -> Bool
 }
 
-// MARK: - Common SetAlgebra With Self
+// MARK: - SetAgebra Destructive NonEmptyness
 
-/// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAllSequences: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences {
+
+public protocol DifferentResultTypesSetAgebraDestructiveNonEmptyness: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences, CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
+  associatedtype MayBeEmptySetType: DifferentResultTypesSetAgebraDestructiveNonEmptyness
+  
   // Intersection
   
-  func intersection(_ other: some Sequence<Element>) -> Self
+  func intersection(_ other: Self) -> MayBeEmptySetType
   
-  mutating func formIntersection(_ other: some Sequence<Element>)
+  func intersection(_ other: some Sequence<Element>) -> MayBeEmptySetType
   
   // Symmetric Difference
   
-  func symmetricDifference(_ other: some Sequence<Element>) -> Self
+  func symmetricDifference(_ other: Self) -> MayBeEmptySetType
   
-  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
-  
-  // Subtracting
-  
-  func subtracting(_ other: some Sequence<Element>) -> Self
-  
-  mutating func subtract(_ other: some Sequence<Element>)
-}
-
-/// Partial duplication of Swift.SetAlgebra
-/// Common Set operations with all Self type
-public protocol CommonSetAlgebraWithSelf: CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
-  // Intersection
-  
-  func intersection(_ other: Self) -> Self
-  
-  mutating func formIntersection(_ other: Self)
-  
-  // Symmetric Difference
-  
-  func symmetricDifference(_ other: Self) -> Self
-  
-  mutating func formSymmetricDifference(_ other: Self)
+  func symmetricDifference(_ other: some Sequence<Element>) -> MayBeEmptySetType
   
   // Subtracting
   
-  func subtracting(_ other: Self) -> Self
+  func subtracting(_ other: Self) -> MayBeEmptySetType
   
-  mutating func subtract(_ other: Self)
-}
-
-public protocol DifferentResultTypesSetAgebraDestructiveNonEmptyness: SetCollection {
-  associatedtype ResltSetType: SetCollection
+  func subtracting(_ other: some Sequence<Element>) -> MayBeEmptySetType
 }
 
 
 // MARK: - Common MutableSetAlgebra DestructiveNonEmptyness
 
-public protocol CommonMutableSetAlgebraDestructiveNonEmptyness: SetCollection {
+public protocol CommonMutableSetAlgebraDestructiveNonEmptyness: DifferentResultTypesSetAgebraDestructiveNonEmptyness where MayBeEmptySetType == Self {
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
+  
+  // Intersection
+  
+  mutating func formIntersection(_ other: some Sequence<Element>)
+  
+  mutating func formIntersection(_ other: Self)
+  
+  // Symmetric Difference
+  
+  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
+  
+  mutating func formSymmetricDifference(_ other: Self)
+  
+  // Subtracting
+  
+  mutating func subtract(_ other: some Sequence<Element>)
+  
+  mutating func subtract(_ other: Self)
 }
 
 // MARK: - Unordered SetAlgebra
@@ -198,7 +192,7 @@ public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
   // indexSet.formUnion()
   // indexSet.update(with:)
   // indexSet.insert()
-
+  
   // orderedSet.formUnion()
   // orderedSet.update(, at:)
   // orderedSet.insert(, at:)
