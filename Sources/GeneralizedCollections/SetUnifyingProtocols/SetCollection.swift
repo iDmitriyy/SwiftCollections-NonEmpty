@@ -9,31 +9,12 @@ public protocol SetCollection<Element>: Collection {}
 
 // MARK: - Common SetAlgebra With Sequence
 
-/// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAllSequencesCollection: SetCollection {
+public protocol CommonSetAlgebraWithAllSequencesUndestructiveNonEmptynessCollection: SetCollection {
   // MARK: Union
 
   func union(_ other: some Sequence<Element>) -> Self
   
   mutating func formUnion(_ other: some Sequence<Element>)
-  
-  // MARK: Intersection
-  
-  func intersection(_ other: some Sequence<Element>) -> Self
-  
-  mutating func formIntersection(_ other: some Sequence<Element>)
-  
-  // MARK: Symmetric Difference
-  
-  func symmetricDifference(_ other: some Sequence<Element>) -> Self
-  
-  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
-  
-  // MARK: Subtracting
-  
-  func subtracting(_ other: some Sequence<Element>) -> Self
-  
-  mutating func subtract(_ other: some Sequence<Element>)
   
   // MARK: Is Subset & Strict
   
@@ -52,11 +33,30 @@ public protocol CommonSetAlgebraWithAllSequencesCollection: SetCollection {
   func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
+/// Common Set operations with all Sequence types
+public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraWithAllSequencesUndestructiveNonEmptynessCollection {
+  // MARK: Intersection
+  
+  func intersection(_ other: some Sequence<Element>) -> Self
+  
+  mutating func formIntersection(_ other: some Sequence<Element>)
+  
+  // MARK: Symmetric Difference
+  
+  func symmetricDifference(_ other: some Sequence<Element>) -> Self
+  
+  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
+  
+  // MARK: Subtracting
+  
+  func subtracting(_ other: some Sequence<Element>) -> Self
+  
+  mutating func subtract(_ other: some Sequence<Element>)
+}
+
 // MARK: - Common SetAlgebra With Self
 
-/// Partial duplication of Swift.SetAlgebra
-/// Common Set operations with all Self type
-public protocol CommonSetAlgebraCollection: SetCollection {
+public protocol CommonSetAlgebraUndestructiveNonEmptynessCollection: SetCollection {
   func contains(_ member: Element) -> Bool
   
   // MARK: Union
@@ -65,6 +65,26 @@ public protocol CommonSetAlgebraCollection: SetCollection {
   
   mutating func formUnion(_ other: Self)
   
+  // MARK: Is Subset & Strict
+  
+  func isSubset(of other: Self) -> Bool
+  
+  func isStrictSubset(of other: Self) -> Bool
+  
+  // MARK: Is Disjoint
+  
+  func isDisjoint(with other: Self) -> Bool
+  
+  // MARK: Is Superset & Strict
+  
+  func isSuperset(of other: Self) -> Bool
+  
+  func isStrictSuperset(of other: Self) -> Bool
+}
+
+/// Partial duplication of Swift.SetAlgebra
+/// Common Set operations with all Self type
+public protocol CommonSetAlgebraCollection: CommonSetAlgebraUndestructiveNonEmptynessCollection {
   // MARK: Intersection
   
   func intersection(_ other: Self) -> Self
@@ -85,22 +105,6 @@ public protocol CommonSetAlgebraCollection: SetCollection {
   
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
-  
-  // MARK: Is Subset & Strict
-  
-  func isSubset(of other: Self) -> Bool
-  
-  func isStrictSubset(of other: Self) -> Bool
-  
-  // MARK: Is Disjoint
-  
-  func isDisjoint(with other: Self) -> Bool
-  
-  // MARK: Is Superset & Strict
-  
-  func isSuperset(of other: Self) -> Bool
-  
-  func isStrictSuperset(of other: Self) -> Bool
 }
 
 // MARK: - Unordered SetAlgebra
