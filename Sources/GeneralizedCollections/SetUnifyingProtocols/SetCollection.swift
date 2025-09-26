@@ -5,7 +5,7 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
-public protocol SetCollection<Element>: Collection {
+public protocol SetCollection<Element>: Collection where Element: Hashable {
   func contains(_ member: Element) -> Bool // from Swift.SetAlgebra
 }
 
@@ -35,29 +35,6 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollect
   func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
-/// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection {
-  // Intersection
-  
-  func intersection(_ other: some Sequence<Element>) -> Self
-  
-  mutating func formIntersection(_ other: some Sequence<Element>)
-  
-  // Symmetric Difference
-  
-  func symmetricDifference(_ other: some Sequence<Element>) -> Self
-  
-  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
-  
-  // Subtracting
-  
-  func subtracting(_ other: some Sequence<Element>) -> Self
-  
-  mutating func subtract(_ other: some Sequence<Element>)
-}
-
-// MARK: - Common SetAlgebra With Self
-
 public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection: SetCollection {
   // Union
   
@@ -80,6 +57,29 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection: Set
   func isSuperset(of other: Self) -> Bool
   
   func isStrictSuperset(of other: Self) -> Bool
+}
+
+// MARK: - Common SetAlgebra With Self
+
+/// Common Set operations with all Sequence types
+public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection {
+  // Intersection
+  
+  func intersection(_ other: some Sequence<Element>) -> Self
+  
+  mutating func formIntersection(_ other: some Sequence<Element>)
+  
+  // Symmetric Difference
+  
+  func symmetricDifference(_ other: some Sequence<Element>) -> Self
+  
+  mutating func formSymmetricDifference(_ other: some Sequence<Element>)
+  
+  // Subtracting
+  
+  func subtracting(_ other: some Sequence<Element>) -> Self
+  
+  mutating func subtract(_ other: some Sequence<Element>)
 }
 
 /// Partial duplication of Swift.SetAlgebra
