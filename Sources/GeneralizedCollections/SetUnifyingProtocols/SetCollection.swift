@@ -115,29 +115,29 @@ public protocol UnorderedSetAlgebraCollection: Collection {
   mutating func update(with newMember: Element) -> Element?
 }
 
-//extension SetAlgebra { // default imps
+// extension SetAlgebra { // default imps
 //  @inlinable public init<S>(_ sequence: S) where S : Sequence, Self.Element == S.Element
-//  
+//
 //  @inlinable public mutating func subtract(_ other: Self)
-//  
+//
 //  @inlinable public func isSubset(of other: Self) -> Bool
-//  
+//
 //  @inlinable public func isSuperset(of other: Self) -> Bool
-//  
+//
 //  @inlinable public func isDisjoint(with other: Self) -> Bool
-//  
+//
 //  @inlinable public func subtracting(_ other: Self) -> Self
-//  
+//
 //  @inlinable public var isEmpty: Bool { get }
-//  
+//
 //  @inlinable public func isStrictSuperset(of other: Self) -> Bool
-//  
+//
 //  @inlinable public func isStrictSubset(of other: Self) -> Bool
-//}
+// }
 
-//extension SetAlgebra where Self.ArrayLiteralElement == Self.Element {
+// extension SetAlgebra where Self.ArrayLiteralElement == Self.Element {
 //  @inlinable public init(arrayLiteral: Self.Element...)
-//}
+// }
 
 // extension Set where Element : Sequence {
 //  func joined() -> FlattenSequence<Set<Element>>
@@ -159,9 +159,9 @@ public protocol UnorderedSetAlgebraCollection: Collection {
 //  func joined(separator: String = "") -> String
 // }
 
-//private import struct Foundation.IndexSet
+// private import struct Foundation.IndexSet
 //
-//func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
+// func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
 //  var set = Set<Int>()
 //  var orderedSet = OrderedSet<Int>()
 //  var indexSet = IndexSet()

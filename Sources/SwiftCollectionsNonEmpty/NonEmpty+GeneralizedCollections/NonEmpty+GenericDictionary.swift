@@ -23,9 +23,9 @@ extension NonEmpty: DictionaryCollection where Base: DictionaryCollection {
   
   // properties & methods:
   
-  public var keys: Base.Keys { rawValue.keys }
+  public var keys: Base.Keys { base.keys } // TODO: should it be NonEmpty<Base.Keys>
   
-  public var values: Base.Values { rawValue.values }
+  public var values: Base.Values { rawValue.values } // TODO: should it be NonEmpty<Base.Values>
   
   public func index(forKey key: Base.Key) -> Base.Index? {
     rawValue.index(forKey: key)
@@ -35,7 +35,7 @@ extension NonEmpty: DictionaryCollection where Base: DictionaryCollection {
 // MARK: - SingleValueGetSubscriptDictionary
 
 extension NonEmpty: SingleValueGetSubscriptDictionary where Base: SingleValueGetSubscriptDictionary {
-  public subscript(key: Base.Key) -> Base.Value? { rawValue[key] }
+  public subscript(key: Base.Key) -> Base.Value? { rawValue[key] } // TODO: base[key] or _baseReadModify[key]?
   
   public subscript(key: Base.Key, default defaultValue: @autoclosure () -> Base.Value) -> Base.Value {
     rawValue[key, default: defaultValue()]

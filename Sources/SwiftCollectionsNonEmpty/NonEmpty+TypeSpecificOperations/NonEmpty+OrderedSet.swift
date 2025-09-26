@@ -33,7 +33,7 @@ extension NonEmpty: OrderedSetTypeSpecificUndestructiveNonEmptiness where Base: 
 extension OrderedSet: OrderedSetTypeSpecificUndestructiveNonEmptiness {}
 
 /// Needed to extend NonEmpty with OrderedSet specific operations, as extension to NonEmptyOrderedSet typealias doesn't allow to do it.
-/// It also make a general;ization
+/// It also make a generalization of OrderedSet & NonEmptyOrderedSet in generic context.
 public protocol OrderedSetTypeSpecificUndestructiveNonEmptiness: Collection {
   // Should only contain methods that OrderedSet already has
   
