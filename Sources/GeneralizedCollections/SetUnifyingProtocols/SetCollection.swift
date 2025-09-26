@@ -2,7 +2,7 @@
 //  SetCollection.swift
 //  swiftCollections-nonEmpty
 //
-//  Created by tmp on 25/09/2025.
+//  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
 public protocol SetCollection<Element>: Collection {}
@@ -10,7 +10,7 @@ public protocol SetCollection<Element>: Collection {}
 // MARK: - Common SetAlgebra With Sequence
 
 /// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAnySequenceCollection: SetCollection {
+public protocol CommonSetAlgebraWithAllSequencesCollection: SetCollection {
   // MARK: Union
 
   func union(_ other: some Sequence<Element>) -> Self
@@ -159,35 +159,35 @@ public protocol UnorderedSetAlgebraCollection: Collection {
 //  func joined(separator: String = "") -> String
 // }
 
-private import struct Foundation.IndexSet
-
-func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
-  var set = Set<Int>()
-  var orderedSet = OrderedSet<Int>()
-  var indexSet = IndexSet()
-  var treeSet = TreeSet<Int>()
-  var bitSet = BitSet()
-  
-  // set.formUnion()
-  // set.update(with: )
-  // set.insert()
-
-  // treeSet.formUnion()
-  // treeSet.update(with:)
-  // treeSet.insert()
-
-  // bitSet.formUnion()
-  // bitSet.update(with:)
-  // bitSet.insert()
-
-  // indexSet.formUnion()
-  // indexSet.update(with:)
-  // indexSet.insert()
-
-  // orderedSet.formUnion()
-  // orderedSet.update(, at:)
-  // orderedSet.insert(, at:)
-  // orderedSet.append()
-  // orderedSet.updateOrAppend()
-  // orderedSet.append(contentsOf)
- }
+//private import struct Foundation.IndexSet
+//
+//func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
+//  var set = Set<Int>()
+//  var orderedSet = OrderedSet<Int>()
+//  var indexSet = IndexSet()
+//  var treeSet = TreeSet<Int>()
+//  var bitSet = BitSet()
+//
+//  // set.formUnion()
+//  // set.update(with: )
+//  // set.insert()
+//
+//  // treeSet.formUnion()
+//  // treeSet.update(with:)
+//  // treeSet.insert()
+//
+//  // bitSet.formUnion()
+//  // bitSet.update(with:)
+//  // bitSet.insert()
+//
+//  // indexSet.formUnion()
+//  // indexSet.update(with:)
+//  // indexSet.insert()
+//
+//  // orderedSet.formUnion()
+//  // orderedSet.update(, at:)
+//  // orderedSet.insert(, at:)
+//  // orderedSet.append()
+//  // orderedSet.updateOrAppend()
+//  // orderedSet.append(contentsOf)
+// }

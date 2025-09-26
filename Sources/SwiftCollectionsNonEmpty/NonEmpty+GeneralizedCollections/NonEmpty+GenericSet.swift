@@ -2,6 +2,6 @@
 //  NonEmptyGenericSet.swift
 //  swiftCollections-nonEmpty
 //
-//  Created by tmp on 26/09/2025.
+//  Created Dmitriy Ignatyev on 26/09/2025.
 //
 

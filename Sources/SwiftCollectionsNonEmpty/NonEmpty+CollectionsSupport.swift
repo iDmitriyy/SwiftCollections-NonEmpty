@@ -2,10 +2,10 @@
 //  NonEmpty+CollectionsSupport.swift
 //  swiftCollections-nonEmpty
 //
-//  Created by tmp on 26/09/2025.
+//  Created Dmitriy Ignatyev on 26/09/2025.
 //
 
-// MARK: - NonEmpty Compatible SetCollection
+// MARK: - NonEmpty Compatible Set Types
 
 extension Set: @retroactive NonEmptyCompatibleCollection {}
 
@@ -17,7 +17,7 @@ extension TreeSet: @retroactive NonEmptyCompatibleCollection {}
 /// `init(element: Element)`
 /// `init(elements first: Element, _ other: Element...) `
 public protocol NonEmptyAvailableOutOfBoxConvenienceInitSet: NonEmptyCompatibleCollection, SetCollection, InitializableWithSequenceSet,
-  CommonSetAlgebraWithAnySequenceCollection {}
+  CommonSetAlgebraWithAllSequencesCollection {}
 
 extension Set: NonEmptyAvailableOutOfBoxConvenienceInitSet {}
 
