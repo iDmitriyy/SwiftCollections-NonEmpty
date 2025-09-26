@@ -7,25 +7,31 @@
 
 @_spi(NonEmptyExternallyExtendable) private import NonEmpty
 
-extension NonEmpty: OrderedSetTypeSpecificUndestructiveNonEmptiness where Base: OrderedSetTypeSpecificUndestructiveNonEmptiness {
-  @discardableResult public mutating func insert(_ item: Base.Element, at index: Int) -> (inserted: Bool, index: Int) {
+extension NonEmpty: OrderedSetTypeSpecificUndestructiveNonEmptiness
+  where Base: OrderedSetTypeSpecificUndestructiveNonEmptiness {
+  @discardableResult
+  public mutating func insert(_ item: Base.Element, at index: Int) -> (inserted: Bool, index: Int) {
     _baseReadModify.insert(item, at: index)
   }
   
-  @discardableResult public mutating func updateOrAppend(_ item: Base.Element) -> Base.Element? {
+  @discardableResult
+  public mutating func updateOrAppend(_ item: Base.Element) -> Base.Element? {
     _baseReadModify.updateOrAppend(item)
   }
   
-  @discardableResult public mutating func updateOrInsert(_ item: Base.Element,
-                                                         at index: Int) -> (originalMember: Base.Element?, index: Int) {
+  @discardableResult
+  public mutating func updateOrInsert(_ item: Base.Element,
+                                      at index: Int) -> (originalMember: Base.Element?, index: Int) {
     _baseReadModify.updateOrInsert(item, at: index)
   }
   
-  @discardableResult public mutating func update(_ item: Base.Element, at index: Int) -> Base.Element {
+  @discardableResult
+  public mutating func update(_ item: Base.Element, at index: Int) -> Base.Element {
     _baseReadModify.update(item, at: index)
   }
   
-  @discardableResult public mutating func append(_ item: Base.Element) -> (inserted: Bool, index: Int) {
+  @discardableResult
+  public mutating func append(_ item: Base.Element) -> (inserted: Bool, index: Int) {
     _baseReadModify.append(item)
   }
 }

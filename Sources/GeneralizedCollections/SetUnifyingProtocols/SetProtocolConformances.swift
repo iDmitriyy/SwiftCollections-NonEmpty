@@ -25,14 +25,14 @@ extension BitSet: SetProtocol {}
 
 // MARK: UnorderedSetAlgebraCollection
 
-extension Set: UnorderedSetAlgebraCollection {}
+extension Set: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
 
-extension TreeSet: UnorderedSetAlgebraCollection {}
+extension TreeSet: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
 
-//@available(*, unavailable, message: "OrderedSet is incompatible with UnorderedSetAlgebraCollection")
+//@available(*, unavailable, message: "OrderedSet is incompatible with `UnorderedSetAlgebraUndestructiveNonEmptynessCollection`")
 //extension OrderedSet: UnorderedSetAlgebraCollection {}
 
-extension BitSet: UnorderedSetAlgebraCollection {}
+extension BitSet: UnorderedSetAlgebraUndestructiveNonEmptynessCollection {}
 
 // MARK: EmptyInitializable Set
 

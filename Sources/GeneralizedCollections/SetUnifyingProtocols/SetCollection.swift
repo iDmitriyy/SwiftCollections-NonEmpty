@@ -5,28 +5,30 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
-public protocol SetCollection<Element>: Collection {}
+public protocol SetCollection<Element>: Collection {
+  func contains(_ member: Element) -> Bool // from Swift.SetAlgebra
+}
 
 // MARK: - Common SetAlgebra With Sequence
 
-public protocol CommonSetAlgebraWithAllSequencesUndestructiveNonEmptynessCollection: SetCollection {
-  // MARK: Union
+public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection: SetCollection {
+  // Union
 
   func union(_ other: some Sequence<Element>) -> Self
   
   mutating func formUnion(_ other: some Sequence<Element>)
   
-  // MARK: Is Subset & Strict
+  // Is Subset & Strict
   
   func isSubset(of possibleSuperset: some Sequence<Element>) -> Bool
   
   func isStrictSubset(of possibleStrictSuperset: some Sequence<Element>) -> Bool
   
-  // MARK: Is Disjoint
+  // Is Disjoint
   
   func isDisjoint(with other: some Sequence<Element>) -> Bool
   
-  // MARK: Is Superset & Strict
+  // Is Superset & Strict
   
   func isSuperset(of possibleSubset: some Sequence<Element>) -> Bool
   
@@ -34,20 +36,20 @@ public protocol CommonSetAlgebraWithAllSequencesUndestructiveNonEmptynessCollect
 }
 
 /// Common Set operations with all Sequence types
-public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraWithAllSequencesUndestructiveNonEmptynessCollection {
-  // MARK: Intersection
+public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequencesCollection {
+  // Intersection
   
   func intersection(_ other: some Sequence<Element>) -> Self
   
   mutating func formIntersection(_ other: some Sequence<Element>)
   
-  // MARK: Symmetric Difference
+  // Symmetric Difference
   
   func symmetricDifference(_ other: some Sequence<Element>) -> Self
   
   mutating func formSymmetricDifference(_ other: some Sequence<Element>)
   
-  // MARK: Subtracting
+  // Subtracting
   
   func subtracting(_ other: some Sequence<Element>) -> Self
   
@@ -56,26 +58,24 @@ public protocol CommonSetAlgebraWithAllSequencesCollection: CommonSetAlgebraWith
 
 // MARK: - Common SetAlgebra With Self
 
-public protocol CommonSetAlgebraUndestructiveNonEmptynessCollection: SetCollection {
-  func contains(_ member: Element) -> Bool
-  
-  // MARK: Union
+public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection: SetCollection {
+  // Union
   
   func union(_ other: Self) -> Self
   
   mutating func formUnion(_ other: Self)
   
-  // MARK: Is Subset & Strict
+  // Is Subset & Strict
   
   func isSubset(of other: Self) -> Bool
   
   func isStrictSubset(of other: Self) -> Bool
   
-  // MARK: Is Disjoint
+  // Is Disjoint
   
   func isDisjoint(with other: Self) -> Bool
   
-  // MARK: Is Superset & Strict
+  // Is Superset & Strict
   
   func isSuperset(of other: Self) -> Bool
   
@@ -84,20 +84,20 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessCollection: SetCollecti
 
 /// Partial duplication of Swift.SetAlgebra
 /// Common Set operations with all Self type
-public protocol CommonSetAlgebraCollection: CommonSetAlgebraUndestructiveNonEmptynessCollection {
-  // MARK: Intersection
+public protocol CommonSetAlgebraCollection: CommonSetAlgebraUndestructiveNonEmptynessWithSelfCollection {
+  // Intersection
   
   func intersection(_ other: Self) -> Self
   
   mutating func formIntersection(_ other: Self)
   
-  // MARK: Symmetric Difference
+  // Symmetric Difference
   
   func symmetricDifference(_ other: Self) -> Self
   
   mutating func formSymmetricDifference(_ other: Self)
   
-  // MARK: Subtracting
+  // Subtracting
   
   func subtracting(_ other: Self) -> Self
   
@@ -109,7 +109,7 @@ public protocol CommonSetAlgebraCollection: CommonSetAlgebraUndestructiveNonEmpt
 
 // MARK: - Unordered SetAlgebra
 
-public protocol UnorderedSetAlgebraCollection: Collection {
+public protocol UnorderedSetAlgebraUndestructiveNonEmptynessCollection: SetCollection {
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
