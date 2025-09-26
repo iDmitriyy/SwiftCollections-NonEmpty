@@ -31,8 +31,8 @@ public protocol EmptyInitializableWithCapacityDictionary<Key, Value>: EmptyIniti
   mutating func removeAll(keepingCapacity keepCapacity: Bool)
 }
 
-//
+// MARK: - UniqueKeysWithValues Initializable Dictionary
 
 public protocol UniqueKeysWithValuesInitializableDictionary<Key, Value>: DictionaryCollection {
-  init<S>(uniqueKeysWithValues keysAndValues: S) where S: Sequence, S.Element == (Key, Value)
+  init(uniqueKeysWithValues keysAndValues: some Sequence<(Key, Value)>)
 }
