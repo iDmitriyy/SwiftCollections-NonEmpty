@@ -102,7 +102,16 @@ public protocol CommonSetAlgebraWithSelf: CommonSetAlgebraUndestructiveNonEmptyn
   func subtracting(_ other: Self) -> Self
   
   mutating func subtract(_ other: Self)
-  
+}
+
+public protocol DifferentResultTypesSetAgebraDestructiveNonEmptyness: SetCollection {
+  associatedtype ResltSetType: SetCollection
+}
+
+
+// MARK: - Common MutableSetAlgebra DestructiveNonEmptyness
+
+public protocol CommonMutableSetAlgebraDestructiveNonEmptyness: SetCollection {
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
 }
