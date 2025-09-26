@@ -604,7 +604,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="G-GXGSWUBJ4BMiIIJa02" name="SetProtocol">
-    <mxGraphModel dx="3292" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="4440" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -617,22 +617,22 @@
             <mxPoint x="1050" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="z8ZFlCB7SXUGekApIWDm-2" value="where Element: Hashable" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="DhRUFbPFYPwV7Auno9WM-6">
+        <mxCell id="z8ZFlCB7SXUGekApIWDm-2" value="where Element: Hashable" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;" vertex="1" connectable="0" parent="DhRUFbPFYPwV7Auno9WM-6">
           <mxGeometry x="-0.0368" y="1" relative="1" as="geometry">
-            <mxPoint y="4" as="offset" />
+            <mxPoint y="9" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="G7xTIFPZqYfTJbJXFAIx-1" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;Set&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" vertex="1" parent="1">
-          <mxGeometry x="720" y="1120" width="200" height="40" as="geometry" />
+          <mxGeometry x="620" y="1120" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="G7xTIFPZqYfTJbJXFAIx-2" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;TreeSet&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" vertex="1" parent="1">
-          <mxGeometry x="720" y="1200" width="200" height="40" as="geometry" />
+          <mxGeometry x="620" y="1200" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="G7xTIFPZqYfTJbJXFAIx-3" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;OrderedSet&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" vertex="1" parent="1">
-          <mxGeometry x="720" y="1360" width="200" height="40" as="geometry" />
+          <mxGeometry x="620" y="1360" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="G7xTIFPZqYfTJbJXFAIx-4" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;BitSet&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" vertex="1" parent="1">
-          <mxGeometry x="720" y="1280" width="200" height="40" as="geometry" />
+          <mxGeometry x="620" y="1280" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="UoCY9ypuLMUIZgH1noWr-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;EmptyInitializableSet&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;init()&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;mutating removeAll()&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
           <mxGeometry y="840" width="280" height="80" as="geometry" />
@@ -686,7 +686,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="yarn2SEu1xOIaxdopxSj-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;UnorderedInsert&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UndestructiveNonEmptyness&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Set&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;mutating insert(_ newMember: Element) -&amp;gt; (inserted: Bool,&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; memberAfterInsert: Element)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating update(with newMember: Element) -&amp;gt; Element?&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="1165" width="280" height="110" as="geometry" />
+          <mxGeometry x="1040" y="1165" width="280" height="110" as="geometry" />
         </mxCell>
         <mxCell id="DhRUFbPFYPwV7Auno9WM-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="xzmlhCQXS6jSRhsfKiDI-6" target="xzmlhCQXS6jSRhsfKiDI-8">
           <mxGeometry relative="1" as="geometry">
@@ -699,8 +699,8 @@
             <mxPoint x="1010" y="1080" as="sourcePoint" />
             <mxPoint x="1010" y="1040" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="960" y="1300" />
-              <mxPoint x="960" y="1220" />
+              <mxPoint x="860" y="1300" />
+              <mxPoint x="860" y="1220" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -715,8 +715,8 @@
             <mxPoint x="1050" y="1090" as="sourcePoint" />
             <mxPoint x="1050" y="1050" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="960" y="1140" />
-              <mxPoint x="960" y="1220" />
+              <mxPoint x="860" y="1140" />
+              <mxPoint x="860" y="1220" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -728,8 +728,8 @@
             <mxPoint x="560" y="807" as="sourcePoint" />
             <mxPoint x="560" y="767" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="540" y="1150" />
-              <mxPoint x="540" y="1265" />
+              <mxPoint x="510" y="1150" />
+              <mxPoint x="510" y="1265" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -738,8 +738,8 @@
             <mxPoint x="440" y="867" as="sourcePoint" />
             <mxPoint x="440" y="827" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="540" y="1390" />
-              <mxPoint x="540" y="1265" />
+              <mxPoint x="510" y="1390" />
+              <mxPoint x="510" y="1265" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -754,8 +754,8 @@
             <mxPoint x="480" y="867" as="sourcePoint" />
             <mxPoint x="480" y="827" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="540" y="1310" />
-              <mxPoint x="540" y="1265" />
+              <mxPoint x="510" y="1310" />
+              <mxPoint x="510" y="1265" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -764,8 +764,8 @@
             <mxPoint x="510" y="877" as="sourcePoint" />
             <mxPoint x="510" y="837" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="540" y="1230" />
-              <mxPoint x="540" y="1265" />
+              <mxPoint x="510" y="1230" />
+              <mxPoint x="510" y="1265" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -784,21 +784,11 @@
         <mxCell id="oqsIkzlR7uoCjCWljAzQ-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;SetCollection&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;func contains(_ member: Element) -&amp;gt; Bool&amp;nbsp; // O(1)&lt;/span&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
           <mxGeometry x="1040" y="200" width="280" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="oqsIkzlR7uoCjCWljAzQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yarn2SEu1xOIaxdopxSj-1" target="oqsIkzlR7uoCjCWljAzQ-1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1000" y="930" as="sourcePoint" />
-            <mxPoint x="1000" y="900" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1840" y="1220" />
-              <mxPoint x="1840" y="235" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="H9ziO683yTelvVAy7_ab-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;CommonSetAlgebra&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UndestructiveNonEmptynessWithAllSequences&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;union(_ other: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Self&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formUnion(_ other: some Sequence&amp;lt;Element&amp;gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isSubset(of possibleSuperset: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isStrictSubset(of possibleStrictSuperset: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isDisjoint(with other: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isSuperset(of possibleSubset: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Bool&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isStrictSuperset(of possibleStrictSubset: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="840" y="360" width="280" height="220" as="geometry" />
+          <mxGeometry x="840" y="320" width="280" height="220" as="geometry" />
         </mxCell>
         <mxCell id="H9ziO683yTelvVAy7_ab-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;CommonSetAlgebra&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UndestructiveNonEmptynessWithSelf&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;union(_ other:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;) -&amp;gt; Self&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formUnion(_ other:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isSubset(of possibleSuperset:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isStrictSubset(of possibleStrictSuperset:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isDisjoint(with other:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isSuperset(of possibleSubset:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;) -&amp;gt; Bool&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;isStrictSuperset(of possibleStrictSubset:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Self&lt;/span&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;) -&amp;gt; Bool&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1240" y="360" width="280" height="220" as="geometry" />
+          <mxGeometry x="1240" y="320" width="280" height="220" as="geometry" />
         </mxCell>
         <mxCell id="fD9SOMSmnA4Oe65hW499-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="H9ziO683yTelvVAy7_ab-1" target="oqsIkzlR7uoCjCWljAzQ-1">
           <mxGeometry relative="1" as="geometry">
@@ -812,39 +802,20 @@
             <mxPoint x="1320" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fD9SOMSmnA4Oe65hW499-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;Com&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;unio&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="840" y="640" width="280" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="fD9SOMSmnA4Oe65hW499-4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;Com&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;unio&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1240" y="640" width="280" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="fD9SOMSmnA4Oe65hW499-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b&gt;CommonMutableSetAlgebra&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DestructiveNonEmptyness&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating remove(_ member: Element) -&amp;gt; Element?&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="1020" width="280" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="fD9SOMSmnA4Oe65hW499-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fD9SOMSmnA4Oe65hW499-5" target="oqsIkzlR7uoCjCWljAzQ-1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1940" y="1842" as="sourcePoint" />
-            <mxPoint x="1920" y="840" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1840" y="1065" />
-              <mxPoint x="1840" y="235" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="WCF9AFoS0hywImuXvmZt-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="yarn2SEu1xOIaxdopxSj-1" target="fD9SOMSmnA4Oe65hW499-5">
+        <mxCell id="WCF9AFoS0hywImuXvmZt-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="yarn2SEu1xOIaxdopxSj-1" target="8OLHwan_UzC9iJTTSAZJ-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="950" y="1080" as="sourcePoint" />
-            <mxPoint x="950" y="1040" as="targetPoint" />
+            <mxPoint x="1180" y="1110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WCF9AFoS0hywImuXvmZt-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jumpStyle=arc;strokeColor=#00CC00;" edge="1" parent="1" source="G7xTIFPZqYfTJbJXFAIx-3" target="fD9SOMSmnA4Oe65hW499-5">
+        <mxCell id="WCF9AFoS0hywImuXvmZt-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jumpStyle=arc;strokeColor=#00CC00;" edge="1" parent="1" source="G7xTIFPZqYfTJbJXFAIx-3" target="8OLHwan_UzC9iJTTSAZJ-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="940" y="1020" as="sourcePoint" />
-            <mxPoint x="940" y="980" as="targetPoint" />
+            <mxPoint x="1110" y="1110" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="990" y="1380" />
-              <mxPoint x="990" y="1134" />
-              <mxPoint x="1130" y="1134" />
+              <mxPoint x="900" y="1380" />
+              <mxPoint x="900" y="1000" />
+              <mxPoint x="1110" y="1000" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -853,8 +824,8 @@
             <mxPoint x="1010" y="1080" as="sourcePoint" />
             <mxPoint x="1010" y="1040" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="580" y="1130" />
-              <mxPoint x="580" y="1025" />
+              <mxPoint x="540" y="1130" />
+              <mxPoint x="540" y="1025" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -863,8 +834,8 @@
             <mxPoint x="1140" y="1070" as="sourcePoint" />
             <mxPoint x="1140" y="1030" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="580" y="1370" />
-              <mxPoint x="580" y="1025" />
+              <mxPoint x="540" y="1370" />
+              <mxPoint x="540" y="1025" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -873,8 +844,8 @@
             <mxPoint x="1080" y="1090" as="sourcePoint" />
             <mxPoint x="1080" y="1050" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="580" y="1290" />
-              <mxPoint x="580" y="1025" />
+              <mxPoint x="540" y="1290" />
+              <mxPoint x="540" y="1025" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -883,21 +854,26 @@
             <mxPoint x="980" y="1050" as="sourcePoint" />
             <mxPoint x="980" y="1010" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="620" y="1210" />
-              <mxPoint x="620" y="880" />
+              <mxPoint x="570" y="1210" />
+              <mxPoint x="570" y="880" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="WCF9AFoS0hywImuXvmZt-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="WCF9AFoS0hywImuXvmZt-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="-YlfRPhh6qqVo3iYaDXH-1" target="H9ziO683yTelvVAy7_ab-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="780" y="797" as="sourcePoint" />
+            <mxPoint x="1190" y="550" as="sourcePoint" />
             <mxPoint x="780" y="757" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WCF9AFoS0hywImuXvmZt-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="WCF9AFoS0hywImuXvmZt-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="8OLHwan_UzC9iJTTSAZJ-1" target="-YlfRPhh6qqVo3iYaDXH-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="710" y="827" as="sourcePoint" />
             <mxPoint x="710" y="787" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-YlfRPhh6qqVo3iYaDXH-2" value="where MayBeEmptySetType == Self" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;" vertex="1" connectable="0" parent="WCF9AFoS0hywImuXvmZt-3">
+          <mxGeometry x="-0.1676" y="1" relative="1" as="geometry">
+            <mxPoint x="1" y="6" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="WCF9AFoS0hywImuXvmZt-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
@@ -906,9 +882,9 @@
             <mxPoint x="700" y="707" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WCF9AFoS0hywImuXvmZt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="WCF9AFoS0hywImuXvmZt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="-YlfRPhh6qqVo3iYaDXH-1" target="H9ziO683yTelvVAy7_ab-2">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="790" y="747" as="sourcePoint" />
+            <mxPoint x="1190" y="560" as="sourcePoint" />
             <mxPoint x="790" y="707" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -918,8 +894,20 @@
             <mxPoint x="640" y="767" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8OLHwan_UzC9iJTTSAZJ-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;DifferentResultTypesSetAgebra&lt;/b&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; font-size: 8px;&quot;&gt;unio&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1028" y="840" width="280" height="110" as="geometry" />
+        <mxCell id="8OLHwan_UzC9iJTTSAZJ-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;b style=&quot;&quot;&gt;&lt;font&gt;MutableSetAlgebra&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font&gt;DestructiveNonEmptyness&lt;/font&gt;&lt;/b&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;mutating remove(_ member: Element) -&amp;gt; Element?&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formIntersection(_ other: Self)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formIntersection(_ other: some Sequence&amp;lt;Element&amp;gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formSymmetricDifference(_ other: Self)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating formSymmetricDifference(_ other: some Sequence&amp;lt;Element&amp;gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating subtract(_ other: Self)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;mutating subtract(_ other: some Sequence&amp;lt;Element&amp;gt;)&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="800" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ODQBjt2XLYGKdDxqi20C-1" value="«interface»&lt;br&gt;&lt;b&gt;CommonSetProtocol&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="1070" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-YlfRPhh6qqVo3iYaDXH-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;«interface»&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;SetAgebra&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;DestructiveNonEmptynessResultType&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 6px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; associatedtype&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#6600cc&quot;&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;MayBeEmptySetType&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&lt;font style=&quot;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;intersection(_ other: Self) -&amp;gt; MayBeEmptySetType&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&amp;nbsp;intersection(_ other: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; MayBeEmptySetType&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&amp;nbsp;symmetricDifference(_ other: Self) -&amp;gt; MayBeEmptySetType&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&amp;nbsp;symmetricDifference(_ other: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; MayBeEmptySetType&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&amp;nbsp;subtracting(_ other: Self) -&amp;gt; MayBeEmptySetType&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;&amp;nbsp;subtracting(_ other: some Sequence&amp;lt;Element&amp;gt;) -&amp;gt; MayBeEmptySetType&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;spacingLeft=0;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="580" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="-YlfRPhh6qqVo3iYaDXH-3" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;NonEmpty&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3FFF3;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1360" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-YlfRPhh6qqVo3iYaDXH-4" value="«interface»&lt;br&gt;&lt;b&gt;UnorderedInsertSetProtocol&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="1160" width="280" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -62,8 +62,8 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelf: SetCollection
 // MARK: - SetAgebra Destructive NonEmptyness
 
 
-public protocol DifferentResultTypesSetAgebraDestructiveNonEmptyness: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences, CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
-  associatedtype MayBeEmptySetType: DifferentResultTypesSetAgebraDestructiveNonEmptyness
+public protocol SetAgebraDestructiveNonEmptynessResultType: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences, CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
+  associatedtype MayBeEmptySetType: SetAgebraDestructiveNonEmptynessResultType
   
   // Intersection
   
@@ -87,7 +87,7 @@ public protocol DifferentResultTypesSetAgebraDestructiveNonEmptyness: CommonSetA
 
 // MARK: - Common MutableSetAlgebra DestructiveNonEmptyness
 
-public protocol CommonMutableSetAlgebraDestructiveNonEmptyness: DifferentResultTypesSetAgebraDestructiveNonEmptyness where MayBeEmptySetType == Self {
+public protocol MutableSetAlgebraDestructiveNonEmptyness: SetAgebraDestructiveNonEmptynessResultType where MayBeEmptySetType == Self {
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
   
@@ -192,7 +192,7 @@ public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
   // indexSet.formUnion()
   // indexSet.update(with:)
   // indexSet.insert()
-  
+   
   // orderedSet.formUnion()
   // orderedSet.update(, at:)
   // orderedSet.insert(, at:)
