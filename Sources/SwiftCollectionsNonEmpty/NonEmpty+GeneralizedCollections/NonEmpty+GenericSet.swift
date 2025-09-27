@@ -14,6 +14,7 @@ extension NonEmpty: SetCollection where Base: SetCollection {
 }
 
 extension NonEmpty: AdditiveSetAlgebraWithAllSequences where Base: AdditiveSetAlgebraWithAllSequences {
+  
   public func union(_ other: some Sequence<Element>) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other))
   }
@@ -44,6 +45,7 @@ extension NonEmpty: AdditiveSetAlgebraWithAllSequences where Base: AdditiveSetAl
 }
 
 extension NonEmpty: AdditiveSetAlgebraWithSelf where Base: AdditiveSetAlgebraWithSelf {
+  
   public func union(_ other: Self) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other.base))
   }
@@ -73,7 +75,9 @@ extension NonEmpty: AdditiveSetAlgebraWithSelf where Base: AdditiveSetAlgebraWit
   }
 }
 
-extension NonEmpty: SubtractiveResultSetAgebra where Base: SubtractiveResultSetAgebra, Base.CanBeEmptySetType == Base {
+extension NonEmpty: SubtractiveResultSetAgebra
+  where Base: SubtractiveResultSetAgebra, Base.CanBeEmptySetType == Base {
+  
   public typealias CanBeEmptySetType = Base
   
   public func intersection(_ other: Self) -> Base {
@@ -101,13 +105,15 @@ extension NonEmpty: SubtractiveResultSetAgebra where Base: SubtractiveResultSetA
   }
 }
 
-extension NonEmpty: UnorderedInsertAdditiveMutableSetAlgebra where Base: UnorderedInsertAdditiveMutableSetAlgebra {
-  public mutating func insert(_ newMember: Base.Element) -> (inserted: Bool, memberAfterInsert: Base.Element) {
-    <#code#>
+extension NonEmpty: UnorderedInsertAdditiveMutableSetAlgebra
+  where Base: UnorderedInsertAdditiveMutableSetAlgebra, Base.CanBeEmptySetType == Base {
+  
+  public mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
+    _baseReadModify.insert(newMember)
   }
   
-  public mutating func update(with newMember: Base.Element) -> Base.Element? {
-    <#code#>
+  public mutating func update(with newMember: Element) -> Element? {
+    _baseReadModify.update(with: newMember)
   }
 }
 

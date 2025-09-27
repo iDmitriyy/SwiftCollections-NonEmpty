@@ -110,7 +110,7 @@ public protocol SelfSubtractiveMutableSetAlgebra: SubtractiveResultSetAgebra whe
 
 // MARK: - UnorderedInsert Additive Mutable SetAlgebra
 
-public protocol UnorderedInsertAdditiveMutableSetAlgebra: SetCollection {
+public protocol UnorderedInsertAdditiveMutableSetAlgebra: SubtractiveResultSetAgebra {
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
