@@ -43,6 +43,13 @@ extension NonEmpty where Base: NonEmptyConvenienceInitOutOfBoxSet {
   }
 }
 
+extension NonEmpty where Base: InitializableWithSequenceSet {
+  public init?(_ sequence: some Sequence<Element>) {
+    let canBeEmptyBase = Base(sequence)
+    self.init(base: canBeEmptyBase)
+  }
+}
+
 // MARK: - SingleValueForKey Dictionary Types NonEmpty initializer
 
 extension NonEmpty where Base: DictionaryProtocol {
