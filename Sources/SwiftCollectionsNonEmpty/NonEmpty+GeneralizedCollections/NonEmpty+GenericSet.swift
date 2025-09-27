@@ -13,8 +13,7 @@ extension NonEmpty: SetCollection where Base: SetCollection {
   }
 }
 
-extension NonEmpty: AdditiveSetAlgebraWithAllSequences
-  where Base: AdditiveSetAlgebraWithAllSequences {
+extension NonEmpty: AdditiveSetAlgebraWithAllSequences where Base: AdditiveSetAlgebraWithAllSequences {
   public func union(_ other: some Sequence<Element>) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other))
   }
@@ -41,6 +40,74 @@ extension NonEmpty: AdditiveSetAlgebraWithAllSequences
   
   public func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool {
     base.isStrictSuperset(of: possibleStrictSubset)
+  }
+}
+
+extension NonEmpty: AdditiveSetAlgebraWithSelf where Base: AdditiveSetAlgebraWithSelf {
+  public func union(_ other: Self) -> Self {
+    Self(_unsafeAssumedNonEmpty: base.union(other.base))
+  }
+  
+  public mutating func formUnion(_ other: Self) {
+    _baseReadModify.formUnion(other.base)
+  }
+  
+  public func isSubset(of other: Self) -> Bool {
+    base.isSubset(of: other.base)
+  }
+  
+  public func isStrictSubset(of other: Self) -> Bool {
+    base.isStrictSubset(of: other.base)
+  }
+  
+  public func isDisjoint(with other: Self) -> Bool {
+    base.isDisjoint(with: other.base)
+  }
+  
+  public func isSuperset(of other: Self) -> Bool {
+    base.isSuperset(of: other.base)
+  }
+  
+  public func isStrictSuperset(of other: Self) -> Bool {
+    base.isStrictSuperset(of: other.base)
+  }
+}
+
+extension NonEmpty: SubtractiveResultSetAgebra where Base: SubtractiveResultSetAgebra, Base.CanBeEmptySetType == Base {
+  public typealias CanBeEmptySetType = Base
+  
+  public func intersection(_ other: Self) -> Base {
+    base.intersection(other.base)
+  }
+  
+  public func intersection(_ other: some Sequence<Element>) -> Base {
+    base.intersection(other)
+  }
+  
+  public func symmetricDifference(_ other: Self) -> Base {
+    base.symmetricDifference(other.base)
+  }
+  
+  public func symmetricDifference(_ other: some Sequence<Element>) -> Base {
+    base.symmetricDifference(other)
+  }
+  
+  public func subtracting(_ other: Self) -> Base {
+    base.subtracting(other.base)
+  }
+  
+  public func subtracting(_ other: some Sequence<Element>) -> Base {
+    base.subtracting(other)
+  }
+}
+
+extension NonEmpty: UnorderedInsertAdditiveMutableSetAlgebra where Base: UnorderedInsertAdditiveMutableSetAlgebra {
+  public mutating func insert(_ newMember: Base.Element) -> (inserted: Bool, memberAfterInsert: Base.Element) {
+    <#code#>
+  }
+  
+  public mutating func update(with newMember: Base.Element) -> Base.Element? {
+    <#code#>
   }
 }
 

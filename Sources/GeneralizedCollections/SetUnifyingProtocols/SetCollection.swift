@@ -62,30 +62,30 @@ public protocol AdditiveSetAlgebraWithSelf: SetCollection {
 // MARK: - Subtractive Result SetAgebra
 
 public protocol SubtractiveResultSetAgebra: AdditiveSetAlgebraWithAllSequences, AdditiveSetAlgebraWithSelf {
-  associatedtype MayBeEmptySetType: SubtractiveResultSetAgebra
+  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebra
   
   // Intersection
   
-  func intersection(_ other: Self) -> MayBeEmptySetType
+  func intersection(_ other: Self) -> CanBeEmptySetType
   
-  func intersection(_ other: some Sequence<Element>) -> MayBeEmptySetType
+  func intersection(_ other: some Sequence<Element>) -> CanBeEmptySetType
   
   // Symmetric Difference
   
-  func symmetricDifference(_ other: Self) -> MayBeEmptySetType
+  func symmetricDifference(_ other: Self) -> CanBeEmptySetType
   
-  func symmetricDifference(_ other: some Sequence<Element>) -> MayBeEmptySetType
+  func symmetricDifference(_ other: some Sequence<Element>) -> CanBeEmptySetType
   
   // Subtracting
   
-  func subtracting(_ other: Self) -> MayBeEmptySetType
+  func subtracting(_ other: Self) -> CanBeEmptySetType
   
-  func subtracting(_ other: some Sequence<Element>) -> MayBeEmptySetType
+  func subtracting(_ other: some Sequence<Element>) -> CanBeEmptySetType
 }
 
 // MARK: - SelfSubtractive Mutable SetAlgebra
 
-public protocol SelfSubtractiveMutableSetAlgebra: SubtractiveResultSetAgebra where MayBeEmptySetType == Self {
+public protocol SelfSubtractiveMutableSetAlgebra: SubtractiveResultSetAgebra where CanBeEmptySetType == Self {
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
   
