@@ -19,7 +19,7 @@ extension BitSet: @retroactive NonEmptyCompatibleCollection {}
 /// `init(element: Element)`
 /// `init(elements first: Element, _ other: Element...) `
 public protocol NonEmptyConvenienceInitOutOfBoxSet: NonEmptyCompatibleCollection, InitializableWithSequenceSet,
-  CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences {}
+  AdditiveSetAlgebraWithAllSequences {}
 
 extension Set: NonEmptyConvenienceInitOutOfBoxSet {}
 

@@ -13,8 +13,8 @@ extension NonEmpty: SetCollection where Base: SetCollection {
   }
 }
 
-extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences
-  where Base: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences {
+extension NonEmpty: AdditiveSetAlgebraWithAllSequences
+  where Base: AdditiveSetAlgebraWithAllSequences {
   public func union(_ other: some Sequence<Element>) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other))
   }
@@ -44,39 +44,39 @@ extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences
   }
 }
 
-//extension NonEmpty: CommonSetAlgebraUndestructiveNonEmptynessWithSelf
-//where Base: CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
+// extension NonEmpty: AdditiveSetAlgebraWithSelf
+// where Base: AdditiveSetAlgebraWithSelf {
 //  public func contains(_ member: Base.Element) -> Bool {
-//    
+//
 //  }
-//  
+//
 //  // TODO: make generic instead of NonEmpty.NonEmpty<Base>
 //
 //  public func union(_ other: NonEmpty.NonEmpty<Base>) -> Self {
-//    
+//
 //  }
-//  
+//
 //  public mutating func formUnion(_ other: NonEmpty.NonEmpty<Base>) {
-//    
+//
 //  }
-//  
+//
 //  public func isSubset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//    
+//
 //  }
-//  
+//
 //  public func isStrictSubset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//    
+//
 //  }
-//  
+//
 //  public func isDisjoint(with other: NonEmpty.NonEmpty<Base>) -> Bool {
-//    
+//
 //  }
-//  
+//
 //  public func isSuperset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//    
+//
 //  }
-//  
+//
 //  public func isStrictSuperset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//    
+//
 //  }
-//}
+// }

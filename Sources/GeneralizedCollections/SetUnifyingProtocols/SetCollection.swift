@@ -9,9 +9,9 @@ public protocol SetCollection<Element>: Collection where Element: Hashable {
   func contains(_ member: Element) -> Bool // from Swift.SetAlgebra
 }
 
-// MARK: - Common SetAlgebra With Sequence
+// MARK: - Additive SetAlgebra
 
-public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences: SetCollection {
+public protocol AdditiveSetAlgebraWithAllSequences: SetCollection {
   // Union
 
   func union(_ other: some Sequence<Element>) -> Self
@@ -35,7 +35,7 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences: SetCo
   func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
-public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelf: SetCollection {
+public protocol AdditiveSetAlgebraWithSelf: SetCollection {
   // Union
   
   func union(_ other: Self) -> Self
@@ -59,11 +59,10 @@ public protocol CommonSetAlgebraUndestructiveNonEmptynessWithSelf: SetCollection
   func isStrictSuperset(of other: Self) -> Bool
 }
 
-// MARK: - SetAgebra Destructive NonEmptyness
+// MARK: - Subtractive Result SetAgebra
 
-
-public protocol SetAgebraDestructiveNonEmptynessResultType: CommonSetAlgebraUndestructiveNonEmptynessWithAllSequences, CommonSetAlgebraUndestructiveNonEmptynessWithSelf {
-  associatedtype MayBeEmptySetType: SetAgebraDestructiveNonEmptynessResultType
+public protocol SubtractiveResultSetAgebra: AdditiveSetAlgebraWithAllSequences, AdditiveSetAlgebraWithSelf {
+  associatedtype MayBeEmptySetType: SubtractiveResultSetAgebra
   
   // Intersection
   
@@ -84,10 +83,9 @@ public protocol SetAgebraDestructiveNonEmptynessResultType: CommonSetAlgebraUnde
   func subtracting(_ other: some Sequence<Element>) -> MayBeEmptySetType
 }
 
+// MARK: - SelfSubtractive Mutable SetAlgebra
 
-// MARK: - Common MutableSetAlgebra DestructiveNonEmptyness
-
-public protocol MutableSetAlgebraDestructiveNonEmptyness: SetAgebraDestructiveNonEmptynessResultType where MayBeEmptySetType == Self {
+public protocol SelfSubtractiveMutableSetAlgebra: SubtractiveResultSetAgebra where MayBeEmptySetType == Self {
   @discardableResult
   mutating func remove(_ member: Element) -> Element?
   
@@ -110,9 +108,9 @@ public protocol MutableSetAlgebraDestructiveNonEmptyness: SetAgebraDestructiveNo
   mutating func subtract(_ other: Self)
 }
 
-// MARK: - Unordered SetAlgebra
+// MARK: - UnorderedInsert Additive Mutable SetAlgebra
 
-public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
+public protocol UnorderedInsertAdditiveMutableSetAlgebra: SetCollection {
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
@@ -170,33 +168,33 @@ public protocol UnorderedInsertUndestructiveNonEmptynessSet: SetCollection {
 
 // private import struct Foundation.IndexSet
 
- func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
-  var set = Set<Int>()
-  var orderedSet = OrderedSet<Int>()
-//  var indexSet = IndexSet()
-  var treeSet = TreeSet<Int>()
-  var bitSet = BitSet()
-  
-  // set.formUnion()
-  // set.update(with: )
-  // set.insert()
-
-  // treeSet.formUnion()
-  // treeSet.update(with:)
-  // treeSet.insert()
-
-  // bitSet.formUnion()
-  // bitSet.update(with:)
-  // bitSet.insert()
-   
-  // indexSet.formUnion()
-  // indexSet.update(with:)
-  // indexSet.insert()
-   
-  // orderedSet.formUnion()
-  // orderedSet.update(, at:)
-  // orderedSet.insert(, at:)
-  // orderedSet.append()
-  // orderedSet.updateOrAppend()
-  // orderedSet.append(contentsOf)
- }
+// func `common / shared functions for NonEmptyCompatibleSetCollection protocol's design`() {
+//  var set = Set<Int>()
+//  var orderedSet = OrderedSet<Int>()
+////  var indexSet = IndexSet()
+//  var treeSet = TreeSet<Int>()
+//  var bitSet = BitSet()
+//
+//  // set.formUnion()
+//  // set.update(with: )
+//  // set.insert()
+//
+//  // treeSet.formUnion()
+//  // treeSet.update(with:)
+//  // treeSet.insert()
+//
+//  // bitSet.formUnion()
+//  // bitSet.update(with:)
+//  // bitSet.insert()
+//
+//  // indexSet.formUnion()
+//  // indexSet.update(with:)
+//  // indexSet.insert()
+//
+//  // orderedSet.formUnion()
+//  // orderedSet.update(, at:)
+//  // orderedSet.insert(, at:)
+//  // orderedSet.append()
+//  // orderedSet.updateOrAppend()
+//  // orderedSet.append(contentsOf)
+// }

@@ -9,11 +9,11 @@
 
 extension Set: SetProtocol {}
 
-extension OrderedSet: SetProtocol {}
-
 extension TreeSet: SetProtocol {}
 
 extension BitSet: SetProtocol {}
+
+extension OrderedSet: SetProtocol {}
 
 //#if canImport(Foundation)
 //  public import struct Foundation.IndexSet
@@ -27,18 +27,14 @@ extension BitSet: SetProtocol {}
 
 // MARK: UnorderedInsert UndestructiveNonEmptyness Set
 
-extension Set: UnorderedInsertUndestructiveNonEmptynessSet {}
+extension Set: UnorderedInsertSetProtocol {}
 
-extension TreeSet: UnorderedInsertUndestructiveNonEmptynessSet {}
+extension TreeSet: UnorderedInsertSetProtocol {}
 
-//@available(*, unavailable, message: "OrderedSet is incompatible with `UnorderedInsertUndestructiveNonEmptynessSet`")
-//extension OrderedSet: UnorderedSetAlgebraCollection {}
+//@available(*, unavailable, message: "OrderedSet is incompatible with `UnorderedInsertAdditiveMutableSetAlgebra`")
+//extension OrderedSet: UnorderedInsertSetProtocol {} | insertion are at index
 
-extension BitSet: UnorderedInsertUndestructiveNonEmptynessSet {}
-
-// MARK: EmptyInitializable Set
-
-extension TreeSet: EmptyInitializableSet {}
+extension BitSet: UnorderedInsertSetProtocol {}
 
 // MARK: EmptyInitializable WithCapacity Set
 
