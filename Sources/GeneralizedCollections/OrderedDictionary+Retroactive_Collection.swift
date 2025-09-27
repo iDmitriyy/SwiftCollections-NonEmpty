@@ -6,14 +6,11 @@
 //
 
 extension OrderedDictionary: @retroactive Collection {
-  public var startIndex: Int { keys.startIndex }
+  public var startIndex: Int { elements.startIndex }
   
-  public var endIndex: Int { keys.endIndex }
+  public var endIndex: Int { elements.endIndex }
   
-  public func index(after i: Int) -> Int { keys.index(after: i) }
+  public func index(after i: Int) -> Int { elements.index(after: i) }
   
-  @inlinable @inline(__always)
-  public subscript(position: Int) -> (key: Key, value: Value) {
-    get { (keys[position], values[position]) }
-  }
+  public subscript(position: Int) -> (key: Key, value: Value) { elements[position] }
 }
