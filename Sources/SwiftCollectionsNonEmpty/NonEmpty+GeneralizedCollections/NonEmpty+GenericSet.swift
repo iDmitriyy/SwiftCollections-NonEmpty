@@ -13,7 +13,8 @@ extension NonEmpty: SetCollection where Base: SetCollection {
   }
 }
 
-extension NonEmpty: AdditiveSetAlgebraWithAllSequences where Base: AdditiveSetAlgebraWithAllSequences {
+extension NonEmpty: AdditiveSetAlgebraWithAllSequences
+  where Base: AdditiveSetAlgebraWithAllSequences {
   
   public func union(_ other: some Sequence<Element>) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other))
@@ -44,7 +45,8 @@ extension NonEmpty: AdditiveSetAlgebraWithAllSequences where Base: AdditiveSetAl
   }
 }
 
-extension NonEmpty: AdditiveSetAlgebraWithSelf where Base: AdditiveSetAlgebraWithSelf {
+extension NonEmpty: AdditiveSetAlgebraWithSelf
+  where Base: AdditiveSetAlgebraWithSelf {
   
   public func union(_ other: Self) -> Self {
     Self(_unsafeAssumedNonEmpty: base.union(other.base))
@@ -76,7 +78,8 @@ extension NonEmpty: AdditiveSetAlgebraWithSelf where Base: AdditiveSetAlgebraWit
 }
 
 extension NonEmpty: SubtractiveResultSetAgebra
-  where Base: SubtractiveResultSetAgebra, Base.CanBeEmptySetType == Base {
+  where Base: SubtractiveResultSetAgebra,
+  Base.CanBeEmptySetType == Base {
   
   public typealias CanBeEmptySetType = Base
   
@@ -106,7 +109,8 @@ extension NonEmpty: SubtractiveResultSetAgebra
 }
 
 extension NonEmpty: UnorderedInsertAdditiveMutableSetAlgebra
-  where Base: UnorderedInsertAdditiveMutableSetAlgebra, Base.CanBeEmptySetType == Base {
+  where Base: UnorderedInsertAdditiveMutableSetAlgebra,
+  Base.CanBeEmptySetType == Base {
   
   public mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
     _baseReadModify.insert(newMember)
@@ -116,40 +120,3 @@ extension NonEmpty: UnorderedInsertAdditiveMutableSetAlgebra
     _baseReadModify.update(with: newMember)
   }
 }
-
-// extension NonEmpty: AdditiveSetAlgebraWithSelf
-// where Base: AdditiveSetAlgebraWithSelf {
-//  public func contains(_ member: Base.Element) -> Bool {
-//
-//  }
-//
-//  // TODO: make generic instead of NonEmpty.NonEmpty<Base>
-//
-//  public func union(_ other: NonEmpty.NonEmpty<Base>) -> Self {
-//
-//  }
-//
-//  public mutating func formUnion(_ other: NonEmpty.NonEmpty<Base>) {
-//
-//  }
-//
-//  public func isSubset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//
-//  }
-//
-//  public func isStrictSubset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//
-//  }
-//
-//  public func isDisjoint(with other: NonEmpty.NonEmpty<Base>) -> Bool {
-//
-//  }
-//
-//  public func isSuperset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//
-//  }
-//
-//  public func isStrictSuperset(of other: NonEmpty.NonEmpty<Base>) -> Bool {
-//
-//  }
-// }
