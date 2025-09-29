@@ -17,10 +17,15 @@ extension RangeSet: AdditiveSetAlgebraWithSelf where Bound: Hashable {
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride: BinaryInteger { // : AdditiveSetAlgebraWithAllSequences
-//  public func union(_ other: some Sequence<Element>) -> RangeSet<Bound> {
-//    
-//  }
-//  
+  /// !!! Perfomance
+  public func union(_ other: some Sequence<Element>) -> RangeSet<Bound> {
+    var result = self
+    for range in Self.makeDisjointRangesFromSequence(other) {
+      result.formUnion(Self.init(range))
+    }
+    return result
+  }
+  
 //  public mutating func formUnion(_ other: some Sequence<Element>) {
 //    
 //  }
@@ -45,22 +50,25 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
 //    
 //  }
   
-  private func makeRangesFromSequence(_ sequence: some Sequence<Element>) -> [Range<Bound>] {
+  private static func makeDisjointRangesFromSequence(_ sequence: some Sequence<Element>) -> [Range<Bound>] {
     let sorted = sequence.sorted()
     guard var lower = sorted.first else { return [] }
     var upper = lower
     
     var ranges: [Range<Bound>] = []
     for current in sorted.dropFirst() {
-      if lower.distance(to: current) > 1 {
-        let range = lower..<(upper.advanced(by: 1))
-        ranges.append(range)
+      if upper.distance(to: current) > 1 {
+        ranges.append(lower..<(upper.advanced(by: 1)))
         lower = current
         upper = current
       } else {
         upper = current
       }
     }
+    
+    ranges.append(lower..<(upper.advanced(by: 1)))
+    
+    return ranges
   }
 }
 
