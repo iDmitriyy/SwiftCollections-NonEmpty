@@ -7,8 +7,8 @@
 
 @_spi(NonEmptyExternallyExtendable) private import NonEmpty
 
-extension NonEmpty: OrderedSetTypeSpecificUndestructiveNonEmptiness
-  where Base: OrderedSetTypeSpecificUndestructiveNonEmptiness {
+extension NonEmpty: OrderedSetUndestructiveNonEmptiness
+  where Base: OrderedSetUndestructiveNonEmptiness {
   @discardableResult
   public mutating func insert(_ item: Base.Element, at index: Int) -> (inserted: Bool, index: Int) {
     _baseReadModify.insert(item, at: index)
@@ -36,20 +36,21 @@ extension NonEmpty: OrderedSetTypeSpecificUndestructiveNonEmptiness
   }
 }
 
-extension OrderedSet: OrderedSetTypeSpecificUndestructiveNonEmptiness {}
+/// Additive operations for OrderedSet
+extension OrderedSet: OrderedSetUndestructiveNonEmptiness {}
 
 /// Needed to extend NonEmpty with OrderedSet specific operations, as extension to NonEmptyOrderedSet typealias doesn't allow to do it.
 /// It also make a generalization of OrderedSet & NonEmptyOrderedSet in generic context.
-public protocol OrderedSetTypeSpecificUndestructiveNonEmptiness: Collection {
+public protocol OrderedSetUndestructiveNonEmptiness: Collection {
   // Should only contain methods that OrderedSet already has
   
   @discardableResult mutating func insert(_ item: Element, at index: Int) -> (inserted: Bool, index: Int)
   
-  @discardableResult mutating func updateOrAppend(_ item: Element) -> Element?
-  
   @discardableResult mutating func updateOrInsert(_ item: Element, at index: Int) -> (originalMember: Element?, index: Int)
   
   @discardableResult mutating func update(_ item: Element, at index: Int) -> Element
+  
+  @discardableResult mutating func updateOrAppend(_ item: Element) -> Element?
   
   @discardableResult mutating func append(_ item: Element) -> (inserted: Bool, index: Int)
 }

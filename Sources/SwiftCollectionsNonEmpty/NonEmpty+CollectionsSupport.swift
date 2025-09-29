@@ -5,7 +5,7 @@
 //  Created Dmitriy Ignatyev on 26/09/2025.
 //
 
-// MARK: - NonEmpty Compatible Set Types
+// MARK: - Set Types Compatible with NonEmpty  
 
 extension Set: @retroactive NonEmptyCompatibleCollection {}
 

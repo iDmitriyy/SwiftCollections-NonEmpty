@@ -7,17 +7,15 @@
 
 @_spi(NonEmptyExternallyExtendable) private import NonEmpty
 
-// MARK: - RangeReplaceable Collection Types NonEmpty initializer
+// MARK: - RangeReplaceable Types initializers for NonEmpty
 
 extension NonEmpty where Base: RangeReplaceableCollection {
-  @inlinable @inline(__always)
   public init(element: Element) {
     var coll = Base()
     coll.append(element)
     self.init(_unsafeAssumedNonEmpty: coll)
   }
   
-  @inlinable @inline(__always)
   public init(elements first: Element, _ other: Element...) {
     var coll = Base()
     coll.append(first)
@@ -26,16 +24,14 @@ extension NonEmpty where Base: RangeReplaceableCollection {
   }
 }
 
-// MARK: - Compatible Set Types NonEmpty initializer
+// MARK: - Set Types initializers for NonEmpty
 
 extension NonEmpty where Base: NonEmptyConvenienceInitOutOfBoxSet {
-  @inlinable @inline(__always)
   public init(element: Element) {
     let backingInstance = Base(CollectionOfOne(element))
     self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
   
-  @inlinable @inline(__always)
   public init(elements first: Element, _ other: Element...) {
     var backingInstance = Base(CollectionOfOne(first))
     backingInstance.formUnion(other)
@@ -50,17 +46,15 @@ extension NonEmpty where Base: InitializableWithSequenceSet {
   }
 }
 
-// MARK: - SingleValueForKey Dictionary Types NonEmpty initializer
+// MARK: - Dictionary Types initializers for NonEmpty
 
 extension NonEmpty where Base: DictionaryProtocol {
-  @inlinable @inline(__always)
   public init(element: Element) {
     var backingInstance = Base()
     backingInstance.updateValue(element.value, forKey: element.key)
     self.init(_unsafeAssumedNonEmpty: backingInstance)
   }
   
-  @inlinable @inline(__always)
   public init(elements first: Element, _ other: Element...) {
     var backingInstance = Base()
     backingInstance.updateValue(first.value, forKey: first.key)
