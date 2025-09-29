@@ -5,7 +5,11 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
 
-public protocol SetCollection<Element>: Collection where Element: Hashable {
+// Collection inheritance moved to SetProtocol and UnorderedInsertSetProtocol
+// for types without conformance to Collection like
+public protocol SetCollection<Element> {
+  associatedtype Element: Hashable
+  
   func contains(_ member: Element) -> Bool // from Swift.SetAlgebra
 }
 

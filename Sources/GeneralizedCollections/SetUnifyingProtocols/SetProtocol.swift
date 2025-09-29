@@ -5,6 +5,6 @@
 //  Created Dmitriy Ignatyev on 25/09/2025.
 //
  
-public protocol SetProtocol<Element>: SelfSubtractiveMutableSetAlgebra, EmptyInitializableSet {}
+public protocol SetProtocol<Element>: Collection, SelfSubtractiveMutableSetAlgebra, EmptyInitializableSet {}
 
-public protocol UnorderedInsertSetProtocol<Element>: UnorderedInsertAdditiveMutableSetAlgebra, EmptyInitializableSet {}
+public protocol UnorderedInsertSetProtocol<Element>: Collection, UnorderedInsertAdditiveMutableSetAlgebra, EmptyInitializableSet {}

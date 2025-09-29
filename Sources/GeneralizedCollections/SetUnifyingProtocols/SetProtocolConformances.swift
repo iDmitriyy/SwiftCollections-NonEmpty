@@ -45,4 +45,3 @@ extension OrderedSet: EmptyInitializableWithCapacitySet {}
 // extension TreeSet: EmptyInitializableWithCapacitySet {} // no functions to reserveCapacity
 
 extension BitSet: EmptyInitializableWithCapacitySet {}
-
