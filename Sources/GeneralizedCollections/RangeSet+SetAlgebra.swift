@@ -20,7 +20,7 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
   /// !!! Perfomance
   public func union(_ other: some Sequence<Element>) -> RangeSet<Bound> {
     var result = self
-    for range in Self._makeDisjointRangesFromSequence(other) {
+    for range in Self._makeOrderedDisjointRangesFromSequence(other) {
       result.formUnion(Self.init(range))
     }
     return result
@@ -35,14 +35,12 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
   }
   
   public func isStrictSubset(of possibleStrictSuperset: some Sequence<Element>) -> Bool {
-    
+    // self._customContainsEquatableElement(self.ranges.first!.first!)
   }
   
   public func isDisjoint(with other: some Sequence<Element>) -> Bool {
-//    guard !self._isEmpty() else { return true }
-    // var otherCount: Int = 0
+    guard !self.isEmpty else { return true }
     for element in other {
-      // otherCount += 1
       if self.contains(element) {
         return false
       }
@@ -86,20 +84,17 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
     }
   }
   
-  private func _isEmpty() -> Bool {
-    guard let _ = ranges.first(where: { !$0.isEmpty }) else { return true }
-    return false
-  }
+  // _customContainsEquatableElement
   
   private func _selfCount() -> Int {
     ranges.reduce(into: Int(0)) { count, range in
-      let rangeCount = range.lowerBound.distance(to: range.upperBound)
+      // let rangeCount = range.lowerBound.distance(to: range.upperBound)
       // range.count – Bound.Stride: SignedInteger
-      count += Int(rangeCount)
+      count += range.count // Int(rangeCount)
     }
   }
   
-  private static func _makeDisjointRangesFromSequence(_ sequence: some Sequence<Element>) -> [Range<Bound>] {
+  private static func _makeOrderedDisjointRangesFromSequence(_ sequence: some Sequence<Element>) -> [Range<Bound>] {
     let sorted = sequence.sorted()
     guard var lower = sorted.first else { return [] }
     var upper = lower
@@ -120,8 +115,6 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
     return ranges
   }
 }
-
-
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension RangeSet<Int> {
