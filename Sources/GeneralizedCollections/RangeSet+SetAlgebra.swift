@@ -26,9 +26,9 @@ extension RangeSet where Bound: Hashable & Comparable & Strideable, Bound.Stride
     return result
   }
   
-//  public mutating func formUnion(_ other: some Sequence<Element>) {
-//    
-//  }
+  public mutating func formUnion(_ other: some Sequence<Element>) {
+    
+  }
   
   public func isSubset(of possibleSuperset: some Sequence<Element>) -> Bool {
     

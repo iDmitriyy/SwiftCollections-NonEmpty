@@ -194,7 +194,8 @@ public protocol UnorderedInsertAdditiveMutableSetAlgebra: SubtractiveResultSetAg
 //  // indexSet.formUnion()
 //  // indexSet.update(with:)
 //  // indexSet.insert()
-//
+//  
+//  // orderedSet.remove()
 //  // orderedSet.formUnion()
 //  // orderedSet.update(, at:)
 //  // orderedSet.insert(, at:)
