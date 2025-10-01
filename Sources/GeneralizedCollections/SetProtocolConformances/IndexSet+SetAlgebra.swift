@@ -11,4 +11,8 @@
   extension IndexSet: SetCollection {}
 
   extension IndexSet: AdditiveSetAlgebraWithSelf {}
+
+  extension IndexSet: SubtractiveResultSetAgebraWithSelf {}
+
+  extension IndexSet: SelfSubtractiveSetAlgebraWithSelf {}
 #endif

@@ -65,56 +65,54 @@ public protocol AdditiveSetAlgebraWithSelf: SetCollection {
 
 // MARK: - Subtractive Result SetAgebra
 
-public protocol SubtractiveResultSetAgebra: AdditiveSetAlgebraWithAllSequences, AdditiveSetAlgebraWithSelf {
-  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebra
-  
-  // Intersection
-  
-  func intersection(_ other: Self) -> CanBeEmptySetType
+public protocol SubtractiveResultSetAgebraWithAllSequences: AdditiveSetAlgebraWithAllSequences {
+  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebraWithAllSequences
   
   func intersection(_ other: some Sequence<Element>) -> CanBeEmptySetType
   
-  // Symmetric Difference
-  
-  func symmetricDifference(_ other: Self) -> CanBeEmptySetType
-  
   func symmetricDifference(_ other: some Sequence<Element>) -> CanBeEmptySetType
-  
-  // Subtracting
-  
-  func subtracting(_ other: Self) -> CanBeEmptySetType
   
   func subtracting(_ other: some Sequence<Element>) -> CanBeEmptySetType
 }
 
-// MARK: - SelfSubtractive Mutable SetAlgebra
+public protocol SubtractiveResultSetAgebraWithSelf: AdditiveSetAlgebraWithSelf {
+  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebraWithSelf
+  
+  func intersection(_ other: Self) -> CanBeEmptySetType
+  
+  func symmetricDifference(_ other: Self) -> CanBeEmptySetType
+  
+  func subtracting(_ other: Self) -> CanBeEmptySetType
+}
 
-public protocol SelfSubtractiveMutableSetAlgebra: SubtractiveResultSetAgebra where CanBeEmptySetType == Self {
-  @discardableResult
-  mutating func remove(_ member: Element) -> Element?
-  
-  // Intersection
-  
+// MARK: - SelfSubtractive SetAlgebra
+
+public protocol SelfSubtractiveSetAlgebraWithAllSequences: SubtractiveResultSetAgebraWithAllSequences where CanBeEmptySetType == Self {
   mutating func formIntersection(_ other: some Sequence<Element>)
-  
-  mutating func formIntersection(_ other: Self)
-  
-  // Symmetric Difference
-  
+
   mutating func formSymmetricDifference(_ other: some Sequence<Element>)
   
-  mutating func formSymmetricDifference(_ other: Self)
-  
-  // Subtracting
-  
   mutating func subtract(_ other: some Sequence<Element>)
+}
+
+public protocol SelfSubtractiveSetAlgebraWithSelf: SubtractiveResultSetAgebraWithSelf where CanBeEmptySetType == Self {
+  mutating func formIntersection(_ other: Self)
+  
+  mutating func formSymmetricDifference(_ other: Self)
   
   mutating func subtract(_ other: Self)
 }
 
+// MARK: - SelfSubtracting Element SetAlgebra
+
+public protocol SelfSubtractingElementSetAlgebra: SetCollection {
+  @discardableResult
+  mutating func remove(_ member: Element) -> Element?
+}
+
 // MARK: - UnorderedInsert Additive Mutable SetAlgebra
 
-public protocol UnorderedInsertAdditiveMutableSetAlgebra: SubtractiveResultSetAgebra {
+public protocol UnorderedInsertAdditiveMutableSetAlgebra: SetCollection { // SubtractiveResultSetAgebra
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult

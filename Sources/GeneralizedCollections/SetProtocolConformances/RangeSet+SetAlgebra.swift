@@ -15,6 +15,13 @@ extension RangeSet: AdditiveSetAlgebraWithSelf where Bound: Hashable {
   }
 }
 
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension RangeSet: SubtractiveResultSetAgebraWithSelf where Bound: Hashable {
+  public typealias CanBeEmptySetType = Self
+}
+
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension RangeSet: SelfSubtractiveSetAlgebraWithSelf where Bound: Hashable {}
 
 
 //@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
