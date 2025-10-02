@@ -7,18 +7,18 @@
 
 // Collection inheritance moved to SetProtocol and UnorderedInsertSetProtocol
 // for types without conformance to Collection like
-public protocol SetCollection<Element> {
-  associatedtype Element: Hashable
+public protocol SetCollection<Element>: ~Copyable {
+  associatedtype Element: ~Copyable
   
-  func contains(_ member: Element) -> Bool // from Swift.SetAlgebra
+  func contains(_ member: borrowing Element) -> Bool // from Swift.SetAlgebra
 }
 
 // MARK: - Additive SetAlgebra
 
-public protocol AdditiveSetAlgebraWithAllSequences: SetCollection {
+public protocol AdditiveSetAlgebraWithAllSequences: SetCollection, ~Copyable {
   // Union
 
-  func union(_ other: some Sequence<Element>) -> Self
+  consuming func union(_ other: some Sequence<Element>) -> Self
   
   mutating func formUnion(_ other: some Sequence<Element>)
   
@@ -39,28 +39,28 @@ public protocol AdditiveSetAlgebraWithAllSequences: SetCollection {
   func isStrictSuperset(of possibleStrictSubset: some Sequence<Element>) -> Bool
 }
 
-public protocol AdditiveSetAlgebraWithSelf: SetCollection {
+public protocol AdditiveSetAlgebraWithSelf: SetCollection, ~Copyable {
   // Union
   
-  func union(_ other: Self) -> Self
+  consuming func union(_ other: consuming Self) -> Self
   
-  mutating func formUnion(_ other: Self)
+  mutating func formUnion(_ other: consuming Self)
   
   // Is Subset & Strict
   
-  func isSubset(of other: Self) -> Bool
+  func isSubset(of other: borrowing Self) -> Bool
   
-  func isStrictSubset(of other: Self) -> Bool
+  func isStrictSubset(of other: borrowing Self) -> Bool
   
   // Is Disjoint
   
-  func isDisjoint(with other: Self) -> Bool
+  func isDisjoint(with other: borrowing Self) -> Bool
   
   // Is Superset & Strict
   
-  func isSuperset(of other: Self) -> Bool
+  func isSuperset(of other: borrowing Self) -> Bool
   
-  func isStrictSuperset(of other: Self) -> Bool
+  func isStrictSuperset(of other: borrowing Self) -> Bool
 }
 
 // MARK: - Subtractive Result SetAgebra
@@ -75,14 +75,14 @@ public protocol SubtractiveResultSetAgebraWithAllSequences: AdditiveSetAlgebraWi
   func subtracting(_ other: some Sequence<Element>) -> CanBeEmptySetType
 }
 
-public protocol SubtractiveResultSetAgebraWithSelf: AdditiveSetAlgebraWithSelf {
-  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebraWithSelf
+public protocol SubtractiveResultSetAgebraWithSelf: AdditiveSetAlgebraWithSelf, ~Copyable {
+  associatedtype CanBeEmptySetType: SubtractiveResultSetAgebraWithSelf, ~Copyable
   
-  func intersection(_ other: Self) -> CanBeEmptySetType
+  borrowing func intersection(_ other: consuming Self) -> CanBeEmptySetType
   
-  func symmetricDifference(_ other: Self) -> CanBeEmptySetType
+  consuming func symmetricDifference(_ other: consuming Self) -> CanBeEmptySetType
   
-  func subtracting(_ other: Self) -> CanBeEmptySetType
+  consuming func subtracting(_ other: borrowing Self) -> CanBeEmptySetType
 }
 
 // MARK: - SelfSubtractive SetAlgebra
@@ -95,19 +95,19 @@ public protocol SelfSubtractiveSetAlgebraWithAllSequences: SubtractiveResultSetA
   mutating func subtract(_ other: some Sequence<Element>)
 }
 
-public protocol SelfSubtractiveSetAlgebraWithSelf: SubtractiveResultSetAgebraWithSelf where CanBeEmptySetType == Self {
-  mutating func formIntersection(_ other: Self)
+public protocol SelfSubtractiveSetAlgebraWithSelf: SubtractiveResultSetAgebraWithSelf, ~Copyable where CanBeEmptySetType == Self {
+  mutating func formIntersection(_ other: borrowing Self)
   
-  mutating func formSymmetricDifference(_ other: Self)
+  mutating func formSymmetricDifference(_ other: consuming Self)
   
-  mutating func subtract(_ other: Self)
+  mutating func subtract(_ other: borrowing Self)
 }
 
 // MARK: - SelfSubtracting Element SetAlgebra
 
 public protocol SelfSubtractingElementSetAlgebra: SetCollection {
   @discardableResult
-  mutating func remove(_ member: Element) -> Element?
+  mutating func remove(_ member: borrowing Element) -> Element?
 }
 
 // MARK: - UnorderedInsert Additive Mutable SetAlgebra
@@ -116,10 +116,10 @@ public protocol UnorderedInsertAdditiveMutableSetAlgebra: SetCollection { // Sub
   // Operations not available for OrderedSet. Set, TreeSet, BitSet have them:
   
   @discardableResult
-  mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element)
+  mutating func insert(_ newMember: consuming Element) -> (inserted: Bool, memberAfterInsert: Element)
   
   @discardableResult
-  mutating func update(with newMember: Element) -> Element?
+  mutating func update(with newMember: consuming Element) -> Element?
 }
 
 // -----------------------------------------------------------------------------------------------------------------------
