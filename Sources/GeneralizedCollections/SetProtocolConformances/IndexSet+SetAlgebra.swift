@@ -15,4 +15,10 @@
   extension IndexSet: SubtractiveResultSetAgebraWithSelf {}
 
   extension IndexSet: SelfSubtractiveSetAlgebraWithSelf {}
+
+  extension IndexSet: UnorderedInsertAdditiveMutableSetAlgebra {}
+
+  extension IndexSet: SelfSubtractingElementSetAlgebra {}
+
+  extension IndexSet: EmptyInitializableSet {}
 #endif
