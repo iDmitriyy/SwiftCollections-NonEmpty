@@ -25,9 +25,6 @@ let package = Package(
     ]),
     .testTarget(name: "SwiftCollectionsNonEmptyTests", dependencies: [
       .target(name: "SwiftCollectionsNonEmpty"),
-      .product(name: "Collections", package: "swift-collections"),
-      .product(name: "_RopeModule", package: "swift-collections"),
-      .product(name: "NonEmpty", package: "swift-nonempty"),
     ]),
   ],
   swiftLanguageModes: [.v6],
