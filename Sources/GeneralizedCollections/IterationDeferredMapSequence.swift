@@ -6,19 +6,19 @@
 //
 
 /// map elements while iteration. Needed to eliminate memory allocations.
-@usableFromInline
-package struct IterationDeferredMapSequence<T, U>: Sequence {
+@_spi(GeneralizedCollections)
+public struct IterationDeferredMapSequence<T, U>: Sequence {
   @usableFromInline internal private(set) var itarator: AnyIterator<T>
   @usableFromInline internal let transform: (T) -> U
   
   @inlinable
-  package init(sequence: some Sequence<T>, transform: @escaping (T) -> U) {
+  public init(sequence: some Sequence<T>, transform: @escaping (T) -> U) {
     itarator = AnyIterator(sequence.makeIterator())
     self.transform = transform
   }
   
   @inlinable
-  package func makeIterator() -> some IteratorProtocol<U> {
+  public func makeIterator() -> some IteratorProtocol<U> {
     AnyIterator<U> {
       if let value = itarator.next() {
         transform(value)
