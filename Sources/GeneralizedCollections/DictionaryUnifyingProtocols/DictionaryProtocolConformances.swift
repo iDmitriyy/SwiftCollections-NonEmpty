@@ -36,9 +36,10 @@ extension TreeDictionary: DictionaryProtocol {
 extension Dictionary: EmptyInitializableWithCapacityDictionary {}
 
 extension OrderedDictionary: EmptyInitializableWithCapacityDictionary {
+  @inlinable
+  @inline(__always)
   public init(minimumCapacity: Int) {
-    self.init()
-    reserveCapacity(minimumCapacity)
+    self.init(minimumCapacity: minimumCapacity, persistent: false)
   }
 }
 
