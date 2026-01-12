@@ -21,14 +21,32 @@ extension Dictionary: DictionaryProtocol {
   
   // FIXME: call removeAll()[with default argument from Standard library] instead of hardcoding `false`
   public mutating func removeAll() { removeAll(keepingCapacity: false) }
+  
+  @inlinable
+  @inline(__always)
+  public func hasValue(forKey key: Key) -> Bool {
+    keys.contains(key)
+  }
 }
 
 extension OrderedDictionary: DictionaryProtocol {
   public mutating func removeAll() { removeAll(keepingCapacity: false) }
+  
+  @inlinable
+  @inline(__always)
+  public func hasValue(forKey key: Key) -> Bool {
+    keys.contains(key)
+  }
 }
 
 extension TreeDictionary: DictionaryProtocol {
   public mutating func removeAll() { self = [:] }
+  
+  @inlinable
+  @inline(__always)
+  public func hasValue(forKey key: Key) -> Bool {
+    keys.contains(key)
+  }
 }
 
 // MARK: - EmptyInitializable WithCapacity Dictionary

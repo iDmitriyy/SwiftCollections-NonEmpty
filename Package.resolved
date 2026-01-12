@@ -1,5 +1,5 @@
 {
-  "originHash" : "630884c7c176c571d0db79bb97518763603f6c8f7af5153371ca7a669ae8f853",
+  "originHash" : "5f2db1414f9fbe7559acf44e2a8a20e8d0b06199ac72e984dbd65c1ff8600c6a",
   "pins" : [
     {
       "identity" : "swift-collections",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/iDmitriyy/swift-nonempty.git",
       "state" : {
         "branch" : "SwiftCollectionsAdditions",
-        "revision" : "9a7997236d2ffb8db23616e6566ecc03e8e4a668"
+        "revision" : "164d812796cc3bf6634dc84df80e5c6b33a8e304"
       }
     }
   ],

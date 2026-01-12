@@ -14,6 +14,8 @@ public protocol SingleValueGetSubscriptDictionary<Key, Value>: DictionaryCollect
   subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value { get }
   
   subscript(position: Index) -> Element { get }
+  
+  func hasValue(forKey key: Key) -> Bool
 }
 
 // MARK: - Operations common for both regular & nonEmpty Dictionary

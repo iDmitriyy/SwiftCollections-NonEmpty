@@ -43,17 +43,3 @@ extension DictionaryCollection {
 }
 
 // MARK: - Additional Default Imps
-
-extension SingleValueGetSubscriptDictionary { // DictionaryCollection if `index(forKey: key)`
-  @inlinable
-  public func hasValue(forKey key: Key) -> Bool {
-    // Improvement: - inspect which is faster – keys.contain or index(forKey: key) or valueForKey
-    // @specialize – choose most perfomant execution path for each specialization, if found
-    // Self: Dictionary | OrderedDictionary
-    // Key: String | ?Int | CustomHashable LargeKeyStruct
-    // Value: - LargeValueStruct
-    
-    // keys.contains(key)
-    index(forKey: key) != nil
-  }
-}

@@ -40,6 +40,12 @@ extension NonEmpty: SingleValueGetSubscriptDictionary where Base: SingleValueGet
   public subscript(key: Base.Key, default defaultValue: @autoclosure () -> Base.Value) -> Base.Value {
     rawValue[key, default: defaultValue()]
   }
+  
+  @inlinable
+  @inline(__always)
+  public func hasValue(forKey key: Base.Key) -> Bool {
+    base.hasValue(forKey: key)
+  }
 }
 
 // MARK: - UndestructiveNonEmptinessMutableOperationsDictionary
